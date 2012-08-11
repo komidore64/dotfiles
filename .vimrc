@@ -1,6 +1,6 @@
 set nocompatible
 
-syntax on
+syntax enable
 
 set showmode
 
