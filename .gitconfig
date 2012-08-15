@@ -9,6 +9,8 @@
 	d = diff
 	co = checkout
 	b = branch
+	lg = log
+	llg = log -p
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
