@@ -12,3 +12,8 @@ fi
 PS1="\[\e[1;33m\][\u@\h \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\[\e[1;36m\]\1\[\e[1;33m\]}/')]\$\[\e[0m\] "
 
 alias ll='ls -lah'
+
+# run work machine rc
+if [ -f ~/.workbashrc ]; then
+	~/.workbashrc
+fi
