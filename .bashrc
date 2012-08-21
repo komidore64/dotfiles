@@ -6,6 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
+
+# bash prompt with colors
+# [<user>@<hostname> <working directory> {current git branch} ]$
 PS1="\[\e[1;33m\][\u@\h \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\[\e[1;36m\]\1\[\e[1;33m\]}/')]\$\[\e[0m\] "
 
 alias ll='ls -lah'
