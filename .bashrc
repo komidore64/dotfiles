@@ -15,5 +15,5 @@ alias ll='ls -lah'
 
 # run work machine rc
 if [ -f ~/.workbashrc ]; then
-	~/.workbashrc
+	. ~/.workbashrc
 fi
