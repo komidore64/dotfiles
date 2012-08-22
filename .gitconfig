@@ -12,6 +12,7 @@
 	lg = log
 	llg = log -p
 	logme = log --author=\"Adam Price\"
+	cl = clean
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
