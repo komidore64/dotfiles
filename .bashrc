@@ -17,9 +17,11 @@ PS1="\[\e[1;33m\][ \u@\h \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
 
+	# if OS X has a ~/bin folder, then add it to PATH
 	if [[ -d ~/bin ]]; then
 		export PATH="$PATH:~/bin"
 	fi
+
 	alias ls='ls -G' # ls with colors
 
 fi
