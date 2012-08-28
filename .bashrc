@@ -1,6 +1,6 @@
 # .bashrc
 
-echo "$(pwd)/.bashrc"
+echo "$HOME/.bashrc"
 
 # Source global definitions on non Mac OS X machines
 if [[ -f /etc/bashrc && "$(uname)" != "Darwin" ]]; then
