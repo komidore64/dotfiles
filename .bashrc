@@ -10,7 +10,7 @@ fi
 # bash prompt with colors
 # [ <user>@<hostname> <working directory> {current git branch (if you're in a repo)} ]
 # $
-PS1="\[\e[1;33m\][ \u\[\e[0m\]@\[\e[1;32m\]\h\[\e[1;33m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\[\e[1;36m\]\1\[\e[1;33m\]}/') ]\[\e[0m\]\n==> "
+PS1="\[\e[1;33m\][ \u\[\e[1;37m\]@\[\e[1;32m\]\h\[\e[1;33m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\[\e[1;36m\]\1\[\e[1;33m\]}/') ]\[\e[0m\]\n==> "
 
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
