@@ -2,12 +2,10 @@
 
 echo "$HOME/.bashrc"
 
-# Source global definitions on non Mac OS X machines
+# source global definitions on non Mac OS X machines
 if [[ -f /etc/bashrc && "$(uname)" != "Darwin" ]]; then
 	. /etc/bashrc
 fi
-
-# User specific aliases and functions
 
 # bash prompt with colors
 # [ <user>@<hostname> <working directory> {current git branch (if you're in a repo)} ]
@@ -28,7 +26,7 @@ fi
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
 
-# run work machine rc
+# super-secret work stuff
 if [[ -f ~/.workbashrc ]]; then
-	. ~/.workbashrc # super-secret work stuff
+	. ~/.workbashrc 
 fi
