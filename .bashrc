@@ -25,6 +25,7 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 fi
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
+alias mkdir='mkdir -p' # create parent directories as needed
 
 # super-secret work stuff
 if [[ -f ~/.workbashrc ]]; then
