@@ -18,3 +18,5 @@
 	email = komidore64@gmail.com
 [mergetool]
 	keepBackup = false
+[core]
+	editor = vim
