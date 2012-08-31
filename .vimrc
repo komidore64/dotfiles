@@ -1,5 +1,7 @@
 set nocompatible
 
+filetype plugin on
+filetype plugin indent on
 syntax enable
 
 set showmode
