@@ -1,7 +1,5 @@
 # .bashrc
 
-echo "$HOME/.bashrc"
-
 # source global definitions on non Mac OS X machines
 if [[ -f /etc/bashrc && "$(uname)" != "Darwin" ]]; then
 	. /etc/bashrc
