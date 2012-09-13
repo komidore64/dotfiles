@@ -15,3 +15,5 @@ set smartcase
 
 set ruler
 set expandtab
+
+autocmd BufWritePre * :%s/\s\+$//e
