@@ -14,6 +14,9 @@ set ignorecase
 set smartcase
 
 set ruler
+
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
