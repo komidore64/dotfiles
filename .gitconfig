@@ -1,22 +1,21 @@
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
 [alias]
-	st = status
-	d = diff
-	co = checkout
-	b = branch
-	lg = log
-	llg = log -p
-	logme = log --author=\"Adam Price\"
-	cl = clean
+    st = status
+    d = diff
+    co = checkout
+    b = branch
+    llg = log -p
+    logme = log --author=\"Adam Price\"
+    logst = log --stat
 [user]
-	name = Adam Price
-	email = komidore64@gmail.com
+    name = Adam Price
+    email = komidore64@gmail.com
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [core]
-	editor = vim
+    editor = vim
