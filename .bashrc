@@ -2,7 +2,7 @@
 
 # source global definitions on non Mac OS X machines
 if [[ -f /etc/bashrc && "$(uname)" != "Darwin" ]]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # bash prompt with colors
@@ -13,12 +13,12 @@ PS1="\[\e[1;33m\][ \u\[\e[1;37m\]@\[\e[1;32m\]\h\[\e[1;33m\] \W\$(git branch 2> 
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
 
-	# if OS X has a ~/bin folder, then add it to PATH
-	if [[ -d ~/bin ]]; then
-		export PATH="$PATH:~/bin"
-	fi
+    # if OS X has a ~/bin folder, then add it to PATH
+    if [[ -d ~/bin ]]; then
+        export PATH="$PATH:~/bin"
+    fi
 
-	alias ls='ls -G' # ls with colors
+    alias ls='ls -G' # ls with colors
 
 fi
 
@@ -27,5 +27,5 @@ alias mkdir='mkdir -p' # create parent directories as needed
 
 # super-secret work stuff
 if [[ -f ~/.workbashrc ]]; then
-	. ~/.workbashrc
+    . ~/.workbashrc
 fi
