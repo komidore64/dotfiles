@@ -11,7 +11,7 @@
     b = branch
     llg = log -p
     logme = log --author=\"Adam Price\"
-    logst = log --stat
+    lst = log --stat
 [user]
     name = Adam Price
     email = komidore64@gmail.com
