@@ -9,6 +9,8 @@
     d = diff
     co = checkout
     b = branch
+    bm = branch --merged
+    bum = branch --no-merged
     llg = log -p
     logme = log --author=\"Adam Price\"
     lst = log --stat
