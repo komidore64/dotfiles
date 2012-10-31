@@ -15,9 +15,9 @@
     logme = log --author=\"Adam Price\"
     lst = log --stat
 [user]
-    name = Adam Price
-    email = komidore64@gmail.com
+	name = Adam Price
+	email = komidore64@gmail.com
 [mergetool]
-    keepBackup = false
+	keepBackup = false
 [core]
     editor = vim
