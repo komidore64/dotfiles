@@ -21,3 +21,5 @@
 	keepBackup = false
 [core]
     editor = vim
+[apply]
+    whitespace = strip
