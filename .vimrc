@@ -1,22 +1,24 @@
-set nocompatible
+set nocompatible "make vim more fun
 
 filetype plugin on
 filetype plugin indent on
-syntax enable
+syntax enable "syntax highlighting
 
-set showmode
-set showcmd
+set showmode "display the current mode
+set showcmd "show the commands in realtime
 
-set hlsearch
-set incsearch
+set hlsearch "highlight search matches
+set incsearch "realtime search matching
 
-set ignorecase
+set ignorecase "ignore case when searching
 set smartcase
 
-set ruler
+set ruler "show row/column of cursor
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
+set tabstop=4 "default tab length of 4
+set shiftwidth=4 "default shifting (block indentation) length of 4
+set expandtab "replace tabs with spaces
+
+set wildmode=list:longest "show tab-completions for file-paths
 
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
