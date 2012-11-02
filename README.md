@@ -18,3 +18,14 @@ You can either download and simply copy them into your home directory, or clone 
     * <code>RedCloth</code> rubygem
     * <code>ronn</code> rubygem
     * and one other that i probably will never use
+
+# sublime text 2 settings
+
+## linux
+
+    % ln -s /<dotfiles>/.config/sublime-text-2 ~/.config/
+
+## os x
+
+    % ln -s /<dotfiles>/.config/sublime-text-2 ~/Library/Application Support/Sublime\ Text\ 2
+
