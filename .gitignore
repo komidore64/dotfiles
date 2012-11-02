@@ -1,1 +1,5 @@
 .vim/.netrwhist
+*.cache
+*.pyc
+.config/sublime-text-2/Settings/License.sublime_license
+.config/sublime-text-2/Settings/Session.sublime_session
