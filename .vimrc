@@ -1,5 +1,7 @@
-set nocompatible "make vim more fun
-filetype off " for vundler
+set nocompatible
+
+" vundler for vim plugins -----
+filetype off
 
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
@@ -8,30 +10,32 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'greyblake/vim-preview'
 Bundle 'Lokaltog/vim-powerline'
+" -----------------------------
 
-filetype plugin on
+syntax enable
 filetype plugin indent on
-syntax enable "syntax highlighting
 
-set showcmd "show the commands in realtime
+" Powerline -------------------
 set noshowmode
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+" -----------------------------
 
-set hlsearch "highlight search matches
-set incsearch "realtime search matching
+set showcmd
 
-set ignorecase "ignore case when searching
-set smartcase "for smarter searching
+set hlsearch
+set incsearch
 
-set ruler "show row/column of cursor
-set cursorline "highlight current line
-highlight CursorLine cterm=none ctermbg=DarkGrey
+set ignorecase
+set smartcase
 
-set tabstop=4 "default tab length of 4
-set shiftwidth=4 "default shifting (block indentation) length of 4
-set expandtab "replace tabs with spaces
+set ruler
 
-set wildmode=list:longest "show tab-completions for file-paths
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+set wildmode=list:longest
 
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
