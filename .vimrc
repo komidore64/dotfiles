@@ -13,9 +13,10 @@ filetype plugin on
 filetype plugin indent on
 syntax enable "syntax highlighting
 
-set showmode "display the current mode
 set showcmd "show the commands in realtime
+set noshowmode
 set laststatus=2
+let g:Powerline_symbols = 'fancy'
 
 set hlsearch "highlight search matches
 set incsearch "realtime search matching
