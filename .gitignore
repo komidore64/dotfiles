@@ -2,3 +2,5 @@
 *.pyc
 .config/sublime-text-2/Settings/License.sublime_license
 .config/sublime-text-2/Settings/Session.sublime_session
+.vim/bundle
+!.vim/bundle/vundle

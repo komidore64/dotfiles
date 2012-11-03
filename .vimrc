@@ -1,4 +1,13 @@
 set nocompatible "make vim more fun
+filetype off " for vundler
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-surround'
+Bundle 'greyblake/vim-preview'
+Bundle 'Lokaltog/vim-powerline'
 
 filetype plugin on
 filetype plugin indent on
@@ -6,6 +15,7 @@ syntax enable "syntax highlighting
 
 set showmode "display the current mode
 set showcmd "show the commands in realtime
+set laststatus=2
 
 set hlsearch "highlight search matches
 set incsearch "realtime search matching
