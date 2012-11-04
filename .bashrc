@@ -1,8 +1,13 @@
 # .bashrc
 
-# source global definitions on non Mac OS X machines
-if [[ -f /etc/bashrc && "$(uname)" != "Darwin" ]]; then
-    . /etc/bashrc
+if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
+
+    # source global bashrc
+    if [[ -f /etc/bashrc ]]; then
+        . /etc/bashrc
+    fi
+
+    export TERM='xterm-256color' # probably shouldn't do this
 fi
 
 # bash prompt with colors
