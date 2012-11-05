@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'greyblake/vim-preview'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-endwise'
 " -----------------------------
 
 syntax enable
