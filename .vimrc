@@ -40,3 +40,6 @@ set expandtab
 set wildmode=list:longest
 
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
+
+" :REV to revert file to state of the most recent save
+command REV earlier 1f
