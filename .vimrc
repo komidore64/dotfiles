@@ -24,6 +24,10 @@ let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 " -----------------------------
 
+" ctrlp -----------------------
+let g:ctrlp_open_multiple_files = 'tjr'
+" -----------------------------
+
 set showcmd
 
 set hlsearch
@@ -45,5 +49,7 @@ autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 " :REV to revert file to state of the most recent save
 command REV earlier 1f
 
+" disable netrw ---------------
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
+" -----------------------------
