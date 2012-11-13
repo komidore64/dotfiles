@@ -27,6 +27,11 @@ set encoding=utf-8
 " ctrlp -----------------------
 let g:ctrlp_open_multiple_files = 'tjr'
 let g:ctrlp_show_hidden = 1
+
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+\ }
 " -----------------------------
 
 set showcmd
