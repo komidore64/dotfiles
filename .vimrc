@@ -1,4 +1,5 @@
 set nocompatible
+set dir=~/.vim/ " set one for place for vim swap files
 
 " vundler for vim plugins -----
 filetype off
