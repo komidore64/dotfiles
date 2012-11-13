@@ -25,7 +25,7 @@ set encoding=utf-8
 " -----------------------------
 
 " ctrlp -----------------------
-let g:ctrlp_open_multiple_files = 'tjr' " open multiple files in tabs
+let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
 let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
 
 let g:ctrlp_prompt_mappings = {
