@@ -28,6 +28,7 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 fi
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
+alias tree='tree -C' # turns on coloring for tree command
 alias mkdir='mkdir -p' # create parent directories as needed
 alias vim='vim -p' # if more than one file, open files in tabs
 
