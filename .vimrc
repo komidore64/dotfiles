@@ -51,6 +51,8 @@ set expandtab
 
 set wildmode=list:longest
 
+set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
+
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 
 " :REV to "revert" file to state of the most recent save
