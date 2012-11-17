@@ -22,7 +22,7 @@ put stuff here
 
 ## os x
 
-    ln -s /<dotfiles>/.config/sublime-text-2 ~/Library/Application Support/Sublime\ Text\ 2
+    ln -s /<dotfiles>/.config/sublime-text-2 ~/Library/Application\ Support/Sublime\ Text\ 2
 
 ## TODO
 * vim plugins section
