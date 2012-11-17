@@ -1,6 +1,0 @@
-#!/usr/bin/ruby
-
-# Usage:    vimf <regex> [<path>]
-# Recursively searches <path> for filenames matching <regex>.
-# If multiple files match <regex>, then a list is displayed with a prompt to choose which file(s) to open, otherwise the one file is opened.
-# The current directory is used if <path> is not given.
