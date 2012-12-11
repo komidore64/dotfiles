@@ -1,0 +1,11 @@
+! swap left control and capslock
+! run again to swap back
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+
+! setting the menu key to the compose key
+keycode 135 = Multi_key
