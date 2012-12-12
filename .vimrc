@@ -1,5 +1,5 @@
 set nocompatible
-set dir=~/.vim/ " set one for place for vim swap files
+set dir=~/.vim/ " set one place for vim swap files
 
 " vundler for vim plugins ----
 filetype off
@@ -39,6 +39,7 @@ set showcmd
 
 set hlsearch
 set incsearch
+set nowrapscan
 
 set ignorecase
 set smartcase
