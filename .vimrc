@@ -37,6 +37,8 @@ let g:ctrlp_prompt_mappings = {
 
 set showcmd
 
+set tabpagemax=100
+
 set hlsearch
 set incsearch
 set nowrapscan
