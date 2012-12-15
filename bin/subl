@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# usage: subl [FILE] ...
+# Launches sublime text 2 and throws away stdout and stderr
+
+~/sublime_text2/sublime_text $@ > /dev/null 2>&1 &
