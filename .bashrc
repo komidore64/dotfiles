@@ -28,6 +28,11 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 fi
 
 alias ls='ls --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+
 alias ll='ls -lah' # long listing of all files with human readable file sizes
 alias tree='tree -C' # turns on coloring for tree command
 alias mkdir='mkdir -p' # create parent directories as needed
