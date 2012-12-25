@@ -15,6 +15,12 @@ fi
 # ==>
 PS1="\[\e[1;33m\][ \u\[\e[1;37m\]@\[\e[1;32m\]\h\[\e[1;33m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\[\e[1;36m\]\1\[\e[1;33m\]}/') ]\[\e[0m\]\n==> "
 
+alias ls='ls --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
 
@@ -26,12 +32,6 @@ if [[ "$(uname)" == 'Darwin' ]]; then
     alias ls='ls -G' # ls with colors
 
 fi
-
-alias ls='ls --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
 alias tree='tree -C' # turns on coloring for tree command
