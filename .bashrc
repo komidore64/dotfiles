@@ -30,6 +30,7 @@ if [[ "$(uname)" == 'Darwin' ]]; then
     fi
 
     alias ls='ls -G' # ls with colors
+    alias which='which -a'
 
 fi
 
