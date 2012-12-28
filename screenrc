@@ -1,0 +1,33 @@
+# .screenrc
+
+
+# turn on visual bell
+vbell on
+
+# detach on accidental hangup
+autodetach on
+
+# apparantly screen has an annoying startup message?
+startup_message off
+
+# logout message
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+
+# pretty statusbar at the bottom
+hardstatus alwayslastline '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][ %{B}%Y-%m-%d %{W}%C%A %{g}]'
+
+# keybindings
+
+## remove some stupid/dangerous bindings
+bind k
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+# fix them
+bind 'K' kill
+bind 'I' login on
+bind 'O' login off
+bind '}' history
