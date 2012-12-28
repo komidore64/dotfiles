@@ -5,5 +5,4 @@
 .config/sublime-text-2/Settings
 .config/sublime-text-2/Pristine\ Packages
 .config/sublime-text-2/Backup*
-.vim/bundle
-!.vim/bundle/vundle
+vim/bundle
