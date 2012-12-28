@@ -1,0 +1,32 @@
+// Settings in here override those in "Default/Preferences.sublime-settings", and
+// are overridden in turn by file type specific settings.
+{
+    // "DejaVu Sans Mono" for OS X
+    // "Deja Vu Sans Mono" elsewhere
+    "font_face": "Deja Vu Sans Mono",
+
+    "font_size": 12,
+
+    "gutter": true,
+
+    "rulers": [],
+
+    "translate_tabs_to_spaces": true,
+
+    "word_wrap": "auto",
+
+    "highlight_line": true,
+
+    "caret_style": "phase",
+
+    "indent_guide_options": ["draw_normal", "draw_active"],
+
+    "trim_trailing_white_space_on_save": false,
+
+    "auto_complete_delay": 100,
+
+    "drag_text": false,
+
+    "highlight_modified_tabs": true
+
+}
