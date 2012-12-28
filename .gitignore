@@ -1,8 +1,12 @@
 .DS_Store
 .netrwhist
+
+# sublime-text 2
 *.cache
 *.pyc
-.config/sublime-text-2/Settings
-.config/sublime-text-2/Pristine\ Packages
-.config/sublime-text-2/Backup*
+config/sublime-text-2/Settings
+config/sublime-text-2/Pristine\ Packages
+config/sublime-text-2/Backup*
+
+# ignore installed vim plugins
 vim/bundle
