@@ -1,6 +1,6 @@
 # dotfiles
 
-Configured for Linux, and Mac OS X too. The only thing I've noticed that doesn't work in OS X is vim-preview (because OS X's vim isn't compiled with a Ruby interpreter).
+Configured for Linux, and Mac OS X too. The only thing I've noticed that doesn't work in OS X is vim-preview (because OS X's vim isn't compiled with a Ruby interpreter). Vim-preview still installs fine, you just can't use it.
 
 Copy them into your home directory, or clone the repository and symlink to repo files.
 
@@ -21,11 +21,11 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 
 ### linux
 
-    ln -s /<dotfiles>/.config/sublime-text-2 ~/.config/
+    ln -s /<dotfiles>/config/sublime-text-2 ~/.config/
 
 ### os x
 
-    ln -s /<dotfiles>/.config/sublime-text-2 ~/Library/Application\ Support/Sublime\ Text\ 2
+    ln -s /<dotfiles>/config/sublime-text-2 ~/Library/Application\ Support/Sublime\ Text\ 2
 
 ## TODO
 * install script?
