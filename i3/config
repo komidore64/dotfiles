@@ -50,6 +50,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+### change these to hyphen/minus and vertical pipe!
 # split in horizontal orientation
 bindsym $mod+o split h
 

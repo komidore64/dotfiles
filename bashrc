@@ -7,13 +7,12 @@ if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
         . /etc/bashrc
     fi
 
-    #export TERM='xterm-256color' # probably shouldn't do this
 fi
 
-# bash prompt with colors
-# [ <user>@<hostname> <working directory> {current git branch (if you're in a repo)} ]
-# ==>
-PS1="\[\e[1;33m\][ \u\[\e[1;37m\]@\[\e[1;32m\]\h\[\e[1;33m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ {\[\e[1;36m\]\1\[\e[1;33m\]}/') ]\[\e[0m\]\n==> "
+# bash prompt
+# <user> <working directory> [<git branch>] $
+PS1="\[\e[0;33m\]\u\[\e[0m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ [\[\e[1;96m\]\1\[\e[0m\]]/') $ "
+
 
 # added these for archlinux on raspberrypi
 alias ls='ls --color=auto'
@@ -51,3 +50,24 @@ fi
 if [[ -d "$HOME/.rvm/bin" ]]; then # if installed
     PATH=$PATH:$HOME/.rvm/bin
 fi
+
+# check to see if tmux is installed
+which tmux > /dev/null 2>&1
+
+# if tmux is installed
+if [[ $? == 0 ]]; then
+
+    # source tmux bash completion
+    tmux_completion=/usr/share/doc/tmux-1.6/examples/bash_completion_tmux.sh
+    if [[ -f $tmux_completion ]]; then
+        source $tmux_completion
+    fi
+
+    # if this is not a tmux session
+    if [[ "$TERM" != "screen-256color" ]]; then
+        # attach to a tmux session if one exists, else create it
+        tmux attach-session -t 'chief' || tmux new-session -s 'chief'
+    fi
+    # don't put anything past here, because it will not be executed (i think)
+fi
+
