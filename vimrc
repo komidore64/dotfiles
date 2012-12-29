@@ -21,7 +21,7 @@ filetype plugin indent on
 " Powerline ------------------
 set noshowmode
 set laststatus=2
-let g:Powerline_symbols = 'fancy' " show fancy symbols (requires patched font)
+let g:Powerline_symbols = 'compatible'
 set encoding=utf-8
 " ----------------------------
 

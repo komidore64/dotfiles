@@ -7,7 +7,7 @@ if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
         . /etc/bashrc
     fi
 
-    export TERM='xterm-256color' # probably shouldn't do this
+    #export TERM='xterm-256color' # probably shouldn't do this
 fi
 
 # bash prompt with colors
