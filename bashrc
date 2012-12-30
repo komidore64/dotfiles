@@ -66,7 +66,7 @@ if [[ $? == 0 ]]; then
     # if this is not a tmux session
     if [[ "$TERM" != "screen-256color" ]]; then
         # attach to a tmux session if one exists, else create it
-        tmux attach-session -t 'chief' || tmux new-session -s 'chief'
+        tmux attach-session -t "$USER" || tmux new-session -s "$USER"
     fi
     # don't put anything past here, because it will not be executed (i think)
 fi
