@@ -62,3 +62,6 @@ command REV earlier 1f
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 " ----------------------------
+
+highlight OverLength ctermbg=red
+match OverLength /\%121v.\+/
