@@ -11,7 +11,7 @@ fi
 
 # bash prompt
 # <user> <working directory> [<git branch>] $
-PS1="\[\e[0;33m\]\$(whoami | cut -c1-3) \[\e[0;90m\]\h\[\e[0m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ [\[\e[1;96m\]\1\[\e[0m\]]/') $ "
+PS1="\[\e[0;33m\]\$(whoami | cut -c1-3) \[\e[0;90m\]\$(hostname | cut -c1-4)\[\e[0m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ [\[\e[1;96m\]\1\[\e[0m\]]/') $ "
 
 
 # added these for archlinux on raspberrypi
