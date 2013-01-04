@@ -29,6 +29,8 @@ URxvt*scrollstyle:          plain
 URxvt*scrollBar_right:      true
 URxvt*scrollTtyOutput:      true
 URxvt*scrollTtyKeypress:    true
-URxvt*urlLauncher:          google-chrome
 URxvt*keysym.Home:          \033[1~
 URxvt*keysym.End:           \033[4~
+URxvt*perl-ext-common:       matcher
+URxvt*urlLauncher:          /usr/bin/google-chrome
+URxvt*matcher.button:       1
