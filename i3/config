@@ -142,6 +142,13 @@ bar {
     status_command i3status
 }
 
+# set X's background image to solid grey
 exec --no-startup-id xsetroot -solid "#303030"
 
+# start up the NetworkManager widget
 exec --no-startup-id nm-applet &
+
+# audio control keys
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 1%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 1%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
