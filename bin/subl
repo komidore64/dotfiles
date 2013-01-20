@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# for linux. mac can just symlinka file that sublime text 2 installs. more info in README.md
+#
 # usage: subl [FILE] ...
 # Launches sublime text 2 and throws away stdout and stderr
 

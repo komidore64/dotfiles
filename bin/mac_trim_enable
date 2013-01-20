@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# script to enable TRIM support for non-Apple SSDs
+# found here
+# http://gdgt.com/question/in-os-x-lion-how-do-you-enable-trim-support-for-ssds-f16/
+
+# more info
+# http://digitaldj.net/2011/07/21/trim-enabler-for-lion/
+
+# backup the file we're patching
+sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
+
+# patch file to enable TRIM support
+sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
+
+# clear the kext caches
+sudo kextcache -system-prelinked-kernel
+sudo kextcache -system-caches
+
+echo
+echo "PLEASE REBOOT"
+
