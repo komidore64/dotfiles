@@ -8,5 +8,8 @@ config/sublime-text-2/Settings
 config/sublime-text-2/Pristine\ Packages
 config/sublime-text-2/Backup*
 
+# weechat
+weechat/*
+
 # ignore installed vim plugins
 vim/bundle
