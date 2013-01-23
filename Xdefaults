@@ -31,6 +31,6 @@ URxvt*scrollTtyOutput:      true
 URxvt*scrollTtyKeypress:    true
 URxvt*keysym.Home:          \033[1~
 URxvt*keysym.End:           \033[4~
-URxvt*perl-ext-common:       matcher
+URxvt*perl-ext-common:      default,matcher
 URxvt*urlLauncher:          /usr/bin/google-chrome
 URxvt*matcher.button:       1
