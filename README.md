@@ -16,6 +16,7 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 4. [Lokaltog/vim-powerline](https://github.com/Lokaltog/vim-powerline) needs a patched font. I included my favorite font already pre-patched. Install the patched font and use it in your terminal.
 5. [tpope/vim-endwise](https://github.com/tpope/vim-endwise)
 6. [kien/ctrlp.vim](https://github.com/kien/ctrlp.vim)
+7. [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 
 ## sublime text 2 settings
 
