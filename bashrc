@@ -38,13 +38,9 @@ alias ll='ls -lah' # long listing of all files with human readable file sizes
 alias tree='tree -C' # turns on coloring for tree command
 alias mkdir='mkdir -p' # create parent directories as needed
 alias vim='vim -p' # if more than one file, open files in tabs
+alias tiga='tig --all'
 
 export EDITOR='vim'
-
-# super-secret work stuff
-if [[ -f "$HOME/.workbashrc" ]]; then
-    . $HOME/.workbashrc
-fi
 
 # Add RVM to PATH for scripting
 if [[ -d "$HOME/.rvm/bin" ]]; then # if installed

@@ -1,4 +1,5 @@
-set nocompatible
+set nocompatible " fancy vim
+
 set dir=~/.vim/ " set one place for vim swap files
 
 " vundler for vim plugins ----
@@ -38,13 +39,13 @@ let g:ctrlp_prompt_mappings = {
 
 set showcmd
 
-set tabpagemax=100
+set tabpagemax=100 " OPEN ALL THE TABS
 
-set hlsearch
-set incsearch
+set hlsearch "highlight search
+set incsearch " real-time search
 
-set ignorecase
-set smartcase
+set ignorecase " ignore case when searching
+set smartcase  " unless you provide a capital letter, then don't ignore case
 
 set ruler
 
@@ -52,7 +53,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set wildmode=list:longest
+set wildmode=list:longest " vim command-line tab-completion
 
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 
@@ -62,4 +63,11 @@ command REV earlier 1f
 " disable netrw --------------
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
+" ----------------------------
+
+" vimdiff highlighting -------
+highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
+highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
+highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
+highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 " ----------------------------
