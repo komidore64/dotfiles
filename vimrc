@@ -11,7 +11,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'greyblake/vim-preview'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'aert/vim-powerline'
 Bundle 'tpope/vim-endwise'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
