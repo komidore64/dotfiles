@@ -15,6 +15,7 @@ Bundle 'aert/vim-powerline'
 Bundle 'tpope/vim-endwise'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'majutsushi/tagbar'
 " ----------------------------
 
 syntax enable
@@ -70,4 +71,8 @@ highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
 highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
 highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
+" ----------------------------
+
+" tagbar ---------------------
+map <F8> :TagbarToggle<CR>
 " ----------------------------

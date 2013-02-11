@@ -19,7 +19,9 @@ alias ls='ls --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+alias grepc='grep --color=always'
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias lessc='less -R'
 
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
