@@ -76,3 +76,5 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 " tagbar ---------------------
 map <F8> :TagbarToggle<CR>
 " ----------------------------
+
+set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
