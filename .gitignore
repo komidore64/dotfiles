@@ -7,7 +7,6 @@
 config/sublime-text-2/Settings
 config/sublime-text-2/Pristine\ Packages
 config/sublime-text-2/Backup*
-.subl_cache
 
 # weechat
 weechat/*

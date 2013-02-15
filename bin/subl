@@ -1,34 +1,8 @@
 #!/bin/bash
 #
-# for linux. macs can just symlink to the file that sublime text 2 installs. more info in README.md
+# for linux. mac can just symlinka file that sublime text 2 installs. more info in README.md
 #
-# usage: subl [FILE] [...]
-# launches sublime text 2, throwing away stdout and stderr
+# usage: subl [FILE] ...
+# Launches sublime text 2 and throws away stdout and stderr
 
-cache_file="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.subl_cache"
-
-find_sublime() {
-    echo -n "searching for [ sublime_text ] executable..."
-    file=$(find / -name "sublime_text" 2> /dev/null)
-
-    if [[ -z $file ]]; then
-        echo "FAIL"
-        echo "could not locate executable on filesystem"
-        exit -1
-    else
-        echo $file > $cache_file
-    fi
-    echo "DONE"
-}
-
-if [[ -f $cache_file ]]; then
-
-    if [[ ! -x $(cat $cache_file) ]]; then
-        find_sublime
-    fi
-
-else
-    find_sublime
-fi
-
-$(cat $cache_file) $@ > /dev/null 2>&1 &
+~/sublime_text2/sublime_text $@ > /dev/null 2>&1 &
