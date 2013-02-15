@@ -16,6 +16,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
+Bundle 'koron/nyancat-vim'
 " ----------------------------
 
 syntax enable
