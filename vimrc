@@ -17,10 +17,12 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 Bundle 'koron/nyancat-vim'
+Bundle 'jnurmine/Zenburn'
 " ----------------------------
 
 syntax enable
 filetype plugin indent on
+colors zenburn
 
 " Powerline ------------------
 set noshowmode
@@ -59,6 +61,8 @@ set wildmode=list:longest " vim command-line tab-completion
 
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 
+set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
+
 " :REV to "revert" file to state of the most recent save
 command REV earlier 1f
 
@@ -81,5 +85,3 @@ map <F8> :TagbarToggle<CR>
 " nyancat --------------------
 nmap <Leader>N :Nyancat2<CR>
 " ----------------------------
-
-set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
