@@ -41,6 +41,7 @@ alias tree='tree -C' # turns on coloring for tree command
 alias mkdir='mkdir -p' # create parent directories as needed
 alias vim='vim -p' # if more than one file, open files in tabs
 alias tiga='tig --all'
+alias lsc='ls -1' # list files in a single column
 
 export EDITOR='vim'
 
