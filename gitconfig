@@ -5,7 +5,7 @@
     interactive = auto
     ui = auto
 [alias]
-    st = status
+    st = status -sb
     d = diff
     dt = difftool
     co = checkout
