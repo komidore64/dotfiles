@@ -1,3 +1,5 @@
+# vim: set ft=cfg:
+
 [color]
     diff = auto
     status = auto
