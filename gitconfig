@@ -8,6 +8,7 @@
     st = status -sb
     d = diff
     dt = difftool
+    dw = diff --word-diff
     co = checkout
     b = branch
     bm = branch --merged
