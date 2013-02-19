@@ -1,12 +1,19 @@
 # .bashrc
 
-if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
+function home_bin() {
+    if [[ -d "$HOME/bin" ]]; then
+        export PATH="$PATH:$HOME/bin"
+    fi
+}
 
-    # source global bashrc
+function source_etc_bashrc() {
     if [[ -f "/etc/bashrc" ]]; then
         . /etc/bashrc
     fi
+}
 
+if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
+    source_etc_bashrc
 fi
 
 # bash prompt
@@ -27,13 +34,15 @@ alias lessc='less -R'
 if [[ "$(uname)" == 'Darwin' ]]; then
 
     # if OS X has a $HOME/bin folder, then add it to PATH
-    if [[ -d "$HOME/bin" ]]; then
-        export PATH="$PATH:$HOME/bin"
-    fi
+    home_bin
 
     alias ls='ls -G' # ls with colors
     alias which='which -a'
 
+fi
+
+if [[ -f /boot/config.txt ]]; then
+    home_bin
 fi
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
