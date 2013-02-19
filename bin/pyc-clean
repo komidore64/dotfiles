@@ -1,0 +1,7 @@
+#!/bin/bash
+
+d=~/workspace/katello/
+
+echo "cleaning .pyc files from $d"
+
+find $d -name "*.py[oc]" | xargs rm -vrf

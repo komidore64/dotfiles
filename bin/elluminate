@@ -1,0 +1,4 @@
+#!/bin/bash
+
+javaws ~/Desktop/meeting.jnlp
+rm -i ~/Desktop/meeting.jnlp

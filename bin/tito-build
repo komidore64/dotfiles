@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" == "fedora16" ]; then
+	target=fedora-16-x86_64-katello
+elif [ "$1" == "rhel6" ]; then
+	target=epel-6-x86_64-katello
+else
+	echo "bad target"
+	exit
+fi
+
+tito build --test --builder mock --builder-arg mock=$target --rpm

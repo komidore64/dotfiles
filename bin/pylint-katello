@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# make sure you install spacewalk-pylint
+
+pushd ~/workspace/katello/cli/src
+pylint --rcfile=/etc/spacewalk-pylint.rc --additional-builtins=_ katello

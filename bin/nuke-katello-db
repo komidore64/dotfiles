@@ -1,0 +1,6 @@
+#!/bin/bash -v
+
+pushd ~/workspace/katello/src/
+(./script/katello-reset-dbs development ./) && \
+(sudo systemctl stop katello-jobs.service) && \
+(sudo systemctl disable katello-jobs.service)
