@@ -1,14 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import os
 import sys
 import random
 
-char_min = 32
-char_max = 126
+char_range = [32, 126]
 
 rows, columns = os.popen("stty size", "r").read().split()
 
 random.seed()
 for i in range((int(rows)) * int(columns)):
-    sys.stdout.write("%s" % chr(random.randint(char_min, char_max)))
+    sys.stdout.write("%s" % chr(random.randint(*char_range)))
