@@ -23,7 +23,8 @@ URxvt.color15:              #E3E3E3
 
 ! options
 URxvt*loginShell:           true
-URxvt*font:                 xft:DejaVu Sans Mono:antialias=true:size=12
+URxvt*font:                 xft:DejaVu Sans Mono:antialias=true:hinting=true:size=12
+URxvt*boldFont:             xft:DejaVu Sans Mono:bold:antialias=true:hinting=true:size=12
 URxvt*saveLines:            8192
 URxvt*scrollstyle:          plain
 URxvt*scrollBar_right:      true
