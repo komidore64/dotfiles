@@ -3,7 +3,6 @@
 ! colors
 URxvt.background:           #101010
 URxvt.foreground:           #ededed
-URxvt.cursorColor:          #666666
 URxvt.color0:               #2E3436
 URxvt.color8:               #555753
 URxvt.color1:               #993C3C
@@ -21,6 +20,8 @@ URxvt.color14:              #41BFBF
 URxvt.color7:               #D3D7CF
 URxvt.color15:              #E3E3E3
 
+URxvt.cursorColor:          #666666
+
 ! options
 URxvt*loginShell:           true
 URxvt*font:                 xft:DejaVu Sans Mono:antialias=true:hinting=true:size=12
@@ -35,7 +36,7 @@ URxvt*scrollTtyOutput:      true
 URxvt*scrollTtyKeypress:    true
 URxvt*perl-ext-common:      matcher
 URxvt*matcher.button:       1
-URxvt*urlLauncher:          /usr/bin/google-chrome
+URxvt*url-launcher:         /usr/bin/google-chrome
 
 ! keys
 URxvt*keysym.Home:          \033[1~
