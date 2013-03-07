@@ -32,7 +32,7 @@ URxvt*boldItalicFont:       xft:DejaVu Sans Mono:bold:italic:antialias=true:hint
 URxvt*saveLines:            8192
 URxvt*scrollstyle:          plain
 URxvt*scrollBar_right:      true
-URxvt*scrollTtyOutput:      true
+URxvt*scrollTtyOutput:      false
 URxvt*scrollTtyKeypress:    true
 URxvt*perl-ext-common:      matcher
 URxvt*matcher.button:       1
