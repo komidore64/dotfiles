@@ -1,9 +1,15 @@
 #!/usr/bin/env ruby
 #
-# for linux. mac can just symlinka file that sublime text 2 installs. more info in README.md
+# subl - a helper script to easily launch Sublime Text 2 from the command line
 #
-# usage: subl [FILE] ...
-# Launches sublime text 2 and throws away stdout and stderr
+# USAGE: subl [FILE] ...
+#
+# subl finds the Sublime Text 2 executable on your system and then
+# caches its location for quicker launching in the future. If you move
+# Sublime Text 2 around on your system, subl will happily search for it again.
+# subl is for linux machines using Sublime Text 2. Mac OS X can just symlink
+# the command-line executable that is included with the Sublime Text 2
+# installation. More info can be found in README.md
 
 CACHE_FILE = "#{ENV['HOME']}/.subl_cache"
 
@@ -27,10 +33,12 @@ def find_sublime_executable
     ex << path if path =~ /sublime_text$/ && File.executable?(path)
   end
 
+  # error out if subl finds more than one executable, or none
   raise "two many Sublime Text 2 executables found [ #{ex.join(", ")} ]" if ex.size > 1
   raise "no Sublime Text 2 executable found" if ex.empty?
   ex.first
 end
+
 
 subl_ex = []
 
@@ -55,4 +63,4 @@ end
 
 subl_ex += ARGV
 
-Process.detach(Process.spawn(*subl_ex))
+Process.detach(Process.spawn(*subl_ex, :out => "/dev/null", :err => "/dev/null"))
