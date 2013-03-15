@@ -1,8 +1,58 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 #
 # for linux. mac can just symlinka file that sublime text 2 installs. more info in README.md
 #
 # usage: subl [FILE] ...
 # Launches sublime text 2 and throws away stdout and stderr
 
-~/sublime_text2/sublime_text $@ > /dev/null 2>&1 &
+CACHE_FILE = "#{ENV['HOME']}/.subl_cache"
+
+require 'find'
+require 'yaml'
+require 'shellwords'
+
+def save_cache_file(ex)
+  File.delete(CACHE_FILE) if File.exists?(CACHE_FILE)
+
+  # write that junk to file
+  File.open(CACHE_FILE, "w") do |file|
+    file.write({:executable => ex}.to_yaml)
+  end
+  Shellwords.escape(ex)
+end
+
+def find_sublime_executable
+  ex = []
+  Find.find('/') do |path|
+    ex << path if path =~ /sublime_text$/ && File.executable?(path)
+  end
+
+  raise "two many Sublime Text 2 executables found [ #{ex.join(", ")} ]" if ex.size > 1
+  raise "no Sublime Text 2 executable found" if ex.empty?
+  ex.first
+end
+
+subl_ex = []
+
+if File.exists?(CACHE_FILE)
+  file = YAML.load_file(CACHE_FILE)[:executable]
+
+  if File.exists?(file)
+
+    # Process.spawn acts differently depending on how many args you give it.
+    # With a single argument, escaped spaces are needed (because it runs the
+    # command in a standard shell), but spaces must not be escaped when passing
+    # multple arguments because it doesn't execute the commands in a std shell.
+    # Annoying and weird. I probably could do this a better way if I wasn't
+    # using the splat operator, but I wanted to.
+    subl_ex << ( (ARGV.empty?) ? Shellwords.escape(file) : file )
+  else
+    subl_ex << save_cache_file(find_sublime_executable())
+  end
+else
+  subl_ex << save_cache_file(find_sublime_executable())
+end
+
+subl_ex += ARGV
+
+Process.detach(Process.spawn(*subl_ex))
