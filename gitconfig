@@ -34,3 +34,5 @@
     tool = vdiff
 [difftool "vdiff"]
     cmd = vimdiff -f $REMOTE $LOCAL
+[tig]
+    tab-size = 4
