@@ -34,7 +34,7 @@ def find_sublime_executable
   end
 
   # error out if subl finds more than one executable, or none
-  raise "two many Sublime Text 2 executables found [ #{ex.join(", ")} ]" if ex.size > 1
+  raise "too many Sublime Text 2 executables found [ #{ex.join(", ")} ]" if ex.size > 1
   raise "no Sublime Text 2 executable found" if ex.empty?
   ex.first
 end
