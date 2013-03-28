@@ -3,6 +3,7 @@
 import os
 import sys
 import random
+import time
 
 char_range = [32, 126]
 
@@ -11,3 +12,5 @@ rows, columns = os.popen("stty size", "r").read().split()
 random.seed()
 for i in range((int(rows)) * int(columns)):
     sys.stdout.write("%s" % chr(random.randint(*char_range)))
+    sys.stdout.flush()
+    time.sleep(0.00001)
