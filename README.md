@@ -19,15 +19,27 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 7. [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 8. [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
 
-## sublime text 2 settings
+## sublime text 2
 
-### linux
+### settings
+
+#### linux
 
     ln -s /<dotfiles>/config/sublime-text-2 ~/.config/
 
-### os x
+#### os x
 
     ln -s /<dotfiles>/config/sublime-text-2 ~/Library/Application\ Support/Sublime\ Text\ 2
+
+### executable
+
+#### linux
+
+use my handy script ```subl``` located in ```/bin```
+
+#### os x
+
+    ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
 ## TODO
 * install script?
