@@ -1,11 +1,11 @@
 set nocompatible " fancy vim
 
-set dir=~/.vim/ " one place for vim swap files
+set directory=~/.vim/ " one place for vim swap files
 
 " vundler --------------------
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
+set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -80,7 +80,7 @@ set wildmode=list:longest " vim command-line tab-completion
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
 
-" :REV to "revert" file to state of the most recent save
+" :REV to 'revert' file to state of the most recent save
 command REV earlier 1f
 
 " disable netrw --------------
