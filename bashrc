@@ -1,25 +1,12 @@
-# .bashrc
+# ~/.bashrc
 
-function append_home_bin_to_path() {
-    if [[ -d "$HOME/bin" ]]; then
-        export PATH="$PATH:$HOME/bin"
-    fi
-}
+if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
 
-function source_etc_bashrc() {
+    # load /etc/bashrc
     if [[ -f "/etc/bashrc" ]]; then
         . /etc/bashrc
     fi
-}
 
-function add_rvm_to_path() {
-    if [[ -d "$HOME/.rvm/bin" ]]; then # if installed
-        PATH=$PATH:$HOME/.rvm/bin
-    fi
-}
-
-if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
-    source_etc_bashrc
 fi
 
 # bash prompt
@@ -37,8 +24,10 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
 
-    # if OS X has a $HOME/bin folder, then add it to PATH
-    append_home_bin_to_path
+    # if there is a $HOME/bin folder, then add it to PATH
+    if [[ -d "$HOME/bin" ]]; then
+        export PATH="$PATH:$HOME/bin"
+    fi
 
     alias ls='ls -G' # ls with colors
     alias which='which -a'
@@ -46,7 +35,12 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 fi
 
 if [[ -f /boot/config.txt ]]; then # if this is a raspberry pi
-    append_home_bin_to_path
+
+    # if there is a $HOME/bin folder, then add it to PATH
+    if [[ -d "$HOME/bin" ]]; then
+        export PATH="$PATH:$HOME/bin"
+    fi
+
 fi
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
@@ -56,12 +50,14 @@ alias vim='vim -p' # if more than one file, open files in tabs
 alias tiga='tig --all' # show all branches/tags/etc
 
 alias grepc='grep --color=always' # grep with color forced to ON
-alias lessc='less -R' # less with raw color interpretation (for use with grepc)
+alias lessr='less -R' # less with raw color interpretation (for use with grepc)
 
 export EDITOR='vim'
 
-# Add RVM to PATH for scripting
-add_rvm_to_path
+# Add RVM to PATH for scripting, if RVM is installed
+if [[ -d "$HOME/.rvm/bin" ]]; then
+    export PATH="$PATH:$HOME/.rvm/bin"
+fi
 
 # check to see if tmux is installed
 which tmux > /dev/null 2>&1
@@ -70,7 +66,7 @@ which tmux > /dev/null 2>&1
 if [[ $? == 0 ]]; then
 
     # source tmux bash completion, if it exists
-    tmux_completion=$(find /usr/share/ -name bash_completion_tmux.sh 2> /dev/null)
+    tmux_completion=$(find /usr/share/ -name bash_completion_tmux.sh 2> /dev/null) # this is not very efficient
     if [[ -f $tmux_completion ]]; then
         source $tmux_completion
     fi
