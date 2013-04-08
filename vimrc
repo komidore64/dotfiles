@@ -55,7 +55,7 @@ nmap <Leader>N :Nyancat2<CR>
 "
 "
 
-set pastetoggle=<F2>
+set autoread
 
 set showcmd
 set modelines=5
