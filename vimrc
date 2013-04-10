@@ -55,7 +55,7 @@ nmap <Leader>N :Nyancat2<CR>
 "
 "
 
-set autoread
+set autoread " refresh if file changes outside of vim
 
 set showcmd
 set modelines=5
@@ -66,14 +66,17 @@ set hlsearch " highlight search
 set incsearch " real-time search
 
 set ignorecase " ignore case when searching
-set smartcase  " unless you provide a capital letter, then don't ignore case
+set smartcase  " unless you use a capital letter, then don't ignore case
 
 set ruler
+
+set listchars=tab:/*,eol:$,nbsp:% " how to represent invisible characters
 
 " have some defaults
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set smarttab
 
 set wildmode=list:longest " vim command-line tab-completion
 
