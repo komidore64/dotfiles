@@ -20,6 +20,7 @@
     lst = log --stat
     f = fetch
     fa = fetch --all
+    panic = reset --hard HEAD
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
@@ -36,3 +37,5 @@
     cmd = vimdiff -f $REMOTE $LOCAL
 [tig]
     tab-size = 4
+[help]
+    autocorrect = 20
