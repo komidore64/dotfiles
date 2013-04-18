@@ -10,12 +10,12 @@
     st = status -sb
     d = diff
     dt = difftool
+    mt = mergetool
     dw = diff --word-diff
     co = checkout
     b = branch
     bm = branch --merged
     bum = branch --no-merged
-    llg = log -p
     logme = log --author=\"Adam Price\"
     lst = log --stat
     f = fetch
@@ -33,9 +33,11 @@
     whitespace=fix
 [diff]
     tool = vdiff
+[merge]
+    tool = vimdiff
 [difftool "vdiff"]
     cmd = vimdiff -f $REMOTE $LOCAL
 [tig]
     tab-size = 4
 [help]
-    autocorrect = 20
+    autocorrect = 30
