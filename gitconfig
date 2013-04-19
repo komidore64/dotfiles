@@ -21,6 +21,7 @@
     f = fetch
     fa = fetch --all
     panic = reset --hard HEAD
+    ctags = !.git/hooks/ctags
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
@@ -41,3 +42,5 @@
     tab-size = 4
 [help]
     autocorrect = 30
+[init]
+    templatedir = ~/.git_template

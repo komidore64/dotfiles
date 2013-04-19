@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "generating ctags..."
+set -e
+PATH="/usr/local/bin:$PATH"
+trap "rm -f .git/tags.$$" EXIT
+
+ctags --tag-relative -R -f .git/tags.$$ --exclude=.git --languages=-sql,javascript
+mv .git/tags.$$ .git/tags
+echo "DONE"
