@@ -40,7 +40,9 @@ let g:ctrlp_prompt_mappings = {
 " ----------------------------
 
 " tagbar ---------------------
-map <F8> :TagbarToggle<CR>
+map <Leader>tb :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 " ----------------------------
 
 " nyancat --------------------
@@ -100,3 +102,5 @@ highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
 highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 " ----------------------------
+
+map <C-h> :nohl<CR>
