@@ -75,6 +75,7 @@ alias tree='tree -C' # turns on coloring for tree command
 alias mkdir='mkdir -p' # create parent directories as needed
 alias grepr='grep --color=always' # grep with color forced to ON
 alias lessr='less -R' # less with raw color interpretation (for use with grepc)
+alias tiga='tig --all' # show all branches/tags/etc
 alias v='vim -p' # if more than one file, open files in tabs
 
 export EDITOR='vim'
