@@ -18,8 +18,7 @@
     bum = branch --no-merged
     logme = log --author=\"Adam Price\"
     lst = log --stat
-    f = fetch
-    fa = fetch --all
+    fa = fetch --all --prune
     panic = reset --hard HEAD
     ctags = !.git/hooks/ctags
 [user]
