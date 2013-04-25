@@ -17,6 +17,15 @@ require 'find'
 require 'yaml'
 require 'shellwords'
 
+def quit_if(bool, options = {})
+  options = {
+    :message => "exiting",
+    :exit_code => "0"
+  }.merge(options)
+
+  (puts options[:message] && exit options[:exit_code]) if bool
+end
+
 def save_cache_file(ex)
   File.delete(CACHE_FILE) if File.exists?(CACHE_FILE)
 
@@ -33,9 +42,9 @@ def find_sublime_executable
     ex << path if path =~ /sublime_text$/ && File.executable?(path)
   end
 
-  # error out if subl finds more than one executable, or none
-  raise "too many Sublime Text 2 executables found [ #{ex.join(", ")} ]" if ex.size > 1
-  raise "no Sublime Text 2 executable found" if ex.empty?
+  quit_if(ex.size > 1, :message => "too many Sublime Text 2 executables found [ #{ex.join(", ")} ]", :exit_code => ex.size)
+  quit_if(ex.empty?, :message => "no Sublime Text 2 executable found", :exit_code => -1)
+
   ex.first
 end
 
