@@ -23,7 +23,10 @@ def quit_if(bool, options = {})
     :exit_code => "0"
   }.merge(options)
 
-  (puts options[:message] && exit options[:exit_code]) if bool
+  if bool
+    puts options[:message]
+    exit options[:exit_code]
+  end
 end
 
 def save_cache_file(ex)
