@@ -11,63 +11,80 @@
 # the command-line executable that is included with the Sublime Text 2
 # installation. More info can be found in README.md
 
-CACHE_FILE = "#{ENV['HOME']}/.subl_cache"
+module SublimeText
 
-require 'find'
-require 'yaml'
-require 'shellwords'
+  CACHE_FILE = "#{ENV['HOME']}/.subl_cache"
 
-def quit_if(bool, options = {})
-  options = {
-    :message => "exiting",
-    :exit_code => "0"
-  }.merge(options)
+  require 'find'
+  require 'yaml'
+  require 'shellwords'
 
-  if bool
-    puts options[:message]
-    exit options[:exit_code]
-  end
-end
+  def self.run_subl()
+    subl_ex = []
 
-def save_cache_file(ex)
-  File.delete(CACHE_FILE) if File.exists?(CACHE_FILE)
+    if File.exists?(CACHE_FILE) &&
+      File.exists?( file = YAML.load_file(CACHE_FILE)[:executable] )
 
-  # write that junk to file
-  File.open(CACHE_FILE, "w") do |file|
-    file.write({:executable => ex}.to_yaml)
-  end
-  Shellwords.escape(ex)
-end
+        # Process#spawn acts differently depending on how many args you give it.
+        # With a single argument, escaped spaces are needed (because it runs the
+        # command in a standard shell), but spaces must not be escaped when passing
+        # multple arguments because it doesn't execute the commands in a std shell.
+        # Annoying and weird. I probably could do this a better way if I wasn't
+        # using the splat operator, but I wanted to.
+        subl_ex << ( (ARGV.empty?) ? Shellwords.escape(file) : file )
+    else
+      subl_ex << save_cache_file(find_sublime_executable())
+    end
 
-def find_sublime_executable
-  ex = []
-  Find.find('/') do |path|
-    ex << path if path =~ /sublime_text$/ && File.executable?(path)
+    subl_ex += ARGV
+
+    Process.detach(Process.spawn(*subl_ex, :out => "/dev/null", :err => "/dev/null"))
   end
 
-  quit_if(ex.size > 1, :message => "too many Sublime Text 2 executables found [ #{ex.join(", ")} ]", :exit_code => ex.size)
-  quit_if(ex.empty?, :message => "no Sublime Text 2 executable found", :exit_code => -1)
+  private
 
-  ex.first
+  def self.quit_if(bool, options = {})
+    options = {
+      :message => "exiting",
+      :exit_code => 0
+    }.merge(options)
+
+    if bool
+      puts options[:message]
+      exit options[:exit_code]
+    end
+  end
+
+  def self.save_cache_file(ex)
+    File.delete(CACHE_FILE) if File.exists?(CACHE_FILE)
+
+    # write that junk to file
+    File.open(CACHE_FILE, "w") do |file|
+      file.write({:executable => ex}.to_yaml)
+    end
+    Shellwords.escape(ex)
+  end
+
+  def self.find_sublime_executable()
+    ex = []
+    Find.find('/') do |path|
+      ex << path if path =~ /sublime_text$/ && File.executable?(path)
+    end
+
+    quit_if(ex.size > 1,
+      :message => "too many Sublime Text 2 executables found [ #{ex.join(", ")} ]",
+      :exit_code => ex.size
+    )
+    quit_if(ex.empty?,
+      :message => "no Sublime Text 2 executable found",
+      :exit_code => -1
+    )
+
+    ex.first
+  end
+
 end
 
-
-subl_ex = []
-
-if File.exists?(CACHE_FILE) &&
-  File.exists?( file = YAML.load_file(CACHE_FILE)[:executable] )
-
-    # Process#spawn acts differently depending on how many args you give it.
-    # With a single argument, escaped spaces are needed (because it runs the
-    # command in a standard shell), but spaces must not be escaped when passing
-    # multple arguments because it doesn't execute the commands in a std shell.
-    # Annoying and weird. I probably could do this a better way if I wasn't
-    # using the splat operator, but I wanted to.
-    subl_ex << ( (ARGV.empty?) ? Shellwords.escape(file) : file )
-else
-  subl_ex << save_cache_file(find_sublime_executable())
+if __FILE__ == $0
+  SublimeText.run_subl
 end
-
-subl_ex += ARGV
-
-Process.detach(Process.spawn(*subl_ex, :out => "/dev/null", :err => "/dev/null"))
