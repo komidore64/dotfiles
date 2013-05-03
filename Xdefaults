@@ -1,6 +1,7 @@
-! URxvt config
+/* URxvt config */
 
-! colors
+
+/* colors */
 URxvt.background:           #101010
 URxvt.foreground:           #ededed
 URxvt.color0:               #2E3436
@@ -19,25 +20,35 @@ URxvt.color6:               #3C9999
 URxvt.color14:              #41BFBF
 URxvt.color7:               #D3D7CF
 URxvt.color15:              #E3E3E3
-
 URxvt.cursorColor:          #666666
 
-! options
-URxvt*loginShell:           true
-URxvt*font:                 xft:DejaVu Sans Mono:antialias=true:hinting=true:size=12
-URxvt*imfont:               xft:DejaVu Sans Mono:antialias=true:hinting=true:size=12
-URxvt*boldFont:             xft:DejaVu Sans Mono:bold:antialias=true:hinting=true:size=12
-URxvt*italicFont:           xft:DejaVu Sans Mono:italic:antialias=true:hinting=true:size=12
-URxvt*boldItalicFont:       xft:DejaVu Sans Mono:bold:italic:antialias=true:hinting=true:size=12
-URxvt*saveLines:            8192
-URxvt*scrollstyle:          plain
-URxvt*scrollBar_right:      true
-URxvt*scrollTtyOutput:      false
-URxvt*scrollTtyKeypress:    true
-URxvt*perl-ext-common:      matcher
-URxvt*matcher.button:       1
-URxvt*url-launcher:         /usr/bin/google-chrome
 
-! keys
+/* fonts */
+! URxvt*font:                 xft:DejaVu Sans Mono:antialias=true:hinting=true:size=12
+! URxvt*imfont:               xft:DejaVu Sans Mono:antialias=true:hinting=true:size=12
+! URxvt*boldFont:             xft:DejaVu Sans Mono:bold:antialias=true:hinting=true:size=12
+! URxvt*italicFont:           xft:DejaVu Sans Mono:italic:antialias=true:hinting=true:size=12
+! URxvt*boldItalicFont:       xft:DejaVu Sans Mono:bold:italic:antialias=true:hinting=true:size=12
+URxvt.font:                 xft:source code pro:antialias=true:hinting=true:size=13
+URxvt.imfont:               xft:source code pro:antialias=true:hinting=true:size=13
+URxvt.boldFont:             xft:source code pro:bold:antialias=true:hinting=true:size=13
+URxvt.italicFont:           xft:source code pro:italic:antialias=true:hinting=true:size=13
+URxvt.boldItalicFont:       xft:source code pro:bold:italic:antialias=true:hinting=true:size=13
+
+
+/* options */
+URxvt.loginShell:           true
+URxvt.saveLines:            8192
+URxvt.fading:               50
+URxvt.scrollstyle:          plain
+URxvt.scrollBar_right:      true
+URxvt.scrollTtyOutput:      false
+URxvt.scrollTtyKeypress:    true
+URxvt.perl-ext-common:      matcher
+URxvt.matcher.button:       1
+URxvt.url-launcher:         /usr/bin/google-chrome
+
+
+/* keys */
 URxvt*keysym.Home:          \033[1~
 URxvt*keysym.End:           \033[4~
