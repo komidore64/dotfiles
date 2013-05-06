@@ -8,6 +8,7 @@
     ui = auto
 [alias]
     st = status -sb
+    stl = status
     d = diff
     dt = difftool
     mt = mergetool
@@ -19,6 +20,7 @@
     logme = log --author=\"Adam Price\"
     lst = log --stat
     fa = fetch --all --prune
+    fat = fetch --all --prune --tags
     panic = reset --hard HEAD
     ctags = !.git/hooks/ctags
 [user]
