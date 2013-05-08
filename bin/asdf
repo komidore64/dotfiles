@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# fills your terminal screen with gibberish text
+
 import os
 import sys
 import random
