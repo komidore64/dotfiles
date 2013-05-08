@@ -10,8 +10,8 @@ if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
 fi
 
 # bash prompt
-# <user> <working directory> [<git branch>] $
-PS1="\[\e[0;33m\]\$(whoami | cut -c1-3) \[\e[0;90m\]\h\[\e[0m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ [\[\e[1;96m\]\1\[\e[0m\]]/') $ "
+# <working directory>(<git branch>) $
+PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') $ "
 
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
