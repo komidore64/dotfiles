@@ -68,7 +68,6 @@ alias lessr='less -R' # less with raw color interpretation (for use with grepc)
 alias tiga='tig --all' # show all branches/tags/etc
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='\vim -p' # if more than one file, open files in tabs
-alias git='hub'
 
 # cdu function
 #
