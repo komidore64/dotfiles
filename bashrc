@@ -11,7 +11,7 @@ fi
 
 # bash prompt
 # <working directory>(<git branch>) $
-PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') $ "
+PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') $ "
 
 # execute only in Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
@@ -58,21 +58,7 @@ if [[ $? == 0 ]]; then
 
 fi
 
-# git function
-#
-# runs git-status when no arguments are passed,
-# otherwise runs git with the given args
-function g {
-    if [[ $# > 0 ]]; then
-        git $@
-    else
-        git st
-    fi
-}
-alias gd='git diff'
-alias ga='git add'
-alias gap='git add --patch'
-
+export EDITOR='vim'
 
 alias ll='ls -lah' # long listing of all files with human readable file sizes
 alias tree='tree -C' # turns on coloring for tree command
@@ -82,8 +68,7 @@ alias lessr='less -R' # less with raw color interpretation (for use with grepc)
 alias tiga='tig --all' # show all branches/tags/etc
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='\vim -p' # if more than one file, open files in tabs
-
-export EDITOR='vim'
+alias git='hub'
 
 # cdu function
 #
@@ -98,3 +83,19 @@ function cdu {
         cd ../
     done
 }
+
+# git function
+#
+# runs git-status when no arguments are passed,
+# otherwise runs git with the given args
+function g {
+    if [[ $# > 0 ]]; then
+        git $@
+    else
+        git st
+    fi
+}
+
+alias gd='git diff'
+alias ga='git add'
+alias gap='git add --patch'
