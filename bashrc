@@ -69,20 +69,6 @@ alias tiga='tig --all' # show all branches/tags/etc
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='\vim -p' # if more than one file, open files in tabs
 
-# cdu function
-#
-# change directory "up" (synonymous with 'cd ../') once
-# when no arguments are passed and moves up the specified
-# number of directories when given ('cdu 3' is equivalent
-# to 'cd ../../../')
-function cdu {
-    count=${1:-1}
-    for i in $(seq 1 $count)
-    do
-        cd ../
-    done
-}
-
 # git function
 #
 # runs git-status when no arguments are passed,
