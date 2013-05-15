@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "generating ctags..."
 set -e
 PATH="/usr/local/bin:$PATH"
