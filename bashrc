@@ -41,6 +41,12 @@ if [[ -f /boot/config.txt ]]; then # if this is a raspberry pi
 
 fi
 
+# modify the manpath so man will pick my man pages too
+if [[ -d "$HOME/.man" ]]; then
+    export MANPATH="$(manpath):$HOME/.man"
+fi
+
+
 # Add RVM to PATH for scripting, if RVM is installed
 if [[ -d "$HOME/.rvm/bin" ]]; then
     export PATH="$PATH:$HOME/.rvm/bin"
