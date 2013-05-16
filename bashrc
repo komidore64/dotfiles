@@ -22,17 +22,19 @@ if [[ "$(uname)" == 'Darwin' ]]; then
     fi
 
     alias ls='ls -G' # ls with colors
-    alias which='which -a'
+    alias which='which -a' # mac 'which'
 
 fi
 
-if [[ -f /boot/config.txt ]]; then # if this is a raspberry pi
+# if this is a raspberry pi
+if [[ -f /boot/config.txt ]]; then
 
     # if there is a $HOME/bin folder, then add it to PATH
     if [[ -d "$HOME/bin" ]]; then
         export PATH="$PATH:$HOME/bin"
     fi
 
+    # basic aliases
     alias ls='ls --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -41,15 +43,17 @@ if [[ -f /boot/config.txt ]]; then # if this is a raspberry pi
 
 fi
 
-# modify the manpath so man will pick my man pages too
-if [[ -d "$HOME/.man" ]]; then
-    export MANPATH="$(manpath):$HOME/.man"
+# source RVM, if RVM is installed
+if [[ -d "$HOME/.rvm" ]]; then
+    source $HOME/.rvm/scripts/rvm
 fi
 
-
-# Add RVM to PATH for scripting, if RVM is installed
-if [[ -d "$HOME/.rvm/bin" ]]; then
-    export PATH="$PATH:$HOME/.rvm/bin"
+# modify the manpath so man will pick up my man pages too
+# this needs to go after rvm
+if [[ -d "$HOME/.man" ]]; then
+    if [[ ! "$MANPATH" =~ "$HOME/.man" ]]; then # not sure why i can't put this into one if-statment
+        export MANPATH="$(manpath -qc):$HOME/.man"
+    fi
 fi
 
 # check to see if tmux is installed
