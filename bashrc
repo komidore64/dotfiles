@@ -50,11 +50,12 @@ fi
 
 # modify the manpath so man will pick up my man pages too
 # this needs to go after rvm
-if [[ -d "$HOME/.man" ]]; then
-    if [[ ! "$MANPATH" =~ "$HOME/.man" ]]; then # not sure why i can't put this into one if-statment
-        export MANPATH="$(manpath -qc):$HOME/.man"
-    fi
-fi
+#if [[ -d "$HOME/.man" ]]; then
+#    if [[ ! "$(manpath -q)" =~ "$HOME/.man" ]]; then # not sure why i can't put this into one if-statment
+#        export MANPATH="$(manpath -q):$HOME/.man"
+#    fi
+#fi
+# WHY DOESN'T THIS WORK?! this is stupidly complicated
 
 # check to see if tmux is installed
 which tmux > /dev/null 2>&1
