@@ -96,3 +96,7 @@ function g {
 alias gd='git diff'
 alias ga='git add'
 alias gap='git add --patch'
+
+# things that i edit often
+alias vimrc='vim ~/.vimrc'
+alias gitconfig='vim ~/.gitconfig'
