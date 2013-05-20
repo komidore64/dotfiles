@@ -56,6 +56,7 @@ fi
 #    fi
 #fi
 # WHY DOESN'T THIS WORK?! this is stupidly complicated
+# i still think it's an ordering/timing issue (being loaded before something else, etc)
 
 # check to see if tmux is installed
 which tmux > /dev/null 2>&1
