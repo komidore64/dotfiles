@@ -18,6 +18,8 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 6. [kien/ctrlp.vim](https://github.com/kien/ctrlp.vim)
 7. [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
 8. [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
+9. [vim-scripts/AutoComplPop](https://github.com/vim-scripts/AutoComplPop)
+10. [nother/vim-prose](https://github.com/nother/vim-prose)
 
 ## sublime text 2
 

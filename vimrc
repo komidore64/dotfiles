@@ -17,6 +17,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 Bundle 'koron/nyancat-vim'
+Bundle 'vim-scripts/AutoComplPop'
+Bundle 'nother/vim-prose'
 " ----------------------------
 
 syntax enable
@@ -47,6 +49,10 @@ let g:tagbar_autoclose = 1
 
 " nyancat --------------------
 nmap <Leader>N :Nyancat2<CR>
+" ----------------------------
+
+" vim-prose ------------------
+nmap <Leader>vp :VimProseEnable<CR>
 " ----------------------------
 
 
@@ -88,9 +94,6 @@ set wildmode=list:longest " vim command-line tab-completion
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
 
-" :REV to 'revert' file to state of the most recent save
-command REV earlier 1f
-
 " disable netrw --------------
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
@@ -103,4 +106,17 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 " ----------------------------
 
+" spell-checking -------------
+highlight SpellCap cterm=undercurl ctermbg=cyan ctermfg=black
+highlight SpellBad cterm=undercurl ctermbg=red ctermfg=black
+highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
+" ----------------------------
+
+" pop-up menu ----------------
+highlight Pmenu term=reverse ctermbg=lightgrey ctermfg=black
+highlight PmenuSel term=reverse ctermbg=cyan ctermfg=black
+" ----------------------------
+
+
+" shortcuts
 map <C-h> :nohl<CR>
