@@ -2,12 +2,21 @@ set nocompatible " fancy vim
 
 set directory=~/.vim/ " one place for vim swap files
 
-" vundler --------------------
+" ----------------------------
+" ----------------------------
+"
+" plugins
+"
+"
+
+" pre vundler setup ----------
 filetype off
 
 set runtimepath+=~/.vim/bundle/vundle
 call vundle#rc()
+" ----------------------------
 
+" plugins (via vundler) ------
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'greyblake/vim-preview'
@@ -21,8 +30,10 @@ Bundle 'vim-scripts/AutoComplPop'
 Bundle 'nother/vim-prose'
 " ----------------------------
 
+" post vundler setup ---------
 syntax enable
 filetype plugin indent on
+" ----------------------------
 
 " powerline ------------------
 set noshowmode
@@ -99,7 +110,10 @@ let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 " ----------------------------
 
-" vimdiff highlighting -------
+" shortcuts
+map <C-h> :nohl<CR>
+
+" vimdiff --------------------
 highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
 highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
 highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
@@ -117,6 +131,3 @@ highlight Pmenu term=reverse ctermbg=lightgrey ctermfg=black
 highlight PmenuSel term=reverse ctermbg=cyan ctermfg=black
 " ----------------------------
 
-
-" shortcuts
-map <C-h> :nohl<CR>
