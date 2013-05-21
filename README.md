@@ -20,6 +20,7 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 8. [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
 9. [vim-scripts/AutoComplPop](https://github.com/vim-scripts/AutoComplPop)
 10. [nother/vim-prose](https://github.com/nother/vim-prose)
+11. [sjl/gundo.vim](https://github.com/sjl/gundo.vim)
 
 ## sublime text 2
 
