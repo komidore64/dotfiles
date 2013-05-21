@@ -28,6 +28,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'koron/nyancat-vim'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'nother/vim-prose'
+Bundle 'sjl/gundo.vim'
 " ----------------------------
 
 " post vundler setup ---------
@@ -64,6 +65,10 @@ nmap <Leader>N :Nyancat2<CR>
 
 " vim-prose ------------------
 nmap <Leader>vp :VimProseEnable<CR>
+" ----------------------------
+
+" gundo ----------------------
+nmap <Leader>gt :GundoToggle<CR>
 " ----------------------------
 
 
