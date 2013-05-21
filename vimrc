@@ -131,7 +131,7 @@ highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
 " ----------------------------
 
 " pop-up menu ----------------
-highlight Pmenu term=reverse ctermbg=lightgrey ctermfg=black
-highlight PmenuSel term=reverse ctermbg=cyan ctermfg=black
+highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
+highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " ----------------------------
 
