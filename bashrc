@@ -17,7 +17,7 @@ PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed
 if [[ "$(uname)" == 'Darwin' ]]; then
 
     # if there is a $HOME/bin folder, then add it to PATH
-    if [[ -d "$HOME/bin" ]]; then
+    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
         export PATH="$PATH:$HOME/bin"
     fi
 
@@ -30,7 +30,7 @@ fi
 if [[ -f /boot/config.txt ]]; then
 
     # if there is a $HOME/bin folder, then add it to PATH
-    if [[ -d "$HOME/bin" ]]; then
+    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
         export PATH="$PATH:$HOME/bin"
     fi
 
@@ -100,3 +100,4 @@ alias gap='git add --patch'
 # things that i edit often
 alias vimrc='vim ~/.vimrc'
 alias gitconfig='vim ~/.gitconfig'
+alias bashrc='vim ~/.bashrc'
