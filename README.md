@@ -1,8 +1,8 @@
 # dotfiles
 
-Configured for Linux, and Mac OS X too. The only thing I've noticed that doesn't work in OS X is vim-preview (because OS X's vim isn't compiled with a Ruby interpreter). Vim-preview still installs fine, you just can't use it.
+Configured for Linux, and Mac OS X too.
 
-Copy them into your home directory, or clone the repository and symlink to repo files.
+Copy them into your home directory, or clone the repository and symlink to the repo files.
 
 ## vim
 
@@ -41,6 +41,10 @@ ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/s
 # then just run
 subl
 ```
+
+### caveats
+
+be sure to ```git submodule update --init``` first thing
 
 ## TODO
 * install script?
