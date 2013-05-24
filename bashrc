@@ -101,3 +101,8 @@ alias gap='git add --patch'
 alias vimrc='vim ~/.vimrc'
 alias gitconfig='vim ~/.gitconfig'
 alias bashrc='vim ~/.bashrc'
+
+shopt -s autocd
+shopt -s cdspell
+shopt -s dirspell
+shopt -s checkjobs
