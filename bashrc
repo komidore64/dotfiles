@@ -1,20 +1,28 @@
 # ~/.bashrc
 
-if [[ "$(uname)" != "Darwin" ]]; then # non mac os x
+# bash prompt
+# <working directory>(<git branch>) $
+PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') $ "
+
+shopt -s cdspell
+
+which sw_vers > /dev/null 2>&1
+OSX=$?
+# if this is not OS X
+if [[ $OSX != 0 ]]; then
 
     # load /etc/bashrc
     if [[ -f "/etc/bashrc" ]]; then
         . /etc/bashrc
     fi
 
+    shopt -s dirspell
+    shopt -s checkjobs
+
 fi
 
-# bash prompt
-# <working directory>(<git branch>) $
-PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') $ "
-
-# execute only in Mac OS X
-if [[ "$(uname)" == 'Darwin' ]]; then
+# if this is OS X
+if [[ $OSX == 0 ]]; then
 
     # if there is a $HOME/bin folder, then add it to PATH
     if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
@@ -63,7 +71,9 @@ which tmux > /dev/null 2>&1
 if [[ $? == 0 ]]; then
 
     # source tmux bash completion, if it exists
-    tmux_completion=$(find /usr/share/ -name bash_completion_tmux.sh 2> /dev/null) # this is not very efficient
+    tmux_completion=$(find /usr/share/ -name bash_completion_tmux.sh 2> /dev/null)
+    # this is not particularly efficient
+
     if [[ -f $tmux_completion ]]; then
         source $tmux_completion
     fi
@@ -96,13 +106,11 @@ function g {
 alias gd='git diff'
 alias ga='git add'
 alias gap='git add --patch'
+alias gc='git commit'
+alias gca='git commit --amend'
 
 # things that i edit often
 alias vimrc='vim ~/.vimrc'
 alias gitconfig='vim ~/.gitconfig'
 alias bashrc='vim ~/.bashrc'
 
-shopt -s autocd
-shopt -s cdspell
-shopt -s dirspell
-shopt -s checkjobs
