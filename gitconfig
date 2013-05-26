@@ -14,6 +14,8 @@
     mt = mergetool
     dw = diff --word-diff
     co = checkout
+    c = commit
+    ca = commit --amend
     b = branch
     bm = branch --merged
     bum = branch --no-merged
