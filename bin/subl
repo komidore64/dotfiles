@@ -24,13 +24,6 @@ module SublimeText
     subl_ex = []
 
     if File.exists?(CACHE_FILE) && File.exists?( file = YAML.load_file(CACHE_FILE)[:executable] )
-
-      # Process#spawn acts differently depending on how many args you give it.
-      # With a single argument, escaped spaces are needed (because it runs the
-      # command in a standard shell), but spaces must not be escaped when passing
-      # multple arguments because it doesn't execute the commands in a std shell.
-      # Annoying and weird. I probably could do this a better way if I wasn't
-      # using the splat operator, but I wanted to.
       subl_ex << (ARGV.empty? ? Shellwords.escape(file) : file)
     else
       subl_ex << save_cache_file(find_sublime_executable())
@@ -38,6 +31,12 @@ module SublimeText
 
     subl_ex += ARGV
 
+    # Process#spawn acts differently depending on how many args you give it.
+    # With a single argument, escaped spaces are needed (because it runs the
+    # command in a standard shell), but spaces must not be escaped when passing
+    # multple arguments because it doesn't execute the commands in a std shell.
+    # Annoying and weird. I probably could do this a better way if I wasn't
+    # using the splat operator, but I wanted to.
     Process.detach(Process.spawn(*subl_ex, :out => "/dev/null", :err => "/dev/null"))
   end
 
