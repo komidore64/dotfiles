@@ -1,3 +1,5 @@
+" ~/.vimrc
+
 set nocompatible " fancy vim
 
 set directory=~/.vim/ " one place for vim swap files
