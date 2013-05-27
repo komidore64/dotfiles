@@ -1,4 +1,4 @@
-# 01-middle-mouse-click.conf
+# 10-middle-mouse-click.conf
 
 this file can be symlinked into ```/etc/X11/xorg.conf.d/```
 

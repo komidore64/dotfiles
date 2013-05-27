@@ -113,4 +113,3 @@ alias gca='git commit --amend'
 alias vimrc='vim ~/.vimrc'
 alias gitconfig='vim ~/.gitconfig'
 alias bashrc='vim ~/.bashrc'
-

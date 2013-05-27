@@ -12,15 +12,14 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 
 1. [gmarik/vundle](https://github.com/gmarik/vundle)
 2. [tpope/vim-surround](https://github.com/tpope/vim-surround)
-3. [greyblake/vim-preview](https://github.com/greyblake/vim-preview) requires a couple rubygems to operate. sadly does not work in os x.
-4. [aert/vim-powerline](https://github.com/aert/vim-powerline)
-5. [tpope/vim-endwise](https://github.com/tpope/vim-endwise)
-6. [kien/ctrlp.vim](https://github.com/kien/ctrlp.vim)
-7. [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
-8. [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
-9. [vim-scripts/AutoComplPop](https://github.com/vim-scripts/AutoComplPop)
-10. [nother/vim-prose](https://github.com/nother/vim-prose)
-11. [sjl/gundo.vim](https://github.com/sjl/gundo.vim)
+3. [aert/vim-powerline](https://github.com/aert/vim-powerline)
+4. [tpope/vim-endwise](https://github.com/tpope/vim-endwise)
+5. [kien/ctrlp.vim](https://github.com/kien/ctrlp.vim)
+6. [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
+7. [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
+8. [vim-scripts/AutoComplPop](https://github.com/vim-scripts/AutoComplPop)
+9. [nother/vim-prose](https://github.com/nother/vim-prose)
+10. [sjl/gundo.vim](https://github.com/sjl/gundo.vim) - doesn't work in OSX's vim because it doesn't have python support
 
 ## sublime text 2
 

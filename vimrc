@@ -21,7 +21,6 @@ call vundle#rc()
 " plugins (via vundler) ------
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
-Bundle 'greyblake/vim-preview'
 Bundle 'aert/vim-powerline'
 Bundle 'tpope/vim-endwise'
 Bundle 'kien/ctrlp.vim'
@@ -136,4 +135,3 @@ highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
 highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
 highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " ----------------------------
-
