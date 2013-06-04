@@ -86,10 +86,11 @@ alias ll='ls -lah' # long listing of all files with human readable file sizes
 alias tree='tree -C' # turns on coloring for tree command
 alias mkdir='mkdir -p' # create parent directories as needed
 alias grepr='grep --color=always' # grep with color forced to ON
-alias lessr='less -R' # less with raw color interpretation (for use with grepc)
+alias lessr='less -R' # less with raw color interpretation (for use with grepr)
 alias tiga='tig --all' # show all branches/tags/etc
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='\vim -p' # if more than one file, open files in tabs
+alias v='vim'
 
 # git function
 #
@@ -108,6 +109,7 @@ alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
 alias gca='git commit --amend'
+alias gdw='git diff --word-diff'
 
 # things that i edit often
 alias vimrc='vim ~/.vimrc'

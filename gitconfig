@@ -23,8 +23,9 @@
     lst = log --stat
     fa = fetch --all --prune
     fat = fetch --all --prune --tags
-    panic = reset --hard HEAD
+    fuckit = reset --hard HEAD
     ctags = !.git/hooks/ctags
+    wc = whatchanged -p
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
