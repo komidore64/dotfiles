@@ -1,6 +1,6 @@
 .DS_Store
 .netrwhist
-.rvmrc
+*.swp
 
 # sublime-text 2
 *.cache
