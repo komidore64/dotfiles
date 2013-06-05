@@ -111,8 +111,9 @@ set wildmode=list:longest " vim command-line tab-completion
 autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
 set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
 
-" netrw ----------------------
-let g:netrw_home = expand("~/.vim/")
+" disable netrw --------------
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 " ----------------------------
 
 " shortcuts
