@@ -6,11 +6,9 @@ Copy them into your home directory, or clone the repository and symlink to repo 
 
 ## vim
 
-My Vim plugins are managed by Vundle which is a Vim plugin itself. It's pretty awesome and very easy to use and makes getting new plugins a snap.
+My Vim plugins are managed by Vundle which is a Vim plugin itself. It's pretty awesome, very easy to use, and makes getting new plugins a snap.
 
-Some of these plugins require more setup outside of Vim but they're outlined below.
-
-1. [gmarik/vundle](https://github.com/gmarik/vundle)
+1. [gmarik/vundle](https://github.com/gmarik/vundle) --> [vundle setup](https://github.com/komidore64/dotfiles/blob/master/vimrc#L14-L38)
 2. [tpope/vim-surround](https://github.com/tpope/vim-surround)
 3. [aert/vim-powerline](https://github.com/aert/vim-powerline)
 4. [tpope/vim-endwise](https://github.com/tpope/vim-endwise)
@@ -25,23 +23,24 @@ Some of these plugins require more setup outside of Vim but they're outlined bel
 
 ### settings
 
-#### linux
+```bash
+# linux
+ln -s /<dotfiles>/config/sublime-text-2 ~/.config/
 
-    ln -s /<dotfiles>/config/sublime-text-2 ~/.config/
+# mac os x
+ln -s /<dotfiles>/config/sublime-text-2 ~/Library/Application\ Support/Sublime\ Text\ 2
+```
 
-#### os x
+### launch sublime text from the command line
 
-    ln -s /<dotfiles>/config/sublime-text-2 ~/Library/Application\ Support/Sublime\ Text\ 2
+for linux, use my handy script ```subl``` located in ```/bin```
 
-### executable
-
-#### linux
-
-use my handy script ```subl``` located in ```/bin```
-
-#### os x
-
-    ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+```bash
+# mac os x
+ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+# then just run
+subl
+```
 
 ## TODO
 * install script?
