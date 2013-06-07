@@ -80,9 +80,6 @@ nmap <Leader>gt :GundoToggle<CR>
 "
 "
 
-" quick hack to open help pages in a new tab as opposed to a split
-:cabbrev help tab help
-
 set autoread " refresh if file changes outside of vim
 
 set showcmd
