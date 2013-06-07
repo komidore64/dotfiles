@@ -104,11 +104,13 @@ function g {
     fi
 }
 
+# git aliases
 alias gd='git diff'
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
 alias gca='git commit --amend'
+alias gco='git checkout'
 alias gdw='git diff --word-diff'
 
 # things that i edit often
