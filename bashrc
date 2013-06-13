@@ -100,11 +100,12 @@ function g {
     if [[ $# > 0 ]]; then
         git $@
     else
-        git st
+        git status -sb
     fi
 }
 
 # git aliases
+alias gg='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gap='git add --patch'

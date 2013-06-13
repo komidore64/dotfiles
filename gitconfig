@@ -7,8 +7,7 @@
     interactive = auto
     ui = auto
 [alias]
-    st = status -sb
-    stl = status
+    st = status
     d = diff
     dt = difftool
     mt = mergetool
