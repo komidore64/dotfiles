@@ -68,12 +68,13 @@ fi
 
 # check to see if tmux is installed
 which tmux > /dev/null 2>&1
-if [[ $? == 0 ]]; then
+TMUX=$?
+# if tmux is installed
+if [[ $TMUX == 0 ]]; then
 
     # source tmux bash completion, if it exists
     tmux_completion=$(find /usr/share/ -name bash_completion_tmux.sh 2> /dev/null)
     # this is not particularly efficient
-
     if [[ -f $tmux_completion ]]; then
         source $tmux_completion
     fi
@@ -90,7 +91,6 @@ alias lessr='less -R' # less with raw color interpretation (for use with grepr)
 alias tiga='tig --all' # show all branches/tags/etc
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='\vim -p' # if more than one file, open files in tabs
-alias v='vim'
 
 # git function
 #
