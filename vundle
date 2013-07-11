@@ -1,0 +1,33 @@
+" ~/.vundle
+
+" pre vundler setup ----------
+set nocompatible
+filetype off
+
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
+" ----------------------------
+
+" plugins (via vundler) ------
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-surround'
+Bundle 'aert/vim-powerline'
+Bundle 'tpope/vim-endwise'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'majutsushi/tagbar'
+Bundle 'koron/nyancat-vim'
+Bundle 'vim-scripts/AutoComplPop'
+Bundle 'nother/vim-prose'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-rails'
+"Bundle 'benmills/vimux'
+Bundle 'daviddavis/vimux'
+Bundle 'jgdavey/vim-turbux'
+" ----------------------------
+
+" post vundler cleanup -------
+filetype plugin indent on
+" ----------------------------
+
+" vim:ft=vim

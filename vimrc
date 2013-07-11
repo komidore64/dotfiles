@@ -1,40 +1,91 @@
 " ~/.vimrc
 
-set nocompatible " fancy vim
+" fancy vim
+set nocompatible
 
-set directory=~/.vim/ " one place for vim swap files
+" one place for vim swap files
+set directory=~/.vim/
 
-" ----------------------------
-" ----------------------------
-"
-" plugins
-"
-"
+" load up plugins via vundle
+if filereadable(expand("~/.vundle"))
+  source ~/.vundle
+endif
 
-" pre vundler setup ----------
-filetype off
-
-set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
-" ----------------------------
-
-" plugins (via vundler) ------
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-surround'
-Bundle 'aert/vim-powerline'
-Bundle 'tpope/vim-endwise'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'majutsushi/tagbar'
-Bundle 'koron/nyancat-vim'
-Bundle 'vim-scripts/AutoComplPop'
-Bundle 'nother/vim-prose'
-Bundle 'sjl/gundo.vim'
-" ----------------------------
-
-" post vundler setup ---------
 syntax enable
 filetype plugin indent on
+
+" quicksave
+map ss :w<CR>
+
+" quickly undo text highlighting
+map <C-h> :nohl<CR>
+
+" i always accidentally hit this somehow, so let's disable it
+map K <Nop>
+
+" remap <Leader>
+map , <Nop>
+let mapleader = ","
+
+" refresh if file changes outside of vim
+set autoread
+
+set showcmd
+set modelines=5
+
+" OPEN ALL THE TABS
+set tabpagemax=9001
+
+" highlight search real-time search
+set hlsearch
+set incsearch
+
+" ignore case when searching
+" unless you use a capital letter, then don't ignore case
+set ignorecase
+set smartcase
+
+set ruler
+
+" how to represent invisible characters
+set listchars=tab:/*,eol:$,nbsp:%
+
+" have some sensible defaults
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+" vim command-line tab-completion
+set wildmode=list:longest
+
+" remove trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+" stop vim from restoring screen contents on exit. it looks cooler.
+set t_ti= t_te=
+
+" disable netrw --------------
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+" ----------------------------
+
+" vimdiff --------------------
+highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
+highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
+highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
+highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
+" ----------------------------
+
+" spell-checking -------------
+highlight SpellCap cterm=undercurl ctermbg=cyan ctermfg=black
+highlight SpellBad cterm=undercurl ctermbg=red ctermfg=black
+highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
+" ----------------------------
+
+" pop-up menu ----------------
+highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
+highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " ----------------------------
 
 " powerline ------------------
@@ -61,75 +112,19 @@ let g:tagbar_autoclose = 1
 " ----------------------------
 
 " nyancat --------------------
-nmap <Leader>N :Nyancat2<CR>
+map <Leader>N :Nyancat2<CR>
 " ----------------------------
 
 " vim-prose ------------------
-nmap <Leader>vp :VimProseEnable<CR>
+map <Leader>vp :VimProseEnable<CR>
 " ----------------------------
 
 " gundo ----------------------
-nmap <Leader>gt :GundoToggle<CR>
+map <Leader>gt :GundoToggle<CR>
 " ----------------------------
 
-
-" ----------------------------
-" ----------------------------
-"
-" vim settings
-"
-"
-
-set autoread " refresh if file changes outside of vim
-
-set showcmd
-set modelines=5
-
-set tabpagemax=100 " OPEN ALL THE TABS
-
-set hlsearch " highlight search
-set incsearch " real-time search
-
-set ignorecase " ignore case when searching
-set smartcase  " unless you use a capital letter, then don't ignore case
-
-set ruler
-
-set listchars=tab:/*,eol:$,nbsp:% " how to represent invisible characters
-
-" have some defaults
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-
-set wildmode=list:longest " vim command-line tab-completion
-
-autocmd BufWritePre * :%s/\s\+$//e "remove trailing whitespace
-set t_ti= t_te= " stop vim from restoring screen contents on exit. it looks cooler.
-
-" disable netrw --------------
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-" ----------------------------
-
-" shortcuts
-map <C-h> :nohl<CR>
-
-" vimdiff --------------------
-highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
-highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
-highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
-highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
-" ----------------------------
-
-" spell-checking -------------
-highlight SpellCap cterm=undercurl ctermbg=cyan ctermfg=black
-highlight SpellBad cterm=undercurl ctermbg=red ctermfg=black
-highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
-" ----------------------------
-
-" pop-up menu ----------------
-highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
-highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
+" vimux ----------------------
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vc :VimuxCloseRunner<CR>
 " ----------------------------
