@@ -1,8 +1,8 @@
 # dotfiles
 
-Configured for Linux, and Mac OS X too.
+Configured for Linux (including boxes on [Nitrous.IO](https://www.nitrous.io/join/Ne4RmyEvhD8), and Mac OS X.
 
-Copy them into your home directory, or clone the repository and symlink to the repo files.
+Copy them into your home directory, or clone the repository and create symlinks.
 
 ## vim
 

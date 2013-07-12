@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
-echo "generating ctags..."
-set -e
-PATH="/usr/local/bin:$PATH"
-trap "rm -f .git/tags.$$" EXIT
 
-ctags --tag-relative -R -f .git/tags.$$ --exclude=.git --languages=-sql,javascript
-mv .git/tags.$$ .git/tags
-echo "DONE"
+which ctags > /dev/null 2>&1
+CTAGS=$?
+if [[ $CTAGS == 0 ]]; then
+
+    ctags --version | grep -i exuberant > /dev/null 2>&1
+    EXUBERANT=$?
+    if [[ $EXUBERANT == 0 ]]; then
+
+        echo -n "generating ctags..."
+        set -e
+        PATH="/usr/local/bin:$PATH"
+        trap "rm -f .git/tags.$$" EXIT
+
+        ctags --tag-relative -R -f .git/tags.$$ --exclude=.git --languages=-sql,javascript
+        mv .git/tags.$$ .git/tags
+        echo "DONE"
+
+    fi
+    unset $EXUBERANT
+
+fi
+unset $CTAGS

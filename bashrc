@@ -34,8 +34,8 @@ if [[ $OSX == 0 ]]; then
 
 fi
 
-# if this is a raspberry pi
-if [[ -f /boot/config.txt ]]; then
+# if this is a raspberry pi or a nitrous.io box
+if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
 
     # if there is a $HOME/bin folder, then add it to PATH
     if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
