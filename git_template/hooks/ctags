@@ -2,11 +2,11 @@
 
 which ctags > /dev/null 2>&1
 CTAGS=$?
-if [[ $CTAGS == 0 ]]; then
+if [[ $CTAGS == 0 ]]; then # do we have ctags installed?
 
-    ctags --version | grep -i exuberant > /dev/null 2>&1
+    ctags --version 2> /dev/null | grep -i exuberant > /dev/null 2>&1
     EXUBERANT=$?
-    if [[ $EXUBERANT == 0 ]]; then
+    if [[ $EXUBERANT == 0 ]]; then # is it Exuberant Ctags?
 
         echo -n "generating ctags..."
         set -e
@@ -18,7 +18,5 @@ if [[ $CTAGS == 0 ]]; then
         echo "DONE"
 
     fi
-    unset $EXUBERANT
 
 fi
-unset $CTAGS
