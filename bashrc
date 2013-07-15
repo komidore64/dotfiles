@@ -2,7 +2,7 @@
 
 # bash prompt
 # <working directory>(<git branch>) $
-PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') $ "
+PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') "$'\u25b6'" "
 
 shopt -s cdspell
 
