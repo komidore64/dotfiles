@@ -3,6 +3,8 @@
 " fancy vim
 set nocompatible
 
+set encoding=utf-8
+
 " one place for vim swap files
 set directory=~/.vim/
 
@@ -20,6 +22,9 @@ map ss :w<CR>
 " quickly undo text highlighting
 map <C-h> :nohl<CR>
 
+nmap <C-w><C-h> :tabmove -1<CR>
+nmap <C-w><C-l> :tabmove +1<CR>
+
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
 
@@ -31,6 +36,7 @@ let mapleader = ","
 set autoread
 
 set showcmd
+set showmode
 set modelines=5
 
 " OPEN ALL THE TABS
@@ -88,43 +94,47 @@ highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
 highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " ----------------------------
 
-" powerline ------------------
-set noshowmode
-set laststatus=2
-let g:Powerline_symbols = 'compatible'
-set encoding=utf-8
-" ----------------------------
+" load plugin settings if ~/.vundle is found
+if filereadable(expand("~/.vundle"))
 
-" ctrlp ----------------------
-let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
-let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
+    " powerline ------------------
+    set noshowmode
+    set laststatus=2
+    let g:Powerline_symbols = 'compatible'
+    " ----------------------------
 
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-\ } " remap <cr> to open file in a new tab
-" ----------------------------
+    " ctrlp ----------------------
+    let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
+    let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
 
-" tagbar ---------------------
-map <Leader>tb :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-" ----------------------------
+    let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<c-t>'],
+        \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ } " remap <cr> to open file in a new tab
+    " ----------------------------
 
-" nyancat --------------------
-map <Leader>N :Nyancat2<CR>
-" ----------------------------
+    " tagbar ---------------------
+    map <Leader>tb :TagbarToggle<CR>
+    let g:tagbar_autofocus = 1
+    let g:tagbar_autoclose = 1
+    " ----------------------------
 
-" vim-prose ------------------
-map <Leader>vp :VimProseEnable<CR>
-" ----------------------------
+    " nyancat --------------------
+    map <Leader>N :Nyancat2<CR>
+    " ----------------------------
 
-" gundo ----------------------
-map <Leader>gt :GundoToggle<CR>
-" ----------------------------
+    " vim-prose ------------------
+    map <Leader>vp :VimProseEnable<CR>
+    " ----------------------------
 
-" vimux ----------------------
-map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
-map <Leader>vc :VimuxCloseRunner<CR>
-" ----------------------------
+    " gundo ----------------------
+    map <Leader>gt :GundoToggle<CR>
+    " ----------------------------
+
+    " vimux ----------------------
+    map <Leader>vp :VimuxPromptCommand<CR>
+    map <Leader>vl :VimuxRunLastCommand<CR>
+    map <Leader>vc :VimuxCloseRunner<CR>
+    " ----------------------------
+
+endif
