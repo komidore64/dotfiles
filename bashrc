@@ -83,24 +83,20 @@ fi
 
 export EDITOR='vim'
 
-alias ll='ls -lah' # long listing of all files with human readable file sizes
-alias tree='tree -C' # turns on coloring for tree command
-alias mkdir='mkdir -p' # create parent directories as needed
-alias grepr='grep --color=always' # grep with color forced to ON
-alias lessr='less -R' # less with raw color interpretation (for use with grepr)
-alias tiga='tig --all' # show all branches/tags/etc
+alias ll='ls -l --all --human-readable'
+alias tree='tree -C'
+alias mkdir='mkdir --parents'
+alias grepr='grep --color=always'
+alias lessr='less --RAW-CONTROL-CHARS'
+alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
-alias vim='\vim -p' # if more than one file, open files in tabs
+alias vim='vim -p'
 
-# git function
-#
-# runs git-status when no arguments are passed,
-# otherwise runs git with the given args
 function g {
     if [[ $# > 0 ]]; then
         git $@
     else
-        git status -sb
+        git status --short --branch
     fi
 }
 
