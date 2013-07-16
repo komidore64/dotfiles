@@ -109,6 +109,6 @@ alias gc='git commit'
 alias gdw='git diff --word-diff'
 
 # things that i edit often
-alias vimrc='vim ~/.vimrc'
-alias gitconfig='vim ~/.gitconfig'
-alias bashrc='vim ~/.bashrc'
+alias vimrc='$EDITOR ~/.vimrc'
+alias gitconfig='$EDITOR ~/.gitconfig'
+alias bashrc='$EDITOR ~/.bashrc'
