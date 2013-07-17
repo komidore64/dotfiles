@@ -1,8 +1,5 @@
 # ~/.bashrc
 
-# bash prompt
-# <working directory>(<git branch>) $
-PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') "$'\u25b6'" "
 
 shopt -s cdspell
 
@@ -19,6 +16,8 @@ if [[ $OSX != 0 ]]; then
     shopt -s dirspell
     shopt -s checkjobs
 
+    prompt_symbol=$'\u25b6'
+
 fi
 
 # if this is OS X
@@ -31,6 +30,8 @@ if [[ $OSX == 0 ]]; then
 
     alias ls='ls -G' # ls with colors
     alias which='which -a' # mac 'which'
+
+    prompt_symbol='=>'
 
 fi
 
@@ -112,3 +113,7 @@ alias gdw='git diff --word-diff'
 alias vimrc='$EDITOR ~/.vimrc'
 alias gitconfig='$EDITOR ~/.gitconfig'
 alias bashrc='$EDITOR ~/.bashrc'
+
+# bash prompt
+# <working directory>(<git branch>) <symbol>
+PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') "$prompt_symbol" "
