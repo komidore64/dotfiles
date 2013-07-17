@@ -1,5 +1,11 @@
 # ~/.bashrc
 
+function bashrc_home_bin_path {
+    # if there is a $HOME/bin folder, then add it to PATH
+    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
+        export PATH="$PATH:$HOME/bin"
+    fi
+}
 
 shopt -s cdspell
 
@@ -16,32 +22,28 @@ if [[ $OSX != 0 ]]; then
     shopt -s dirspell
     shopt -s checkjobs
 
-    prompt_symbol=$'\u25b6'
+    ps1_sym=$'\u25b6'
+    ps2_sym=$'\u21b3'
 
 fi
 
 # if this is OS X
 if [[ $OSX == 0 ]]; then
 
-    # if there is a $HOME/bin folder, then add it to PATH
-    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
-        export PATH="$PATH:$HOME/bin"
-    fi
+    bashrc_home_bin_path
 
     alias ls='ls -G' # ls with colors
     alias which='which -a' # mac 'which'
 
-    prompt_symbol='=>'
+    ps1_sym='=>'
+    ps2_sym='->'
 
 fi
 
 # if this is a raspberry pi or a nitrous.io box
 if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
 
-    # if there is a $HOME/bin folder, then add it to PATH
-    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
-        export PATH="$PATH:$HOME/bin"
-    fi
+    bashrc_home_bin_path
 
     # basic aliases
     alias ls='ls --color=auto'
@@ -116,4 +118,9 @@ alias bashrc='$EDITOR ~/.bashrc'
 
 # bash prompt
 # <working directory>(<git branch>) <symbol>
-PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') "$prompt_symbol" "
+PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') "$ps1_sym" "
+PS2=$ps2_sym" "
+# good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
+
+# cleanup
+unset bashrc_home_bin_path TMUX OSX ps1_sym ps2_sym
