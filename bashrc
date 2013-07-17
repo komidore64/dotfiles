@@ -116,11 +116,13 @@ alias vimrc='$EDITOR ~/.vimrc'
 alias gitconfig='$EDITOR ~/.gitconfig'
 alias bashrc='$EDITOR ~/.bashrc'
 
-# bash prompt
-# <working directory>(<git branch>) <symbol>
-PS1="\[\e[0;33m\]\h\[\e[0m\] \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/(\[\e[1;96m\]\1\[\e[0m\])/') "$ps1_sym" "
-PS2=$ps2_sym" "
+if [[ -f ~/.bash_colors ]]; then
+    source ~/.bash_colors
+fi
+
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
+PS1="$COLOR_YELLOW\h$COLOR_RESET \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/($COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET)/') $COLOR_RED$ps1_sym$COLOR_RESET "
+PS2="$COLOR_BOLD_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 
 # cleanup
 unset bashrc_home_bin_path TMUX OSX ps1_sym ps2_sym
