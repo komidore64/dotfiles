@@ -86,9 +86,9 @@ fi
 
 export EDITOR='vim'
 
-alias ll='ls -l --all --human-readable'
+alias ll='ls -lah'
 alias tree='tree -C'
-alias mkdir='mkdir --parents'
+alias mkdir='mkdir -pv'
 alias grepr='grep --color=always'
 alias lessr='less --RAW-CONTROL-CHARS'
 alias tiga='tig --all'
