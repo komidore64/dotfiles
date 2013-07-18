@@ -94,6 +94,8 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
+alias f='figlet'
+alias c='cowsay'
 
 function g {
     if [[ $# > 0 ]]; then
