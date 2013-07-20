@@ -123,7 +123,7 @@ if [[ -f ~/.bash_colors ]]; then
 fi
 
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-PS1="$COLOR_YELLOW\h$COLOR_RESET \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/($COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET)/') $COLOR_RED$ps1_sym$COLOR_RESET "
+PS1="$COLOR_YELLOW\h$COLOR_RESET \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/($COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET)/') $COLOR_BOLD_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
 PS2="$COLOR_BOLD_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 
 # cleanup
