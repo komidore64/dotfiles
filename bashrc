@@ -125,6 +125,7 @@ fi
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
 PS1="$COLOR_YELLOW\h$COLOR_RESET \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/($COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET)/') $COLOR_BOLD_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
 PS2="$COLOR_BOLD_LIGHT_GREEN$ps2_sym$COLOR_RESET "
+unset PROMPT_COMMAND #for fedora19
 
 # cleanup
 unset bashrc_home_bin_path TMUX OSX ps1_sym ps2_sym
