@@ -16,8 +16,9 @@ endif
 syntax enable
 filetype plugin indent on
 
-" quicksave
-map ss :w<CR>
+" remap <Leader>
+map , <Nop>
+let mapleader = ","
 
 " quickly undo text highlighting
 map <C-h> :nohl<CR>
@@ -25,12 +26,10 @@ map <C-h> :nohl<CR>
 nmap <C-w><C-h> :tabmove -1<CR>
 nmap <C-w><C-l> :tabmove +1<CR>
 
+map <Leader>pt :set invpaste<CR>
+
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
-
-" remap <Leader>
-map , <Nop>
-let mapleader = ","
 
 " refresh if file changes outside of vim
 set autoread
@@ -132,9 +131,9 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " vimux ----------------------
-    map <Leader>vp :VimuxPromptCommand<CR>
+    map <Leader>vc :VimuxPromptCommand<CR>
     map <Leader>vl :VimuxRunLastCommand<CR>
-    map <Leader>vc :VimuxCloseRunner<CR>
+    map <Leader>vq :VimuxCloseRunner<CR>
     " ----------------------------
 
 endif
