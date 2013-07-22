@@ -66,7 +66,7 @@ module SublimeText
     ex = []
 
     Find.find('/') do |path|
-      ex << path if path =~ /sublime_text$/ && File.executable?(path)
+      ex << path if path =~ /sublime_text\z/ && File.executable?(path)
     end
 
     # avoiding any ruby stacktraces
