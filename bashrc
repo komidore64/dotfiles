@@ -85,6 +85,7 @@ if [[ $TMUX == 0 ]]; then
 fi
 
 export EDITOR='vim'
+export PAGER='less'
 
 alias ll='ls -lah'
 alias tree='tree -C'
