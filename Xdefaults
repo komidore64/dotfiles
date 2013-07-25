@@ -39,7 +39,6 @@ URxvt.boldItalicFont:       xft:source code pro:bold:italic:antialias=true:hinti
 /* options */
 URxvt.loginShell:           true
 URxvt.saveLines:            8192
-URxvt.fading:               50
 URxvt.scrollstyle:          plain
 URxvt.scrollBar_right:      true
 URxvt.scrollTtyOutput:      false
