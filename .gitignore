@@ -10,10 +10,10 @@ config/sublime-text-2/Pristine\ Packages
 config/sublime-text-2/Backup*
 
 # weechat
-weechat/*.conf
 weechat/logs
 weechat/weechat.log
 weechat/script
+weechat/weechat_fifo*
 
 # ignore installed vim plugins
 vim/bundle
