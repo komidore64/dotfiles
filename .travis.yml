@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+git:
+  submodules: false
+script: 'ruby -e "180.downto(1).each {|n| puts n; sleep 1 }"'
