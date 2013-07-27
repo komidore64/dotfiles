@@ -1,25 +1,41 @@
 /* vim: set ft=xdefaults : */
 
 
-/* colors */
 URxvt.background:           #101010
 URxvt.foreground:           #ededed
+
+/* black / light black */
 URxvt.color0:               #2E3436
 URxvt.color8:               #555753
+
+/* red / light red */
 URxvt.color1:               #993C3C
 URxvt.color9:               #BF4141
+
+/* green / light green */
 URxvt.color2:               #3C993C
 URxvt.color10:              #41BF41
+
+/* yellow / light yellow */
 URxvt.color3:               #99993C
 URxvt.color11:              #BFBF41
+
+/* blue / light blue */
 URxvt.color4:               #3C6199
 URxvt.color12:              #4174FB
+
+/* purple / light purple */
 URxvt.color5:               #993C99
 URxvt.color13:              #BF41BF
+
+/* cyan / light cyan */
 URxvt.color6:               #3C9999
 URxvt.color14:              #41BFBF
+
+/* gray / light gray */
 URxvt.color7:               #D3D7CF
 URxvt.color15:              #E3E3E3
+
 URxvt.cursorColor:          #666666
 
 
