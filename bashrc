@@ -61,11 +61,11 @@ fi
 
 # modify the manpath so man will pick up my man pages too
 # this needs to go after rvm
-#if [[ -d "$HOME/.man" ]]; then
-#    if [[ ! "$(manpath -q)" =~ "$HOME/.man" ]]; then # not sure why i can't put this into one if-statment
-#        export MANPATH="$(manpath -q):$HOME/.man"
-#    fi
-#fi
+# if [[ -d "$HOME/.man" ]]; then
+#     if [[ ! "$(manpath -q)" =~ "$HOME/.man" ]]; then # not sure why i can't put this into one if-statment
+#         export MANPATH="$(manpath -q):$HOME/.man"
+#     fi
+# fi
 # WHY DOESN'T THIS WORK?! this is stupidly complicated
 # i still think it's an ordering/timing issue (being loaded before something else, etc)
 
@@ -76,8 +76,7 @@ TMUX=$?
 if [[ $TMUX == 0 ]]; then
 
     # source tmux bash completion, if it exists
-    tmux_completion=$(find /usr/share/ -name bash_completion_tmux.sh 2> /dev/null)
-    # this is not particularly efficient
+    tmux_completion=$(find /usr/share/**/tmux-* -name bash_completion_tmux.sh 2> /dev/null)
     if [[ -f $tmux_completion ]]; then
         source $tmux_completion
     fi
@@ -95,7 +94,6 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
-alias top='htop'
 alias f='figlet'
 alias c='cowsay'
 
