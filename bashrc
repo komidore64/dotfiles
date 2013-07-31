@@ -86,6 +86,7 @@ fi
 export EDITOR='vim'
 export PAGER='less'
 
+alias sl='ls'
 alias ll='ls -lah'
 alias tree='tree -C'
 alias mkdir='mkdir -pv'
