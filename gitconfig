@@ -1,4 +1,4 @@
-# vim: set ft=cfg:
+# vim:ft=cfg
 
 [color]
     diff = auto
@@ -44,6 +44,6 @@
 [tig]
     tab-size = 4
 [help]
-    autocorrect = 30
+    autocorrect = 25
 [init]
     templatedir = ~/.git_template
