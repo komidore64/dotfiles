@@ -9,6 +9,9 @@ function bashrc_home_bin_path {
 
 shopt -s cdspell
 
+# stop the terminal from grabbing CTRL-s so i can forward- and reverse-search
+stty -ixon
+
 which sw_vers > /dev/null 2>&1
 OSX=$?
 # if this is not OS X
@@ -125,10 +128,15 @@ if [[ -f ~/.bash_colors ]]; then
     source ~/.bash_colors
 fi
 
+# source bash-completion files
+for f in ~/.completion/**; do source $f; done
+
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
 PS1="$COLOR_YELLOW\h$COLOR_RESET \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/($COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET)/') $COLOR_BOLD_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
 PS2="$COLOR_BOLD_LIGHT_GREEN$ps2_sym$COLOR_RESET "
-unset PROMPT_COMMAND #for fedora19
+
+# to keep from messing up tmux's window auto-naming
+PROMPT_COMMAND=''
 
 # cleanup
-unset bashrc_home_bin_path TMUX OSX ps1_sym ps2_sym
+unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym f
