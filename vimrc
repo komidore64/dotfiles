@@ -28,6 +28,8 @@ nmap <C-w><C-h> :tabmove -1<CR>
 nmap <C-w><C-l> :tabmove +1<CR>
 
 map <Leader>pt :set invpaste<CR>
+map <Leader>ln :set invnumber<CR>
+map <Leader>rn :set invrelativenumber<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
