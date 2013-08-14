@@ -16,4 +16,5 @@ weechat/script
 weechat/weechat_fifo*
 
 # ignore installed vim plugins
-vim/bundle
+!vim/bundle/vundle/*
+vim/bundle/*
