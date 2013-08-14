@@ -90,6 +90,7 @@ export EDITOR='vim'
 export PAGER='less'
 
 alias sl='ls'
+alias xit='exit'
 alias ll='ls -lah'
 alias tree='tree -C'
 alias mv='mv -i'
