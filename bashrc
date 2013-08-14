@@ -59,7 +59,7 @@ fi
 
 # source RVM, if RVM is installed
 if [[ -d "$HOME/.rvm" ]]; then
-    source $HOME/.rvm/scripts/rvm
+    PATH=$PATH:$HOME/.rvm/bin
 fi
 
 # modify the manpath so man will pick up my man pages too

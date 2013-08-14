@@ -1,0 +1,4 @@
+# ~/.rvmrc
+#
+# vim:ft=conf
+rvm_use_flag=2
