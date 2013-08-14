@@ -16,6 +16,8 @@ endif
 syntax enable
 filetype plugin indent on
 
+nmap ss :w<CR>
+
 " remap <Leader>
 map , <Nop>
 let mapleader = ","
