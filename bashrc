@@ -43,6 +43,8 @@ if [[ $OSX == 0 ]]; then
 
 fi
 
+ps1_div='|'
+
 # if this is a raspberry pi or a nitrous.io box
 if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
 
@@ -133,11 +135,11 @@ fi
 for f in ~/.completion/**; do source $f; done
 
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-PS1="$COLOR_YELLOW\h$COLOR_RESET \W\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/($COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET)/') $COLOR_BOLD_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
+PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_BOLD_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
 PS2="$COLOR_BOLD_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 
 # to keep from messing up tmux's window auto-naming
 PROMPT_COMMAND=''
 
 # cleanup
-unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym f
+unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
