@@ -31,9 +31,5 @@ ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/s
 subl
 ```
 
-### caveats
-
-be sure to ```git submodule update --init``` first thing
-
 ## TODO
 * install script?
