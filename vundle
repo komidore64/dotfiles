@@ -25,6 +25,7 @@ Bundle 'tpope/vim-rails'
 "Bundle 'benmills/vimux'
 Bundle 'daviddavis/vimux'
 Bundle 'jgdavey/vim-turbux'
+Bundle 'elzr/vim-json'
 " ----------------------------
 
 " post vundler cleanup -------

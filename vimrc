@@ -141,4 +141,8 @@ if filereadable(expand("~/.vundle"))
     map <Leader>vq :VimuxCloseRunner<CR>
     " ----------------------------
 
+    " vim-json -------------------
+    let g:vim_json_syntax_conceal = 0
+    " ----------------------------
+
 endif
