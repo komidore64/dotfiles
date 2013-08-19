@@ -25,10 +25,6 @@ let mapleader = ","
 " quickly undo text highlighting
 map <C-h> :nohl<CR>
 
-" not moving between tabs, but actually moving the tabs around
-nmap <C-w><C-h> :tabmove -1<CR>
-nmap <C-w><C-l> :tabmove +1<CR>
-
 map <Leader>pt :set invpaste<CR>
 map <Leader>ln :set invnumber<CR>
 map <Leader>rn :set invrelativenumber<CR>
