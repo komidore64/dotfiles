@@ -141,4 +141,8 @@ if filereadable(expand("~/.vundle"))
     let g:vim_json_syntax_conceal = 0
     " ----------------------------
 
+    " syntastic ------------------
+    let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+    " ----------------------------
+
 endif
