@@ -107,24 +107,21 @@ if filereadable(expand("~/.vundle"))
     let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
     let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
 
+    " remap <cr> to open file in a new tab
     let g:ctrlp_prompt_mappings = {
         \ 'AcceptSelection("e")': ['<c-t>'],
         \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ } " remap <cr> to open file in a new tab
+    \ }
     " ----------------------------
 
     " tagbar ---------------------
-    map <Leader>tb :TagbarToggle<CR>
+    map <Leader>tt :TagbarToggle<CR>
     let g:tagbar_autofocus = 1
     let g:tagbar_autoclose = 1
     " ----------------------------
 
     " nyancat --------------------
     map <Leader>N :Nyancat2<CR>
-    " ----------------------------
-
-    " vim-prose ------------------
-    map <Leader>vp :VimProseEnable<CR>
     " ----------------------------
 
     " gundo ----------------------
@@ -143,6 +140,7 @@ if filereadable(expand("~/.vundle"))
 
     " syntastic ------------------
     let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+    map <Leader>sr :SyntasticReset<CR>
     " ----------------------------
 
 endif
