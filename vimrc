@@ -25,9 +25,16 @@ let mapleader = ","
 " quickly undo text highlighting
 map <C-h> :nohl<CR>
 
+" toggle pastemode
 map <Leader>pt :set invpaste<CR>
-map <Leader>ln :set invnumber<CR>
+" toggle line-numbers
+map <Leader>n :set invnumber<CR>
+" toggle relative line-numbers
 map <Leader>rn :set invrelativenumber<CR>
+" location-list next
+map <Leader>ln :lnext<CR>
+" location-list previous
+map <Leader>lp :lprevious<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
@@ -141,6 +148,7 @@ if filereadable(expand("~/.vundle"))
     " syntastic ------------------
     let g:syntastic_ruby_checkers = ['mri', 'rubocop']
     map <Leader>sr :SyntasticReset<CR>
+    map <Leader>se :Errors<CR>
     " ----------------------------
 
 endif
