@@ -147,4 +147,5 @@ unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
 # katello goodies
 if [[ -f "/home/adprice/bin/gkatello" ]]; then
     alias k="gkatello -u admin -p admin"
+    complete -F _katello k
 fi
