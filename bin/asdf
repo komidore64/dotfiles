@@ -10,11 +10,11 @@ char_range = [32, 126]
 
 random.seed()
 try:
-
     while True:
         sys.stdout.write("%s" % chr(random.randint(*char_range)))
         sys.stdout.flush()
         time.sleep(0.0001)
 
 except KeyboardInterrupt:
+    sys.stdout.write("\n")
     exit()
