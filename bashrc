@@ -1,9 +1,10 @@
 # ~/.bashrc
+# vim:ft=sh
 
 function bashrc_home_bin_path {
     # if there is a $HOME/bin folder, then add it to PATH
     if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
-        export PATH="$PATH:$HOME/bin"
+        PATH="$PATH:$HOME/bin"
     fi
 }
 
@@ -25,9 +26,6 @@ if [[ $OSX != 0 ]]; then
     shopt -s dirspell
     shopt -s checkjobs
 
-    ps1_sym=$'\u25b6'
-    ps2_sym=$'\u21b3'
-
 fi
 
 # if this is OS X
@@ -38,12 +36,7 @@ if [[ $OSX == 0 ]]; then
     alias ls='ls -G' # ls with colors
     alias which='which -a' # mac 'which'
 
-    ps1_sym='=>'
-    ps2_sym='->'
-
 fi
-
-ps1_div='|'
 
 # if this is a raspberry pi or a nitrous.io box
 if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
@@ -59,7 +52,7 @@ if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
 
 fi
 
-# source RVM, if RVM is installed
+# include RVM, if RVM is installed
 if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin
 fi
@@ -135,8 +128,11 @@ fi
 for f in ~/.completion/**; do source $f; done
 
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_BOLD_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
-PS2="$COLOR_BOLD_LIGHT_GREEN$ps2_sym$COLOR_RESET "
+ps1_sym='=>'
+ps2_sym='-->'
+ps1_div='|'
+PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
+PS2="$COLOR_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 
 # to keep from messing up tmux's window auto-naming
 PROMPT_COMMAND=''
