@@ -1,3 +1,4 @@
+# ~/.gitconfig
 # vim:ft=cfg
 
 [color]
@@ -45,6 +46,6 @@
 [tig]
     tab-size = 4
 [help]
-    autocorrect = 25
+    autocorrect = 25 # /10 seconds
 [init]
     templatedir = ~/.git_template
