@@ -34,7 +34,7 @@ if [[ $OSX == 0 ]]; then
     bashrc_home_bin_path
 
     alias ls='ls -G' # ls with colors
-    alias which='which -a' # mac 'which'
+    alias which='which -a' # mac/bsd 'which'
 
 fi
 
@@ -84,8 +84,9 @@ fi
 export EDITOR='vim'
 export PAGER='less'
 
-alias sl='ls'
-alias xit='exit'
+alias sl='ls'      # catch
+alias s='ls'       # all the
+alias xit='exit'   # typos!
 alias ll='ls -lah'
 alias tree='tree -C'
 alias mv='mv -i'

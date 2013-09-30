@@ -23,7 +23,7 @@
     lst = log --stat
     fa = fetch --all --prune
     fat = fetch --all --prune --tags
-    fuckit = reset --hard HEAD
+    ragequit = reset --hard HEAD
     ctags = !.git/hooks/ctags
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
