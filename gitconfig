@@ -8,22 +8,17 @@
     interactive = auto
     ui = auto
 [alias]
-    st = status
-    d = diff
     dt = difftool
     mt = mergetool
     dw = diff --word-diff
     co = checkout
-    c = commit
-    ca = commit --amend
     b = branch
     bm = branch --merged
     bum = branch --no-merged
     logme = log --author=\"Adam Price\"
     lst = log --stat
     fa = fetch --all --prune
-    fat = fetch --all --prune --tags
-    ragequit = reset --hard HEAD
+    rage = reset --hard HEAD
     ctags = !.git/hooks/ctags
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
