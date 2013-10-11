@@ -18,3 +18,8 @@ weechat/weechat_fifo*
 # ignore installed vim plugins
 !vim/bundle/vundle/*
 vim/bundle/*
+
+# rvm
+.rvmrc
+.ruby-version
+.ruby-gemset
