@@ -8,6 +8,13 @@ function bashrc_home_bin_path {
     fi
 }
 
+# shared bash history
+shopt -s histappend
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=9001
+export HISTFILESIZE=9001
+export PROMPT_COMMAND='history -a; history -c; history -r'
+
 shopt -s cdspell
 
 # stop the terminal from grabbing CTRL-s so i can forward- and reverse-search
@@ -134,9 +141,6 @@ ps2_sym='-->'
 ps1_div='|'
 PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
 PS2="$COLOR_LIGHT_GREEN$ps2_sym$COLOR_RESET "
-
-# to keep from messing up tmux's window auto-naming
-PROMPT_COMMAND=''
 
 # cleanup
 unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
