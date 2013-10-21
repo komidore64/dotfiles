@@ -91,9 +91,10 @@ fi
 export EDITOR='vim'
 export PAGER='less'
 
-alias sl='ls'      # catch
-alias s='ls'       # all the
-alias xit='exit'   # typos!
+alias l='ls'        # catch
+alias s='ls'        # all
+alias sl='ls'       # the
+alias xit='exit'    # typos
 alias ll='ls -lah'
 alias tree='tree -C'
 alias mv='mv -i'
