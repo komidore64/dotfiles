@@ -111,8 +111,12 @@ if __FILE__ == $0
     options[:sets] = [:common, :linux]
     options[:flags] = []
 
-    opts.banner = "USAGE: #{__FILE__} [OPTIONS]"
+    opts.banner = "USAGE: ruby #{__FILE__} [OPTIONS]"
     opts.version = "#{__FILE__} #{Derpfiles::VERSION} Copyright (C) M. Adam Price"
+
+    opts.on("--linux", "install dotfiles for a linux system (default)") do
+      options[:flags] << :linux
+    end
 
     opts.on("--nitrous", "install dotfiles on a nitrous.io box") do
       options[:sets] << :nitrous
@@ -129,9 +133,9 @@ if __FILE__ == $0
 
   begin
     optparse.parse!
-    raise OptionParser::AmbiguousArgument, "can only supply one of [ --nitrous, --nogui ]" if options[:flags].size > 1
+    raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nitrous, --nogui ]" if options[:flags].size > 1
     Derpfiles.install_dotfiles(options[:sets])
-  rescue Exception => e
+  rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
     exit 1
   end
