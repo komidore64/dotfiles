@@ -123,6 +123,7 @@ alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
 alias gdw='git diff --word-diff'
+alias girt='git'
 
 # things that i edit often
 alias vimrc='$EDITOR ~/.vimrc'

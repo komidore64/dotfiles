@@ -22,6 +22,7 @@
     ctags = !.git/hooks/ctags
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
+    cp = cherry-pick
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
