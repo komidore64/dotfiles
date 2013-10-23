@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# fire up a webserver on a local directory really quick
+
+# USAGE: quicksrv [DIRECTORY]
+# DIRECTORY defaults to . if not given
+
+ruby -run -e httpd ${1:-.}. -p 5000
