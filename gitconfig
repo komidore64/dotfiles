@@ -23,6 +23,7 @@
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
     cp = cherry-pick
+    pr = pull-request # hub
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com

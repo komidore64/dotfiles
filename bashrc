@@ -108,6 +108,8 @@ alias vim='vim -p'
 alias f='figlet'
 alias c='cowsay'
 
+alias git='hub' # hook into hub
+
 function g {
     if [[ $# > 0 ]]; then
         git $@
@@ -123,7 +125,7 @@ alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
 alias gdw='git diff --word-diff'
-alias girt='git'
+alias girt='git' # typo catch
 
 # things that i edit often
 alias vimrc='$EDITOR ~/.vimrc'
