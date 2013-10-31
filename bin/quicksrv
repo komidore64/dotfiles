@@ -4,4 +4,4 @@
 # USAGE: quicksrv [DIRECTORY]
 # DIRECTORY defaults to . if not given
 
-ruby -run -e httpd ${1:-.}. -p 5000
+ruby -run -e httpd ${1:-.} -p 5000
