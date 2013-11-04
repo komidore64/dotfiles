@@ -40,7 +40,7 @@ map <Leader>lp :lprevious<CR>
 map K <Nop>
 
 " refresh if file changes outside of vim
-set autoread
+set autoread " i'm not sure this does what i think it does
 
 set showcmd
 set showmode
@@ -75,7 +75,7 @@ set wildmode=list:longest
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
-" stop vim from restoring screen contents on exit. it looks cooler.
+" stop vim from restoring screen contents on exit. it looks badass
 set t_ti= t_te=
 
 " disable netrw --------------

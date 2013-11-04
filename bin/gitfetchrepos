@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+for g in $(find ~/ -maxdepth 2 -name .git -type d); do
+    g=$(echo $g | sed -e "s/.git//")
+    pushd $g
+    git fetch --all --prune
+    popd $g
+done
