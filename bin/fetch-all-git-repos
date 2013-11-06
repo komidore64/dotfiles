@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+wd=${1:-~/}
+echo "running in "$wd
+cd $wd
+sleep 3
+echo
+for g in $(find $wd -maxdepth 2 -name .git -type d); do
+    g=$(echo $g | sed -e "s/.git//")
+    pushd $g > /dev/null 2>&1
+    echo $g
+    git fetch --all --prune 2> /dev/null
+    popd > /dev/null 2>&1
+    echo
+done

@@ -29,6 +29,7 @@ module Derpfiles
       "bashrc" => ".bashrc",
       "bin/asdf" => "bin/asdf",
       "bin/hub" => "bin/hub",
+      "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
       "bin/quicksrv" => "bin/quicksrv",
       "bin/vundle-update" => "bin/vundle-update",
       "completion" => ".completion",
