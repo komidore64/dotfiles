@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
 # derpfiles - install your dotfiles
-# Copyright (C) 2013  M. Adam Price
+# Copyright (C) 2013 M. Adam Price
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -85,7 +85,7 @@ module Derpfiles
     dirs = dest.scan(/\A(.*)(\/.*)\z/)[0][0]
     force = false
     if File.exists?(dest)
-      force = case prompt("Overwrite %s (default: N)?", "N")
+      force = case prompt("Overwrite #{dest} (default: N)?", "N")
               when "Y", "y"
                 true
               else
@@ -114,7 +114,7 @@ if __FILE__ == $0
     options[:flags] = []
 
     opts.banner = "USAGE: ruby #{__FILE__} [OPTIONS]"
-    opts.version = "#{__FILE__} #{Derpfiles::VERSION} Copyright (C) M. Adam Price"
+    opts.version = "#{__FILE__} #{Derpfiles::VERSION} Copyright (C) 2013 M. Adam Price"
 
     opts.on("--linux", "install dotfiles for a linux system (default)") do
       options[:flags] << :linux
