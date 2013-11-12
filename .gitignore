@@ -1,6 +1,7 @@
 .DS_Store
 .netrwhist
 *.swp
+installer/test/*_fake_home
 
 # sublime-text 2
 *.cache
