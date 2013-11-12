@@ -143,7 +143,7 @@ for f in ~/.completion/**; do source $f; done
 ps1_sym='=>'
 ps2_sym='-->'
 ps1_div='|'
-PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
+PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
 PS2="$COLOR_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 
 # cleanup
