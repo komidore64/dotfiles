@@ -21,7 +21,7 @@ require 'optparse'
 
 module Derpfiles
 
-  VERSION = "0.0.1-alpha-pre"
+  VERSION = "0.0.2"
 
   FILES = {
     :common => {
