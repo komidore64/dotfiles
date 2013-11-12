@@ -77,24 +77,26 @@ module Derpfiles
     result.empty? ? default : result
   end
 
-  def self.symlink(source, destination, force = false)
-    File.delete(destination) if force
+  def self.symlink(source, destination, exists = false)
+    File.delete(destination) if exists
     File.symlink(source, destination)
   end
 
   def self.install_single(src, dest)
     dirs = dest.scan(/\A(.*)(\/.*)\z/)[0][0]
-    force = false
-    if File.exists?(dest)
-      force = case prompt("Overwrite #{dest} (default: N)?", "N")
-              when "Y", "y"
-                true
-              else
-                false
-              end
+    overwrite = true
+    if exists = File.exists?(dest)
+      overwrite = case prompt("Overwrite #{dest} (default: N)?", "N")
+                  when "Y", "y"
+                    true
+                  else
+                    false
+                  end
     end
-    FileUtils.makedirs(dirs)
-    symlink(src, dest, force)
+    if overwrite
+      FileUtils.makedirs(dirs) unless exists
+      symlink(src, dest, exists)
+    end
   end
 
   def self.install_set(set, root_src, root_dest)
