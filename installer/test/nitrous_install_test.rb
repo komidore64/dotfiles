@@ -1,16 +1,7 @@
 require 'fileutils'
 
 class NitrousInstallTest < MiniTest::Unit::TestCase
-
-  def assert_file_install(file)
-    assert(File.exists?(file))
-  end
-
-  def assert_set_installed(set)
-    set.each_value do |file|
-      assert_file_install(File.join([@fake_home, file]))
-    end
-  end
+  include DotfilesAssertionsHelper
 
   def setup
     this_file = File.expand_path(File.dirname(__FILE__))
