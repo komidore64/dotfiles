@@ -75,6 +75,8 @@ set wildmode=list:longest
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+autocmd BufRead *.md set ft=markdown
+
 " stop vim from restoring screen contents on exit. it looks badass
 set t_ti= t_te=
 
