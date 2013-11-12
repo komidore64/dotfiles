@@ -57,6 +57,10 @@ if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
     alias grep='grep --color=auto'
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
+    if [[ -f ~/.timezone ]]; then
+        source ~/.timezone
+    fi
+
 fi
 
 # include RVM, if RVM is installed

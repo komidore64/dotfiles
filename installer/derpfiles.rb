@@ -57,7 +57,8 @@ module Derpfiles
       "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
     },
     :nitrous => {
-      "bin/nitrous-disk-usage" => "bin/nitrous-disk-usage"
+      "bin/nitrous-disk-usage" => "bin/nitrous-disk-usage",
+      "timezone" => ".timezone"
     }
   }
 
