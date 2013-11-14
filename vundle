@@ -28,6 +28,7 @@ Bundle 'daviddavis/vimux'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'elzr/vim-json'
 Bundle 'scrooloose/syntastic'
+Bundle 'mtth/scratch.vim'
 " ----------------------------
 
 " post vundler cleanup -------

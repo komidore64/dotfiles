@@ -153,4 +153,8 @@ if filereadable(expand("~/.vundle"))
     map <Leader>se :Errors<CR>
     " ----------------------------
 
+    " scratch.vim ----------------
+    let g:scratch_autohide = 0
+    " ----------------------------
+
 endif
