@@ -16,6 +16,10 @@ export HISTFILESIZE=9001
 export PROMPT_COMMAND='history -a; history -c; history -r'
 
 shopt -s cdspell
+if [[ $BASH_VERSION > 4 ]]; then
+    shopt -s dirspell
+    shopt -s checkjobs
+fi
 
 # stop the terminal from grabbing CTRL-s so i can forward- and reverse-search
 stty -ixon
@@ -29,9 +33,6 @@ if [[ $OSX != 0 ]]; then
     if [[ -f "/etc/bashrc" ]]; then
         . /etc/bashrc
     fi
-
-    shopt -s dirspell
-    shopt -s checkjobs
 
 fi
 
