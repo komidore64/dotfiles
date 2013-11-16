@@ -10,7 +10,7 @@ Copy them into your home directory, or clone the repository and run the installe
 ruby installer/derpfiles.rb --help # to see how to use the installer
 vundle-update # to install vim plugins after running derpfiles.rb
 ```
-### mac os x
+### mac os x (additional steps)
 
 ```bash
 # get your sublime text settings

@@ -53,8 +53,9 @@ module Derpfiles
       "Xmodmap" => ".Xmodmap"
     },
     :osx => { # saving osx for later. just want to get this finished for now
-      "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",
-      "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
+      # "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",
+      # "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
+      "bash_profile" => ".bash_profile"
     },
     :nitrous => {
       "bin/nitrous-disk-usage" => "bin/nitrous-disk-usage",
@@ -129,16 +130,21 @@ if __FILE__ == $0
       options[:flags] << :nitrous
     end
 
-    opts.on("--nogui", "don't install dotfiles related to graphics") do
+    opts.on("--nogui", "install dotfiles excluding those related to a graphical interface") do
       options[:sets].delete(:linux)
       options[:flags] << :nogui
+    end
+
+    opts.on("--osx", "install dotfiles for mac os x") do
+      options[:sets].delete(:linux)
+      options[:flags] << :osx
     end
 
   end
 
   begin
     optparse.parse!
-    raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nitrous, --nogui ]" if options[:flags].size > 1
+    raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nitrous, --nogui, --osx ]" if options[:flags].size > 1
     Derpfiles.install_dotfiles(options[:sets])
   rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
