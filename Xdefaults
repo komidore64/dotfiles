@@ -1,5 +1,5 @@
-/* vim: set ft=xdefaults : */
-
+! ~/Xdefaults
+! vim:ft=xdefaults
 
 URxvt.background:           #101010
 URxvt.foreground:           #ededed
