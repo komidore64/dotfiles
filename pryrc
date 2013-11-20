@@ -10,6 +10,12 @@ rescue LoadError
   puts "awesome_print not found. skipping..."
 end
 
+begin
+  require 'pry-debugger'
+rescue LoadError
+    puts "pry-debugger not found. skipping..."
+end
+
 if defined?(PryDebugger)
   Pry.commands.alias_command('c', 'continue')
   Pry.commands.alias_command('cont', 'continue')
