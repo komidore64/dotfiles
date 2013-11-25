@@ -30,7 +30,6 @@
 [mergetool]
 	keepBackup = false
 [core]
-    editor = vim
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [apply]
     whitespace=fix
@@ -43,6 +42,6 @@
 [tig]
     tab-size = 4
 [help]
-    autocorrect = 25 # /10 seconds
+    autocorrect = 25 # no idea why, but this is in tenths of a second, so that's 2.5 seconds
 [init]
     templatedir = ~/.git_template
