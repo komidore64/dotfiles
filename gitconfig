@@ -45,3 +45,5 @@
     autocorrect = 25 # no idea why, but this is in tenths of a second, so that's 2.5 seconds
 [init]
     templatedir = ~/.git_template
+[push]
+    default = nothing # incase i accidentally 'git push <repo-name>', don't do anything
