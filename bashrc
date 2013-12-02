@@ -112,6 +112,7 @@ alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias f='figlet'
 alias c='cowsay'
+alias wq="cowsay you\'re not in vim, bro"
 
 alias git='hub' # hook into hub
 
