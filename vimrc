@@ -17,6 +17,8 @@ syntax enable
 filetype plugin indent on
 
 nmap ss :w<CR>
+nmap qq :q<CR>
+nmap QQ :qa!<CR>
 
 " remap <Leader>
 map , <Nop>
