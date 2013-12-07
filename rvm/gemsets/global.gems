@@ -4,6 +4,5 @@ rake
 rvm
 awesome_print
 gist
-pry
-pry-debugger
+jazz_hands
 lolcat
