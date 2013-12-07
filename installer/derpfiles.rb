@@ -87,7 +87,9 @@ module Derpfiles
     dirs = dest.scan(/\A(.*)(\/.*)\z/)[0][0]
     overwrite = true
     if exists = File.exists?(dest)
-      overwrite = case prompt("Overwrite #{dest} (default: N)?", "N")
+      overwrite = case prompt("Overwrite #{dest} [y,N,q]?", "N")
+                  when "Q", "q"
+                    exit 0
                   when "Y", "y"
                     true
                   else
