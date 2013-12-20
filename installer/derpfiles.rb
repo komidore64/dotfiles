@@ -33,6 +33,7 @@ module Derpfiles
       "bin/quicksrv" => "bin/quicksrv",
       "bin/vundle-update" => "bin/vundle-update",
       "completion" => ".completion",
+      "curlrc" => ".curlrc",
       "gitconfig" => ".gitconfig",
       "git_template" => ".git_template",
       "pdbrc" => ".pdbrc",
