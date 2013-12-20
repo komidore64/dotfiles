@@ -16,7 +16,6 @@
     bm = branch --merged
     bum = branch --no-merged
     logme = log --author=\"Adam Price\"
-    lst = log --stat
     fa = fetch --all --prune
     rage = reset --hard HEAD
     ctags = !.git/hooks/ctags
