@@ -24,6 +24,7 @@ if defined?(PryDebugger)
   Pry.commands.alias_command('f', 'finish')
   Pry.commands.alias_command('q', 'exit-all')
   Pry.commands.alias_command('l', 'whereami')
+  Pry.commands.alias_command('jackout', 'disable-pry')
 end
 
 begin
