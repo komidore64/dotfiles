@@ -1,8 +1,7 @@
-rubygems-bundler
 bundler
-rake
 rvm
 awesome_print
 gist
-jazz_hands
+pry-plus
+hirb
 lolcat
