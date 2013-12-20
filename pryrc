@@ -23,4 +23,13 @@ if defined?(PryDebugger)
   Pry.commands.alias_command('n', 'next')
   Pry.commands.alias_command('f', 'finish')
   Pry.commands.alias_command('q', 'exit-all')
+  Pry.commands.alias_command('l', 'whereami')
+end
+
+begin
+  require 'hirb'
+  puts "enabling hirb"
+  Hirb.enable
+rescue LoadError
+  puts "hirb not found. skipping..."
 end
