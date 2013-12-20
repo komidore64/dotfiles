@@ -156,9 +156,3 @@ PS2="$COLOR_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 
 # cleanup
 unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
-
-# katello goodies - this is mostly obsolete now
-if [[ -f "/home/adprice/bin/gkatello" ]]; then
-    alias k="gkatello -u admin -p admin"
-    complete -F _katello k
-fi
