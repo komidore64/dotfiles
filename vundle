@@ -29,6 +29,7 @@ Bundle 'jgdavey/vim-turbux'
 Bundle 'elzr/vim-json'
 Bundle 'scrooloose/syntastic'
 Bundle 'mtth/scratch.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 " ----------------------------
 
 " post vundler cleanup -------

@@ -2,6 +2,7 @@
 
 " fancy vim
 set nocompatible
+colorscheme default
 
 set encoding=utf-8
 
@@ -17,7 +18,6 @@ syntax enable
 filetype plugin indent on
 
 nmap ss :w<CR>
-nmap qq :q<CR>
 nmap QQ :qa!<CR>
 
 " remap <Leader>
@@ -78,9 +78,6 @@ set wildmode=list:longest
 autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd BufRead *.md set ft=markdown
-
-" stop vim from restoring screen contents on exit. it looks badass
-set t_ti= t_te=
 
 " disable netrw --------------
 let g:loaded_netrw = 1
@@ -150,7 +147,8 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " syntastic ------------------
-    let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+    let g:syntastic_ruby_checkers = ['rubocop']
+    let g:syntastic_check_on_wq = 0
     map <Leader>sr :SyntasticReset<CR>
     map <Leader>se :Errors<CR>
     " ----------------------------
@@ -159,4 +157,11 @@ if filereadable(expand("~/.vundle"))
     let g:scratch_autohide = 0
     " ----------------------------
 
+    " vim-indent-guides ----------
+    let g:indent_guides_auto_colors = 0
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    highlight IndentGuidesOdd ctermbg=LightGrey
+    highlight IndentGuidesEven ctermbg=DarkGrey
+    " ----------------------------
 endif
