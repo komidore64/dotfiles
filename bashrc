@@ -110,9 +110,11 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
-alias f='figlet'
-alias c='cowsay'
 alias wq="cowsay you\'re not in vim, bro"
+alias q="cowsay you\'re not in vim, bro"
+
+# TODO: alias some very common vim commands to spit out a random cowsay through lolcat
+# TODO: a couple functions for simple shell outputs (ls, cat, etc) to pipe through lolcat
 
 alias git='hub' # hook into hub
 
@@ -155,7 +157,7 @@ PS2="$COLOR_LIGHT_GREEN$ps2_sym$COLOR_RESET "
 # cleanup
 unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
 
-# katello goodies
+# katello goodies - this is mostly obsolete now
 if [[ -f "/home/adprice/bin/gkatello" ]]; then
     alias k="gkatello -u admin -p admin"
     complete -F _katello k
