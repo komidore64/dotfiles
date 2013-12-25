@@ -1,5 +1,6 @@
 # ~/.bashrc
 # vim:ft=sh
+# DISCLAIMER: i am a bash noob
 
 function bashrc_home_bin_path {
     # if there is a $HOME/bin folder, then add it to PATH
@@ -148,11 +149,10 @@ fi
 for f in ~/.completion/**; do source $f; done
 
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-ps1_sym='=>'
-ps2_sym='-->'
-ps1_div='|'
-PS1="$COLOR_YELLOW\W$COLOR_RESET\$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/ $ps1_div $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET/') $COLOR_LIGHT_PURPLE$ps1_sym$COLOR_RESET "
-PS2="$COLOR_LIGHT_GREEN$ps2_sym$COLOR_RESET "
+PS1="$COLOR_YELLOW\W$COLOR_RESET \
+\$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/| $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET /')\
+$COLOR_LIGHT_PURPLE=>$COLOR_RESET "
+PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
 
 # cleanup
 unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
