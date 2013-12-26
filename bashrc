@@ -152,7 +152,7 @@ for f in ~/.completion/**; do source $f; done
 
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
 PS1="$COLOR_YELLOW\W$COLOR_RESET \
-\$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/| $COLOR_BOLD_LIGHT_CYAN\1$COLOR_RESET /')\
+\$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/| $COLOR_LIGHT_CYAN\1$COLOR_RESET /')\
 $COLOR_LIGHT_PURPLE=>$COLOR_RESET "
 PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
 
