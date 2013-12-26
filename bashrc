@@ -4,7 +4,8 @@
 
 function bashrc_home_bin_path {
     # if there is a $HOME/bin folder, then add it to PATH
-    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
+    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]
+    then
         PATH="$PATH:$HOME/bin"
     fi
 }
@@ -17,7 +18,8 @@ export HISTFILESIZE=9001
 export PROMPT_COMMAND='history -a; history -c; history -r'
 
 shopt -s cdspell
-if [[ $BASH_VERSION > 4 ]]; then
+if [[ $BASH_VERSION > 4 ]]
+then
     shopt -s dirspell
     shopt -s checkjobs
 fi
@@ -25,20 +27,21 @@ fi
 # stop the terminal from grabbing CTRL-s so i can forward- and reverse-search
 stty -ixon
 
-which sw_vers > /dev/null 2>&1
-OSX=$?
 # if this is not OS X
-if [[ $OSX != 0 ]]; then
+if ! which sw_vers > /dev/null 2>&1
+then
 
     # load /etc/bashrc
-    if [[ -f "/etc/bashrc" ]]; then
+    if [[ -f "/etc/bashrc" ]]
+    then
         . /etc/bashrc
     fi
 
 fi
 
 # if this is OS X
-if [[ $OSX == 0 ]]; then
+if which sw_vers > /dev/null 2>&1
+then
 
     bashrc_home_bin_path
 
@@ -48,7 +51,8 @@ if [[ $OSX == 0 ]]; then
 fi
 
 # if this is a raspberry pi or a nitrous.io box
-if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
+if [[ -f /boot/config.txt || $(whoami) == "action" ]]
+then
 
     bashrc_home_bin_path
 
@@ -59,14 +63,16 @@ if [[ -f /boot/config.txt || $(whoami) == "action" ]]; then
     alias grep='grep --color=auto'
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
-    if [[ -f ~/.timezone ]]; then
+    if [[ -f ~/.timezone ]]
+    then
         source ~/.timezone
     fi
 
 fi
 
 # include RVM, if RVM is installed
-if [[ -d "$HOME/.rvm" ]]; then
+if [[ -d "$HOME/.rvm" ]]
+then
     PATH=$PATH:$HOME/.rvm/bin
 fi
 
@@ -80,15 +86,14 @@ fi
 # WHY DOESN'T THIS WORK?! this is stupidly complicated
 # i still think it's an ordering/timing issue (being loaded before something else, etc)
 
-# check to see if tmux is installed
-which tmux > /dev/null 2>&1
-TMUX=$?
 # if tmux is installed
-if [[ $TMUX == 0 ]]; then
+if which tmux > /dev/null 2>&1
+then
 
     # source tmux bash completion, if it exists
     tmux_completion=$(find /usr/share/**/tmux-* -name bash_completion_tmux.sh 2> /dev/null)
-    if [[ -f $tmux_completion ]]; then
+    if [[ -f $tmux_completion ]]
+    then
         source $tmux_completion
     fi
 
@@ -111,16 +116,12 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
-alias wq="cowsay you\'re not in vim, bro"
-alias q="cowsay you\'re not in vim, bro"
-
-# TODO: alias some very common vim commands to spit out a random cowsay through lolcat
-# TODO: a couple functions for simple shell outputs (ls, cat, etc) to pipe through lolcat
 
 alias git='hub' # hook into hub
 
 function g {
-    if [[ $# > 0 ]]; then
+    if [[ $# > 0 ]]
+    then
         git $@
     else
         git status --short --branch
@@ -141,7 +142,8 @@ alias vimrc='$EDITOR ~/.vimrc'
 alias gitconfig='$EDITOR ~/.gitconfig'
 alias bashrc='$EDITOR ~/.bashrc'
 
-if [[ -f ~/.bash_colors ]]; then
+if [[ -f ~/.bash_colors ]]
+then
     source ~/.bash_colors
 fi
 
@@ -155,4 +157,4 @@ $COLOR_LIGHT_PURPLE=>$COLOR_RESET "
 PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
 
 # cleanup
-unset bashrc_home_bin_path TMUX tmux_completion OSX ps1_sym ps2_sym ps1_div f
+unset bashrc_home_bin_path tmux_completion f
