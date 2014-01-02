@@ -50,8 +50,8 @@ then
 
 fi
 
-# if this is a raspberry pi or a nitrous.io box
-if [[ -f /boot/config.txt || $(whoami) == "action" ]]
+# if this is a raspberry pi
+if [[ -f /boot/config.txt ]]
 then
 
     bashrc_home_bin_path
@@ -62,6 +62,21 @@ then
     alias fgrep='fgrep --color=auto'
     alias grep='grep --color=auto'
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+
+fi
+
+# if this is a nitrous.io box
+if [[ $(whoami) == "action" ]]
+then
+
+    bashrc_home_bin_path
+
+    # basic aliases
+    alias ls='ls --color=auto'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias grep='grep --color=auto'
+    alias which='which -a' # dumb 'which'
 
     if [[ -f ~/.timezone ]]
     then
