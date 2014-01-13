@@ -17,15 +17,11 @@ rescue LoadError
   puts "hirb not found. skipping..."
 end
 
-[ 'pry-debugger',
-  'pry-git',
-  'pry-doc',
-  'pry-rails',
-  'pry-stack_explorer' ].each do |lib|
+%w(pry-debugger pry-stack_explorer pry-rescue).each do |lib|
   begin
     require lib
   rescue LoadError
-      puts "#{lib} not found. skipping..."
+    puts "#{lib} not found. skipping..."
   end
 end
 
@@ -39,4 +35,3 @@ if defined?(PryDebugger)
   Pry.commands.alias_command('l', 'whereami')
   Pry.commands.alias_command('jackout', 'disable-pry')
 end
-
