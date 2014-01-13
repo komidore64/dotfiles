@@ -24,19 +24,19 @@ nmap QQ :qa!<CR>
 map , <Nop>
 let mapleader = ","
 
-" quickly undo text highlighting
+" undo text highlighting
 map <C-h> :nohl<CR>
 
 " toggle pastemode
 map <Leader>pt :set invpaste<CR>
 " toggle line-numbers
-map <Leader>n :set invnumber<CR>
+map <Leader>ln :set invnumber<CR>
 " toggle relative line-numbers
 map <Leader>rn :set invrelativenumber<CR>
-" location-list next
-map <Leader>ln :lnext<CR>
-" location-list previous
-map <Leader>lp :lprevious<CR>
+" open tig on the current file
+map <Leader>tig :!tig %<CR>
+" open tig --all on the current file
+map <Leader>tiga :!tig --all %<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
@@ -74,9 +74,18 @@ set smarttab
 " vim command-line tab-completion
 set wildmode=list:longest
 
+" Highlight end of line whitespace
+highlight TrailingWhitespace ctermbg=yellow
+call matchadd("TrailingWhitespace", '\s\+$')
+
+" highlight characters that are in columns greater than 120
+highlight LongLine cterm=reverse
+call matchadd("LongLine", '\%>120v.\+')
+
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" be sure to set filetype for markdown files
 autocmd BufRead *.md set ft=markdown
 
 " disable netrw --------------
@@ -87,7 +96,7 @@ let g:loaded_netrwPlugin = 1
 " vimdiff --------------------
 highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
 highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
-highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
+highlight DiffText term=reverse cterm=bold ctermbg=grey ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 " ----------------------------
 
@@ -150,7 +159,18 @@ if filereadable(expand("~/.vundle"))
     let g:syntastic_ruby_checkers = ['rubocop']
     let g:syntastic_check_on_wq = 0
     map <Leader>sr :SyntasticReset<CR>
-    map <Leader>se :Errors<CR>
+    map <Leader>se :Errors<CR>:ll<CR>
+
+    " quickfix window
+    "
+    " go to current highlighted location
+    map <Leader>qfl :ll<CR>
+    " location-list next
+    map <Leader>qfn :lnext<CR>
+    " location-list previous
+    map <Leader>qfp :lprevious<CR>
+    " close the quickfix window
+    map <Leader>qfq :lclose<CR>
     " ----------------------------
 
     " scratch.vim ----------------
@@ -161,7 +181,7 @@ if filereadable(expand("~/.vundle"))
     let g:indent_guides_auto_colors = 0
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
-    highlight IndentGuidesOdd ctermbg=LightGrey
-    highlight IndentGuidesEven ctermbg=DarkGrey
+    highlight IndentGuidesOdd ctermbg=lightgrey
+    highlight IndentGuidesEven ctermbg=darkgrey
     " ----------------------------
 endif
