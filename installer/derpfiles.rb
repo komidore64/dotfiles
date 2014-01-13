@@ -40,6 +40,7 @@ module Derpfiles
       "pryrc" => ".pryrc",
       "rdebugrc" => ".rdebugrc",
       "rvmrc" => ".rvmrc",
+      "rvm/gemsets/global.gems" => ".rvm/gemsets/global.gems",
       "tmux.conf" => ".tmux.conf",
       "vim" => ".vim",
       "vimrc" => ".vimrc",
