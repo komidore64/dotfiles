@@ -17,7 +17,7 @@ rescue LoadError
   puts "hirb not found. skipping..."
 end
 
-%w(pry-debugger pry-stack_explorer pry-rescue).each do |lib|
+%w(pry-debugger pry-stack_explorer).each do |lib|
   begin
     require lib
   rescue LoadError
