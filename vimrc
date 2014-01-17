@@ -156,8 +156,10 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " syntastic ------------------
-    let g:syntastic_ruby_checkers = ['rubocop']
+    let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+    let g:syntastic_quiet_warnings = 0
     let g:syntastic_check_on_wq = 0
+    map <Leader>sc :SyntasticCheck<CR>
     map <Leader>sr :SyntasticReset<CR>
     map <Leader>se :Errors<CR>:ll<CR>
 
