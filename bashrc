@@ -165,8 +165,16 @@ fi
 # source bash-completion files
 for f in ~/.completion/**; do source $f; done
 
+function bashrc_prompt_pwd {
+    if [[ $PWD == $HOME ]]; then
+        echo "~"
+    else
+        pwd | awk -F/ '{print $NF}'
+    fi
+}
+
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-PS1="$COLOR_YELLOW\W$COLOR_RESET \
+PS1="$COLOR_YELLOW\$(bashrc_prompt_pwd)$COLOR_RESET \
 \$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/| $COLOR_LIGHT_CYAN\1$COLOR_RESET /')\
 $COLOR_LIGHT_PURPLE=>$COLOR_RESET "
 PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
