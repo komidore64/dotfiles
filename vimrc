@@ -2,9 +2,9 @@
 
 " fancy vim
 set nocompatible
-colorscheme default
-
+set lazyredraw
 set encoding=utf-8
+colorscheme default
 
 " one place for vim swap files
 set directory=~/.vim/
@@ -63,7 +63,8 @@ set smartcase
 set ruler
 
 " how to represent invisible characters
-set listchars=tab:/*,eol:$,nbsp:%
+set listchars=tab:/*,eol:¬,extends:»,precedes:«
+set list
 
 " have some sensible defaults
 set tabstop=4
@@ -165,7 +166,7 @@ if filereadable(expand("~/.vundle"))
 
     " quickfix window
     "
-    " go to current highlighted location
+    " go to current highlighted location (nmemonic: qf => quickfix)
     map <Leader>qfl :ll<CR>
     " location-list next
     map <Leader>qfn :lnext<CR>
