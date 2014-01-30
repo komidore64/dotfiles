@@ -23,6 +23,8 @@
     vac = gc --aggressive --prune=now
     cp = cherry-pick
     pr = pull-request # hub
+    rbc = rebase --continue
+    rba = rebase --abort
 [user]
 	name = Adam Price
 	email = komidore64@gmail.com
