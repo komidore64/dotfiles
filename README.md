@@ -6,9 +6,9 @@ Copy them into your home directory, or clone the repository and run the installe
 
 ## installation
 
-```bash
-mkdir ~/.rvm/gemsets && ln -s /<dotfiles>/rvm/gemsets/global.gems ~/.rvm/gemsets/
-# install RVM
+```sh
+mkdir -p ~/.rvm/gemsets && ln -s /<dotfiles>/rvm/gemsets/global.gems ~/.rvm/gemsets/
+\curl -sSL https://get.rvm.io | bash -s stable --ruby=2.0.0 # install RVM along with at least one ruby
 ruby installer/derpfiles.rb --help # to see how to use the installer
 vundle-update # to install vim plugins after running derpfiles.rb
 ```
