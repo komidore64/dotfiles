@@ -30,6 +30,7 @@ Bundle 'elzr/vim-json'
 Bundle 'scrooloose/syntastic'
 Bundle 'mtth/scratch.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'vim-scripts/SmartCase'
 " ----------------------------
 
 " post vundler cleanup -------
