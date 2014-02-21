@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+modified = `git status --porcelain`.split
+modified = modified.reject { |v| modified.index(v).even? }
+
+files = ARGV.collect { |v| v.to_i }.inject([]) { |arr, num| arr << modified[num - 1] }.compact
+
+exec "vim -p #{files.join(" ")}"
