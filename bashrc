@@ -131,6 +131,7 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
+alias lol='lolcat'
 
 alias git='hub' # hook into hub
 
@@ -151,11 +152,6 @@ alias gap='git add --patch'
 alias gc='git commit'
 alias gdw='git diff --word-diff'
 alias girt='git' # typo catch
-
-# things that i edit often
-alias vimrc='$EDITOR ~/.vimrc'
-alias gitconfig='$EDITOR ~/.gitconfig'
-alias bashrc='$EDITOR ~/.bashrc'
 
 if [[ -f ~/.bash_colors ]]
 then
