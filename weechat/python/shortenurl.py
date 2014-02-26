@@ -80,8 +80,10 @@ def incoming_hook(data, modifier, modifier_data, string):
 
 
 def outgoing_hook(data, modifier, modifier_data, string):
-    return find_and_process_urls(string, use_color=False)
-
+    if weechat.config_get_plugin("short_own") == "on":
+        return find_and_process_urls(string, use_color=False)
+    else:
+        return string
 
 def find_and_process_urls(string, use_color=True):
     new_message = string
