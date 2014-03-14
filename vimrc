@@ -33,10 +33,6 @@ map <Leader>pt :set invpaste<CR>
 map <Leader>ln :set invnumber<CR>
 " toggle relative line-numbers
 map <Leader>rn :set invrelativenumber<CR>
-" open tig on the current file
-map <Leader>tig :!tig %<CR>
-" open tig --all on the current file
-map <Leader>tiga :!tig --all %<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
@@ -86,8 +82,8 @@ call matchadd("LongLine", '\%>120v.\+')
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
-" be sure to set filetype for markdown files
 autocmd BufRead *.md set ft=markdown
+autocmd BufRead,BufNewFile *.quicktask setf quicktask
 
 " disable netrw --------------
 let g:loaded_netrw = 1
@@ -102,7 +98,7 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 " ----------------------------
 
 " spell-checking -------------
-highlight SpellCap cterm=undercurl ctermbg=cyan ctermfg=black
+highlight SpellCap cterm=undercurl ctermbg=grey ctermfg=black
 highlight SpellBad cterm=undercurl ctermbg=red ctermfg=black
 highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
 " ----------------------------
@@ -132,20 +128,6 @@ if filereadable(expand("~/.vundle"))
     \ }
     " ----------------------------
 
-    " tagbar ---------------------
-    map <Leader>tt :TagbarToggle<CR>
-    let g:tagbar_autofocus = 1
-    let g:tagbar_autoclose = 1
-    " ----------------------------
-
-    " nyancat --------------------
-    map <Leader>N :Nyancat2<CR>
-    " ----------------------------
-
-    " gundo ----------------------
-    map <Leader>gt :GundoToggle<CR>
-    " ----------------------------
-
     " vimux ----------------------
     map <Leader>vc :VimuxPromptCommand<CR>
     map <Leader>vl :VimuxRunLastCommand<CR>
@@ -158,7 +140,7 @@ if filereadable(expand("~/.vundle"))
 
     " syntastic ------------------
     let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-    let g:syntastic_quiet_warnings = 0
+    let g:syntastic_quiet_messages = {'level': []}
     let g:syntastic_check_on_wq = 0
     map <Leader>sc :SyntasticCheck<CR>
     map <Leader>sr :SyntasticReset<CR>
@@ -176,15 +158,4 @@ if filereadable(expand("~/.vundle"))
     map <Leader>qfq :lclose<CR>
     " ----------------------------
 
-    " scratch.vim ----------------
-    let g:scratch_autohide = 0
-    " ----------------------------
-
-    " vim-indent-guides ----------
-    let g:indent_guides_auto_colors = 0
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-    highlight IndentGuidesOdd ctermbg=lightgrey
-    highlight IndentGuidesEven ctermbg=darkgrey
-    " ----------------------------
 endif

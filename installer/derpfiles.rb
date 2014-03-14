@@ -32,6 +32,7 @@ module Derpfiles
       "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
       "bin/git-vim" => "bin/git-vim",
       "bin/quicksrv" => "bin/quicksrv",
+      "bin/todo" => "bin/todo",
       "bin/vundle-update" => "bin/vundle-update",
       "completion" => ".completion",
       "curlrc" => ".curlrc",
