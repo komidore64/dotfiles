@@ -4,8 +4,7 @@
 
 function bashrc_home_bin_path {
     # if there is a $HOME/bin folder, then add it to PATH
-    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]
-    then
+    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
         PATH="$PATH:$HOME/bin"
     fi
 }
@@ -18,8 +17,7 @@ export HISTFILESIZE=9001
 export PROMPT_COMMAND='history -a; history -c; history -r'
 
 shopt -s cdspell
-if [[ $BASH_VERSION > 4 ]]
-then
+if [[ $BASH_VERSION > 4 ]]; then
     shopt -s dirspell
     shopt -s checkjobs
 fi
@@ -28,8 +26,7 @@ fi
 stty -ixon
 
 # if this is not OS X
-if ! which sw_vers > /dev/null 2>&1
-then
+if ! which sw_vers > /dev/null 2>&1; then
 
     # load /etc/bashrc
     if [[ -f "/etc/bashrc" ]]
@@ -40,8 +37,7 @@ then
 fi
 
 # if this is OS X
-if which sw_vers > /dev/null 2>&1
-then
+if which sw_vers > /dev/null 2>&1; then
 
     bashrc_home_bin_path
 
@@ -51,8 +47,7 @@ then
 fi
 
 # if this is a raspberry pi
-if [[ -f /boot/config.txt ]]
-then
+if [[ -f /boot/config.txt ]]; then
 
     bashrc_home_bin_path
 
@@ -66,8 +61,7 @@ then
 fi
 
 # if this is a nitrous.io box
-if [[ $(whoami) == "action" ]]
-then
+if [[ $(whoami) == "action" ]]; then
 
     bashrc_home_bin_path
 
@@ -78,16 +72,14 @@ then
     alias grep='grep --color=auto'
     alias which='which -a' # dumb 'which'
 
-    if [[ -f ~/.timezone ]]
-    then
+    if [[ -f ~/.timezone ]]; then
         source ~/.timezone
     fi
 
 fi
 
 # include RVM, if RVM is installed
-if [[ -d "$HOME/.rvm" ]]
-then
+if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin
 fi
 
@@ -102,13 +94,11 @@ fi
 # i still think it's an ordering/timing issue (being loaded before something else, etc)
 
 # if tmux is installed
-if which tmux > /dev/null 2>&1
-then
+if which tmux > /dev/null 2>&1; then
 
     # source tmux bash completion, if it exists
     tmux_completion=$(find /usr/share/**/tmux-* -name bash_completion_tmux.sh 2> /dev/null)
-    if [[ -f $tmux_completion ]]
-    then
+    if [[ -f $tmux_completion ]]; then
         source $tmux_completion
     fi
 
@@ -136,8 +126,7 @@ alias lol='lolcat'
 alias git='hub' # hook into hub
 
 function g {
-    if [[ $# > 0 ]]
-    then
+    if [[ $# > 0 ]]; then
         git $@
     else
         git status --short --branch
@@ -153,8 +142,7 @@ alias gc='git commit'
 alias gdw='git diff --word-diff'
 alias girt='git' # typo catch
 
-if [[ -f ~/.bash_colors ]]
-then
+if [[ -f ~/.bash_colors ]]; then
     source ~/.bash_colors
 fi
 
