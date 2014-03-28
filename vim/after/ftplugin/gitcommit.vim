@@ -1,1 +1,3 @@
 setlocal nolist
+
+normal gg
