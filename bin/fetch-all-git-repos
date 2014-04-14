@@ -1,15 +1,34 @@
 #!/usr/bin/env bash
+#
+# fetch all my repos for me
+
+# this probably should be written in something other than bash, but whatever
+
+declare -A repos
+repos[foreman]='develop'
 
 wd=${1:-~/}
 echo "running in "$wd
 cd $wd
 sleep 3
 echo
-for g in $(find $wd -maxdepth 2 -name .git -type d); do
-    g=$(echo $g | sed -e "s/.git//")
+ds=$(find $wd -maxdepth 2 -name .git -type d | xargs -n 1 dirname)
+for g in $ds; do
     pushd $g > /dev/null 2>&1
     echo $g
     git fetch --all --prune
     popd > /dev/null 2>&1
     echo
+done
+
+echo '=========='
+echo
+for g in $ds; do
+    pushd $g > /dev/null 2>&1
+    reponame=$(echo $g | awk -F/ '{print $NF}')
+    branch=${repos[$reponame]:-master}
+    if [[ -n $(git remote | grep upstream) ]] && [[ $(git rev-parse $branch) != $(git rev-parse upstream/$branch) ]]; then
+        echo "$reponame not at upstream/$branch"
+    fi
+    popd > /dev/null 2>&1
 done
