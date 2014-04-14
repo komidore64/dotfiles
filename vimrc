@@ -33,6 +33,8 @@ map <Leader>pt :set invpaste<CR>
 map <Leader>ln :set invnumber<CR>
 " toggle relative line-numbers
 map <Leader>rn :set invrelativenumber<CR>
+" easy way to toggle spell checking
+map <Leader>sp :set invspell<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
