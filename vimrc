@@ -84,7 +84,7 @@ call matchadd("LongLine", '\%>120v.\+')
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
-autocmd BufRead *.md set ft=markdown
+autocmd BufRead,BufNewFile *.md set ft=markdown
 autocmd BufRead,BufNewFile *.quicktask setf quicktask
 
 " disable netrw --------------
