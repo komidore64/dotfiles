@@ -4,16 +4,27 @@
 
 # this probably should be written in something other than bash, but whatever
 
+# get a kerberos login for internal repos
+if (which kinit klist > /dev/null 2>&1) && (! klist -s); then
+    echo "no kerberos cache found"
+    echo "running: kinit"
+    kinit
+    echo
+fi
+
+# repos that don't use 'master' as development branch
 declare -A repos
 repos[foreman]='develop'
 
+# location where all your git repos are
 wd=${1:-~/}
 echo "running in "$wd
 cd $wd
 sleep 3
 echo
-ds=$(find $wd -maxdepth 2 -name .git -type d | xargs -n 1 dirname)
-for g in $ds; do
+
+directories=$(find $wd -maxdepth 2 -name .git -type d | xargs -n 1 dirname)
+for g in $directories; do
     pushd $g > /dev/null 2>&1
     echo $g
     git fetch --all --prune
@@ -21,9 +32,10 @@ for g in $ds; do
     echo
 done
 
+# show which repos need to merge in upstream
 echo '=========='
 echo
-for g in $ds; do
+for g in $directories; do
     pushd $g > /dev/null 2>&1
     reponame=$(echo $g | awk -F/ '{print $NF}')
     branch=${repos[$reponame]:-master}
