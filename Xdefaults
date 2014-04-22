@@ -45,11 +45,11 @@ URxvt.cursorColor:          #666666
 ! URxvt*boldFont:             xft:DejaVu Sans Mono:bold:antialias=true:hinting=true:size=12
 ! URxvt*italicFont:           xft:DejaVu Sans Mono:italic:antialias=true:hinting=true:size=12
 ! URxvt*boldItalicFont:       xft:DejaVu Sans Mono:bold:italic:antialias=true:hinting=true:size=12
-URxvt.font:                 xft:source code pro:antialias=true:hinting=true:size=11
-URxvt.imfont:               xft:source code pro:antialias=true:hinting=true:size=11
-URxvt.boldFont:             xft:source code pro:bold:antialias=true:hinting=true:size=11
-URxvt.italicFont:           xft:source code pro:italic:antialias=true:hinting=true:size=11
-URxvt.boldItalicFont:       xft:source code pro:bold:italic:antialias=true:hinting=true:size=11
+URxvt.font:                 xft:source code pro:antialias=true:hinting=true:size=10
+URxvt.imfont:               xft:source code pro:antialias=true:hinting=true:size=10
+URxvt.boldFont:             xft:source code pro:bold:antialias=true:hinting=true:size=10
+URxvt.italicFont:           xft:source code pro:italic:antialias=true:hinting=true:size=10
+URxvt.boldItalicFont:       xft:source code pro:bold:italic:antialias=true:hinting=true:size=10
 
 
 /* options */
