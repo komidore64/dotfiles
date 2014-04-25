@@ -9,13 +9,6 @@ function bashrc_home_bin_path {
     fi
 }
 
-# shared bash history
-shopt -s histappend
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=9001
-export HISTFILESIZE=9001
-export PROMPT_COMMAND='history -a; history -c; history -r'
-
 shopt -s cdspell
 if [[ $BASH_VERSION > 4 ]]; then
     shopt -s dirspell
@@ -149,19 +142,35 @@ fi
 # source bash-completion files
 for f in ~/.completion/**; do source $f; done
 
-function bashrc_prompt_pwd {
-    if [[ $PWD == $HOME ]]; then
-        echo "~"
-    else
-        pwd | awk -F/ '{print $NF}'
-    fi
-}
-
 # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-PS1="$COLOR_YELLOW\$(bashrc_prompt_pwd)$COLOR_RESET \
-\$(\git branch 2> /dev/null | grep -e '^\* ' | sed 's/^..\(.*\)/| $COLOR_LIGHT_CYAN\1$COLOR_RESET /')\
-$COLOR_LIGHT_PURPLE=>$COLOR_RESET "
+function __bashrc_prompt {
+    local exitstatus=$?
+    local prompt=''
+
+    # show a user if it isn't the one who created the shell
+
+    # working directory
+    if [[ $PWD != $HOME ]]; then
+        prompt+=$COLOR_YELLOW$(pwd | awk -F/ '{print $NF}')$COLOR_RESET' '
+    fi
+
+    # exit status
+    if [[ $exitstatus -ne 0 ]]; then
+        prompt+=$COLOR_RED'=>'$COLOR_RESET
+    else
+        prompt+='=>'
+    fi
+
+    PS1=$prompt' '
+}
 PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
+
+# shared bash history
+shopt -s histappend
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=9001
+export HISTFILESIZE=9001
+export PROMPT_COMMAND='__bashrc_prompt; history -a; history -c; history -r'
 
 # cleanup
 unset bashrc_home_bin_path tmux_completion f
