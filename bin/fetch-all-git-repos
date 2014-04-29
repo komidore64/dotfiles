@@ -8,7 +8,7 @@
 if (which kinit klist > /dev/null 2>&1) && (! klist -s); then
     echo "no kerberos cache found"
     echo "running: kinit"
-    kinit
+    while ! kinit; do echo "try again: kinit"; done
     echo
 fi
 
