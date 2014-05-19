@@ -4,6 +4,8 @@
 
 # this probably should be written in something other than bash, but whatever
 
+seconds=3
+
 # get a kerberos login for internal repos
 if (which kinit klist > /dev/null 2>&1) && (! klist -s); then
     echo "no kerberos cache found"
@@ -20,7 +22,8 @@ repos[foreman]='develop'
 wd=${1:-~/}
 echo "running in "$wd
 cd $wd
-sleep 3
+echo "waiting for "$seconds" seconds..."
+sleep $seconds
 echo
 
 directories=$(find $wd -maxdepth 2 -name .git -type d | xargs -n 1 dirname)
