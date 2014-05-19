@@ -17,7 +17,7 @@ endif
 syntax enable
 filetype plugin indent on
 
-nmap ss :echoerr "FILE NOT SAVED!! don't use `ss`"<CR>
+nmap ss :echoerr "nope"<CR>
 nmap QQ :qa!<CR>
 
 " remap <Leader>
