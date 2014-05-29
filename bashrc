@@ -155,5 +155,9 @@ export HISTSIZE=9001
 export HISTFILESIZE=9001
 export PROMPT_COMMAND='__bashrc_prompt; history -a; history -c; history -r'
 
+if (which vagrant > /dev/null 2>&1 && which libvirtd > /dev/null 2>&1); then
+    export VAGRANT_DEFAULT_PROVIDER=libvirt
+fi
+
 # cleanup
 unset bashrc_home_bin_path tmux_completion f
