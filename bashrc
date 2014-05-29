@@ -76,16 +76,6 @@ if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin
 fi
 
-# modify the manpath so man will pick up my man pages too
-# this needs to go after rvm
-# if [[ -d "$HOME/.man" ]]; then
-#     if [[ ! "$(manpath -q)" =~ "$HOME/.man" ]]; then # not sure why i can't put this into one if-statment
-#         export MANPATH="$(manpath -q):$HOME/.man"
-#     fi
-# fi
-# WHY DOESN'T THIS WORK?! this is stupidly complicated
-# i still think it's an ordering/timing issue (being loaded before something else, etc)
-
 # if tmux is installed
 if which tmux > /dev/null 2>&1; then
 
