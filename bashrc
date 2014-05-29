@@ -118,16 +118,8 @@ alias lol='lolcat'
 
 alias git='hub' # hook into hub
 
-function g {
-    if [[ $# > 0 ]]; then
-        git $@
-    else
-        git status --short --branch
-    fi
-}
-
 # git aliases
-alias gg='git status'
+alias g='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gap='git add --patch'
@@ -163,6 +155,7 @@ function __bashrc_prompt {
 
     PS1=$prompt' '
 }
+
 PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
 
 # shared bash history
