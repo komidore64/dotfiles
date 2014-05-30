@@ -4,7 +4,7 @@
 	"caret_style": "phase",
 	"drag_text": false,
 	"font_face": "Deja Vu Sans Mono", // "DejaVu ..." for OSX
-	"font_size": 10,
+	"font_size": 12.0,
 	"gutter": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
@@ -15,7 +15,7 @@
 	],
 	"rulers":
 	[
-        80
+		80
 	],
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
