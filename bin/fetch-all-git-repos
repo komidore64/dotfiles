@@ -4,46 +4,67 @@
 
 # this probably should be written in something other than bash, but whatever
 
-seconds=3
-
-# get a kerberos login for internal repos
-if (which kinit klist > /dev/null 2>&1) && (! klist -s); then
-    echo "no kerberos cache found"
-    echo "running: kinit"
-    while ! kinit; do echo "try again: kinit"; done
-    echo
-fi
+readonly WORKINGDIRECTORY=${1:-~/}
+readonly SECONDS=3
+readonly UPSTREAM=upstream
+readonly DIRECTORIES=$(find $WORKINGDIRECTORY -maxdepth 2 -name .git -type d | xargs -n 1 dirname)
 
 # repos that don't use 'master' as development branch
 declare -A repos
 repos[foreman]='develop'
 
-# location where all your git repos are
-wd=${1:-~/}
-echo "running in "$wd
-cd $wd
-echo "waiting for "$seconds" seconds..."
-sleep $seconds
-echo
+function check_for_kerberos_ticket () {
+    if (which kinit klist > /dev/null 2>&1) && (! klist -s); then
+        echo "no kerberos cache found"
+        echo "running: kinit"
+        while ! kinit; do echo "try again: kinit"; done
+        echo
+    fi
+}
 
-directories=$(find $wd -maxdepth 2 -name .git -type d | xargs -n 1 dirname)
-for g in $directories; do
-    pushd $g > /dev/null 2>&1
-    echo $g
-    git fetch --all --prune
-    popd > /dev/null 2>&1
+function chance_to_exit () {
+    echo "running in "$WORKINGDIRECTORY
+    cd $WORKINGDIRECTORY
+    echo "waiting for "$SECONDS" seconds..."
+    sleep $SECONDS
     echo
-done
+}
+
+function git_fetch_all_prune () {
+    local g
+
+    for g in $DIRECTORIES; do
+        pushd $g > /dev/null 2>&1
+        echo $g
+        git fetch --all --prune
+        popd > /dev/null 2>&1
+        echo
+    done
+}
 
 # show which repos need to merge in upstream
-echo '=========='
-echo
-for g in $directories; do
-    pushd $g > /dev/null 2>&1
-    reponame=$(echo $g | awk -F/ '{print $NF}')
-    branch=${repos[$reponame]:-master}
-    if [[ -n $(git remote | grep upstream) ]] && [[ $(git rev-parse $branch) != $(git rev-parse upstream/$branch) ]]; then
-        echo "$reponame not at upstream/$branch"
-    fi
-    popd > /dev/null 2>&1
-done
+function status_of_repos () {
+    local g
+
+    echo '=========='
+    echo
+    for g in $DIRECTORIES; do
+        local upstream=${UPSTREAM:-origin}
+        pushd $g > /dev/null 2>&1
+        local reponame=$(echo $g | awk -F/ '{print $NF}')
+        local branch=${repos[$reponame]:-master}
+        if [[ -n $(git remote | grep $upstream) ]] && [[ $(git rev-parse $branch) != $(git rev-parse $upstream/$branch) ]]; then
+            echo "$reponame is not sync'd with $upstream/$branch"
+        fi
+        popd > /dev/null 2>&1
+    done
+}
+
+function main () {
+    check_for_kerberos_ticket
+    chance_to_exit
+    git_fetch_all_prune
+    status_of_repos
+}
+
+main
