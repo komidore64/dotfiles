@@ -138,7 +138,7 @@ function __bashrc_prompt {
 
     # exit status
     if [[ $exitstatus -ne 0 ]]; then
-        prompt+=$COLOR_RED'=>'$COLOR_RESET
+        prompt+=$COLOR_RED'!!'$COLOR_RESET
     else
         prompt+='=>'
     fi
