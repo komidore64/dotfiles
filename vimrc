@@ -61,7 +61,7 @@ set smartcase
 set ruler
 
 " how to represent invisible characters
-set listchars=tab:/*,eol:¬,extends:»,precedes:«
+set listchars=tab:/*,extends:»,precedes:«
 set list
 
 " have some sensible defaults
@@ -76,10 +76,6 @@ set wildmode=list:longest
 " Highlight end of line whitespace
 highlight TrailingWhitespace ctermbg=yellow
 call matchadd("TrailingWhitespace", '\s\+$')
-
-" highlight characters that are in columns greater than 120
-highlight LongLine cterm=reverse
-call matchadd("LongLine", '\%>120v.\+')
 
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
