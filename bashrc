@@ -2,7 +2,7 @@
 # vim:ft=sh
 # DISCLAIMER: i am a bash noob
 
-function bashrc_home_bin_path {
+function __bashrc_home_bin_path () {
     # if there is a $HOME/bin folder, then add it to PATH
     if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
         PATH="$PATH:$HOME/bin"
@@ -22,8 +22,7 @@ stty -ixon
 if ! which sw_vers > /dev/null 2>&1; then
 
     # load /etc/bashrc
-    if [[ -f "/etc/bashrc" ]]
-    then
+    if [[ -f "/etc/bashrc" ]]; then
         . /etc/bashrc
     fi
 
@@ -32,7 +31,7 @@ fi
 # if this is OS X
 if which sw_vers > /dev/null 2>&1; then
 
-    bashrc_home_bin_path
+    __bashrc_home_bin_path
 
     alias ls='ls -G' # ls with colors
     alias which='which -a' # mac/bsd 'which'
@@ -42,7 +41,7 @@ fi
 # if this is a raspberry pi
 if [[ -f /boot/config.txt ]]; then
 
-    bashrc_home_bin_path
+    __bashrc_home_bin_path
 
     # basic aliases
     alias ls='ls --color=auto'
@@ -56,7 +55,7 @@ fi
 # if this is a nitrous.io box
 if [[ $(whoami) == "action" ]]; then
 
-    bashrc_home_bin_path
+    __bashrc_home_bin_path
 
     # basic aliases
     alias ls='ls --color=auto'
@@ -76,16 +75,19 @@ if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin
 fi
 
-# if tmux is installed
-if which tmux > /dev/null 2>&1; then
+function __bashrc_tmux_setup () {
+    # if tmux is installed
+    if which tmux > /dev/null 2>&1; then
 
-    # source tmux bash completion, if it exists
-    tmux_completion=$(find /usr/share/**/tmux-* -name bash_completion_tmux.sh 2> /dev/null)
-    if [[ -f $tmux_completion ]]; then
-        source $tmux_completion
+        # source tmux bash completion, if it exists
+        local tmux_completion=$(find /usr/share/**/tmux-* -name bash_completion_tmux.sh 2> /dev/null)
+        if [[ -f $tmux_completion ]]; then
+            source $tmux_completion
+        fi
+
     fi
-
-fi
+}
+__bashrc_tmux_setup
 
 export EDITOR='vim'
 export PAGER='less'
@@ -121,15 +123,19 @@ if [[ -f ~/.bash_colors ]]; then
     source ~/.bash_colors
 fi
 
-# source bash-completion files
-for f in ~/.completion/**; do source $f; done
+function __bashrc_completion_files () {
+    # source bash-completion files
+    local f
+    for f in ~/.completion/**; do source $f; done
+}
+__bashrc_completion_files
 
-# good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-function __bashrc_prompt {
+function __bashrc_prompt () {
+    # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
     local exitstatus=$?
     local prompt=''
 
-    # show a user if it isn't the one who created the shell
+    # TODO show a user if it isn't the one who created the shell
 
     # working directory
     if [[ $PWD != $HOME ]]; then
@@ -144,20 +150,17 @@ function __bashrc_prompt {
     fi
 
     PS1=$prompt' '
+    PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
 }
 
-PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
 
 # shared bash history
 shopt -s histappend
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=9001
 export HISTFILESIZE=9001
-export PROMPT_COMMAND='__bashrc_prompt; history -a; history -c; history -r'
+export PROMPT_COMMAND='__bashrc_prompt'
 
-if (which vagrant > /dev/null 2>&1 && which libvirtd > /dev/null 2>&1); then
+if ( which vagrant > /dev/null 2>&1 && which libvirtd > /dev/null 2>&1 ); then
     export VAGRANT_DEFAULT_PROVIDER=libvirt
 fi
-
-# cleanup
-unset bashrc_home_bin_path tmux_completion f
