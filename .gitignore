@@ -15,6 +15,7 @@ weechat/logs
 weechat/weechat.log
 weechat/script
 weechat/weechat_fifo*
+weechat/sec.conf
 
 # ignore installed vim plugins
 !vim/bundle/vundle/*
