@@ -27,6 +27,7 @@ module Derpfiles
     :common => {
       "bash_colors" => ".bash_colors",
       "bashrc" => ".bashrc",
+      "bash_logout" => ".bash_logout",
       "bin/asdf" => "bin/asdf",
       "bin/hub" => "bin/hub",
       "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
