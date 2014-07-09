@@ -80,7 +80,7 @@ function __bashrc_tmux_setup () {
     if which tmux > /dev/null 2>&1; then
 
         # source tmux bash completion, if it exists
-        local tmux_completion=$(find /usr/share/**/tmux-* -name bash_completion_tmux.sh 2> /dev/null)
+        local tmux_completion=$(find /usr/ -name bash_completion_tmux.sh 2> /dev/null | head -n1)
         if [[ -f $tmux_completion ]]; then
             source $tmux_completion
         fi
