@@ -45,6 +45,7 @@ module Derpfiles
       "rvmrc" => ".rvmrc",
       "rvm/gemsets/global.gems" => ".rvm/gemsets/global.gems",
       "tmux.conf" => ".tmux.conf",
+      "tmuxinator" => ".tmuxinator",
       "vim" => ".vim",
       "vimrc" => ".vimrc",
       "vundle" => ".vundle",
