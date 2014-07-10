@@ -60,6 +60,8 @@ sync
 
 set +x
 
+echo
+echo
 echo '*********************************'
 echo '*** NOW REBOOT INTO ARCHLINUX ***'
 echo '*********************************'
