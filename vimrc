@@ -18,7 +18,6 @@ syntax enable
 filetype plugin indent on
 
 nmap ss :echoerr "nope"<CR>
-nmap QQ :qa!<CR>
 
 " remap <Leader>
 map , <Nop>
