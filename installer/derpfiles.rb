@@ -38,7 +38,6 @@ module Derpfiles
       "completion" => ".completion",
       "gitconfig" => ".gitconfig",
       "git_template" => ".git_template",
-      "pdbrc" => ".pdbrc",
       "pryrc" => ".pryrc",
       "rdebugrc" => ".rdebugrc",
       "rvm/gemsets/ruby/1.9.3/global.gems" => ".rvm/gemsets/ruby/1.9.3/global.gems",
