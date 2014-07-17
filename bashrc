@@ -5,9 +5,7 @@
 
 function __bashrc_home_bin_path () {
     # if there is a $HOME/bin folder, then add it to PATH
-    if [[ (! $PATH =~ "$HOME/bin") && -d "$HOME/bin" ]]; then
-        PATH="$PATH:$HOME/bin"
-    fi
+    [[ ! $PATH =~ "$HOME/bin" ]] && [[ -d "$HOME/bin" ]] && PATH="$PATH:$HOME/bin"
 }
 
 shopt -s cdspell
@@ -24,9 +22,7 @@ stty -ixon
 if ! which sw_vers > /dev/null 2>&1; then
 
     # load /etc/bashrc
-    if [[ -f "/etc/bashrc" ]]; then
-        . /etc/bashrc
-    fi
+    [[ -f "/etc/bashrc" ]] && source /etc/bashrc
 
 fi
 
@@ -41,7 +37,7 @@ if which sw_vers > /dev/null 2>&1; then
 fi
 
 # if this is a raspberry pi
-if [[ -f /boot/config.txt ]]; then
+if [[ -f "/boot/config.txt" ]]; then
 
     __bashrc_home_bin_path
 
@@ -66,16 +62,12 @@ if [[ $(whoami) == "action" ]]; then
     alias grep='grep --color=auto'
     alias which='which -a' # dumb 'which'
 
-    if [[ -f ~/.timezone ]]; then
-        source ~/.timezone
-    fi
+    [[ -f "$HOME/.timezone" ]] && source $HOME/.timezone
 
 fi
 
 # include RVM, if RVM is installed
-if [[ -d "$HOME/.rvm" ]]; then
-    PATH=$PATH:$HOME/.rvm/bin
-fi
+[[ -d "$HOME/.rvm" ]] && PATH=$PATH:$HOME/.rvm/bin
 
 function __bashrc_tmux_setup () {
     # if tmux is installed
@@ -83,9 +75,7 @@ function __bashrc_tmux_setup () {
 
         # source tmux bash completion, if it exists
         local tmux_completion=$(find /usr/ -name bash_completion_tmux.sh 2> /dev/null | head -n1)
-        if [[ -f $tmux_completion ]]; then
-            source $tmux_completion
-        fi
+        [[ -f $tmux_completion ]] && source $tmux_completion
 
     fi
 }
@@ -121,12 +111,9 @@ alias gc='git commit'
 alias gdw='git diff --word-diff'
 alias girt='git' # typo catch
 
-if [[ -f ~/.bash_colors ]]; then
-    source ~/.bash_colors
-fi
+[[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
 function __bashrc_completion_files () {
-    # source bash-completion files
     local f
     for f in ~/.completion/**; do source $f; done
 }
