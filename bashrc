@@ -1,5 +1,6 @@
 # ~/.bashrc
 # vim:ft=sh
+#
 # DISCLAIMER: i am a bash noob
 
 function __bashrc_home_bin_path () {
@@ -16,6 +17,7 @@ if [[ $BASH_VERSION > 4 ]]; then
 fi
 
 # stop the terminal from grabbing CTRL-s so i can forward- and reverse-search
+# this enables XON/XOFF flow control (`man stty` for more info)
 stty -ixon
 
 # if this is not OS X
@@ -135,7 +137,7 @@ function __bashrc_prompt () {
     local exitstatus=$?
     local prompt=''
 
-    # TODO show a user if it isn't the one who created the shell
+    # TODO show a user if he/she isn't the one who created the shell
 
     # working directory
     if [[ $PWD != $HOME ]]; then
@@ -144,17 +146,16 @@ function __bashrc_prompt () {
 
     # exit status
     if [[ $exitstatus -ne 0 ]]; then
-        prompt+=$COLOR_RED'!!'$COLOR_RESET
+        prompt+=$COLOR_RED$'\xe2\x9c\x98'$COLOR_RESET # U+2718 "heavy ballot x"
     else
-        prompt+='=>'
+        prompt+=$COLOR_LIGHT_GREEN$'\xe2\x96\xb6'$COLOR_RESET # U+25B6 "right-pointing triangle"
     fi
 
     PS1=$prompt' '
-    PS2="$COLOR_LIGHT_GREEN-->$COLOR_RESET "
+    PS2='\xe2\x86\xb3'' ' # U+21B3 "downwards arrow with tip rightwards"
 }
 
 
-# shared bash history
 shopt -s histappend
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=9001
