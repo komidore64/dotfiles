@@ -139,7 +139,7 @@ function __bashrc_prompt () {
     fi
 
     PS1=$prompt' '
-    PS2='\xe2\x86\xb3'' ' # U+21B3 "downwards arrow with tip rightwards"
+    PS2=$'\xe2\x86\xb3'' ' # U+21B3 "downwards arrow with tip rightwards"
 }
 
 
