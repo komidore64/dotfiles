@@ -109,7 +109,8 @@ alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
 alias gdw='git diff --word-diff'
-alias girt='git' # typo catch
+alias girt='git'
+alias gti='git'
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
