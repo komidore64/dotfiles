@@ -6,31 +6,37 @@
 Pry.config.editor = "#{ENV['EDITOR']}"
 
 begin
+  print 'awesome_print'
   require 'awesome_print'
   AwesomePrint.pry!
+  puts ' loaded'
 rescue LoadError
-  puts 'awesome_print not found. skipping...'
+  puts ' not found'
 end
 
 begin
+  print 'hirb'
   require 'hirb'
   Hirb.enable
+  puts ' loaded'
 rescue LoadError
-  puts 'hirb not found. skipping...'
+  puts ' not found'
 end
 
-%w(pry-debugger pry-stack_explorer).each do |lib|
+%w(pry-debugger pry-stack_explorer pry-rescue).each do |lib|
   begin
+    print lib
     require lib
+    puts ' loaded'
   rescue LoadError
-    puts "#{lib} not found. skipping..."
+    puts ' not found'
   end
 end
 
 if defined?(PryDebugger)
-  Pry.commands.alias_command('cont', 'continue')
+  Pry.commands.alias_command('c', 'continue')
+  Pry.commands.alias_command('f', 'finish')
   Pry.commands.alias_command('s', 'step')
   Pry.commands.alias_command('n', 'next')
   Pry.commands.alias_command('l', 'whereami')
-  Pry.commands.alias_command('jackout', 'disable-pry')
 end
