@@ -1,6 +1,6 @@
-# ~/.tmuxinator/foretello.yml
+# ~/.tmuxinator/hammer.yml
 
-name: foretello
+name: hammer
 root: ~/
 
 # Optional tmux socket
@@ -19,13 +19,13 @@ root: ~/
 # tmux_command: byobu
 
 windows:
-  - server:
-    - cd ~/foreman/
-  - foreman:
-    - cd ~/foreman/
-  - katello:
-    - cd ~/katello/
-  - bastion:
-    - cd ~/katello/engines/bastion/
-  - candlepin:
-    - cd ~/candlepin/
+  - hammer-cli:
+    - cd ~/hammer-cli/
+  - hammer-cli-foreman:
+    - cd  ~/hammer-cli-foreman/
+  - hammer-cli-katello:
+    - cd ~/hammer-cli-katello/
+  - hammer-cli-foreman-tasks:
+    - cd ~/hammer-cli-foreman-tasks/
+  - apipie-bindings:
+    - cd ~/apipie-bindings/
