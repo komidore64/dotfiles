@@ -36,6 +36,7 @@ module Derpfiles
       "bin/todo" => "bin/todo",
       "bin/vundle-update" => "bin/vundle-update",
       "completion" => ".completion",
+      "curlrc" => ".curlrc",
       "gitconfig" => ".gitconfig",
       "git_template" => ".git_template",
       "pryrc" => ".pryrc",
