@@ -14,6 +14,7 @@ function __bashrc_basic_common_aliases () {
     alias fgrep='fgrep --color=auto'
     alias grep='grep --color=auto'
 }
+__bashrc_basic_common_aliases
 
 shopt -s cdspell
 if [[ $BASH_VERSION > 4 ]]; then
@@ -47,7 +48,6 @@ fi
 if [[ -f "/boot/config.txt" ]]; then
 
     __bashrc_home_bin_path
-    __bashrc_basic_common_aliases
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
 fi
@@ -56,7 +56,6 @@ fi
 if [[ $(whoami) == "action" ]]; then
 
     __bashrc_home_bin_path
-    __bashrc_basic_common_aliases
     alias which='which -a'
 
     [[ -f "$HOME/.timezone" ]] && source $HOME/.timezone
