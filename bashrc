@@ -8,6 +8,13 @@ function __bashrc_home_bin_path () {
     [[ ! $PATH =~ "$HOME/bin" ]] && [[ -d "$HOME/bin" ]] && PATH="$PATH:$HOME/bin"
 }
 
+function __bashrc_basic_common_aliases () {
+    alias ls='ls --color=auto --group-directories-first'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias grep='grep --color=auto'
+}
+
 shopt -s cdspell
 if [[ $BASH_VERSION > 4 ]]; then
     shopt -s dirspell
@@ -32,7 +39,7 @@ if which sw_vers > /dev/null 2>&1; then
     __bashrc_home_bin_path
 
     alias ls='ls -G' # ls with colors
-    alias which='which -a' # mac/bsd 'which'
+    alias which='which -a'
 
 fi
 
@@ -40,12 +47,7 @@ fi
 if [[ -f "/boot/config.txt" ]]; then
 
     __bashrc_home_bin_path
-
-    # basic aliases
-    alias ls='ls --color=auto'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias grep='grep --color=auto'
+    __bashrc_basic_common_aliases
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
 fi
@@ -54,13 +56,8 @@ fi
 if [[ $(whoami) == "action" ]]; then
 
     __bashrc_home_bin_path
-
-    # basic aliases
-    alias ls='ls --color=auto'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias grep='grep --color=auto'
-    alias which='which -a' # dumb 'which'
+    __bashrc_basic_common_aliases
+    alias which='which -a'
 
     [[ -f "$HOME/.timezone" ]] && source $HOME/.timezone
 
