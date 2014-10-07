@@ -96,10 +96,12 @@ alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias lol='lolcat'
 
-alias git='hub' # hook into hub
-
 # git aliases
-alias g='git status'
+if which git &>/dev/null && [[ "$(git --version | grep git | cut -d' ' -f3)" > 1.7 ]]; then
+    alias g='git status --short --branch'
+else
+    alias g='git status'
+fi
 alias gd='git diff'
 alias ga='git add'
 alias gap='git add --patch'
@@ -107,6 +109,8 @@ alias gc='git commit'
 alias gdw='git diff --word-diff'
 alias girt='git'
 alias gti='git'
+
+alias git='hub' # hook into hub
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
