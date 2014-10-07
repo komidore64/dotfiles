@@ -2,7 +2,6 @@
 
 " fancy vim
 set nocompatible
-set lazyredraw
 set encoding=utf-8
 colorscheme default
 
@@ -37,9 +36,6 @@ map <Leader>sp :set invspell<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
-
-" refresh if file changes outside of vim
-set autoread " i'm not sure this does what i think it does
 
 set showcmd
 set showmode
