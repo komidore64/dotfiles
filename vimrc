@@ -31,9 +31,6 @@ nnoremap <Leader>rn :set invrelativenumber<CR>
 " easy way to toggle spell checking
 nnoremap <Leader>sp :set invspell<CR>
 
-" i always accidentally hit this somehow, so let's disable it
-map K <Nop>
-
 set showcmd
 set showmode
 set modelines=5
