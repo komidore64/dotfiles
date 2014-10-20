@@ -50,7 +50,7 @@ set smartcase
 set ruler
 
 " how to represent invisible characters
-set listchars=tab:/*,extends:»,precedes:«
+set listchars=tab:/*,extends:»,precedes:«,trail:+
 set list
 
 " have some sensible defaults
@@ -61,10 +61,6 @@ set smarttab
 
 " vim command-line tab-completion
 set wildmode=list:longest
-
-" Highlight end of line whitespace
-highlight TrailingWhitespace ctermbg=yellow
-call matchadd("TrailingWhitespace", '\s\+$')
 
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
