@@ -16,9 +16,8 @@ endif
 syntax enable
 filetype plugin indent on
 
-" remap <Leader>
-map , <Nop>
-let mapleader = ","
+" remap <Leader> to spacebar
+let mapleader = " "
 
 " undo text highlighting
 map <C-h> :nohl<CR>
