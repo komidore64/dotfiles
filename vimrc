@@ -16,8 +16,6 @@ endif
 syntax enable
 filetype plugin indent on
 
-nmap ss :echoerr "nope"<CR>
-
 " remap <Leader>
 map , <Nop>
 let mapleader = ","
