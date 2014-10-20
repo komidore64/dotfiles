@@ -73,7 +73,6 @@ call matchadd("TrailingWhitespace", '\s\+$')
 autocmd BufWritePre * :%s/\s\+$//e
 
 autocmd BufRead,BufNewFile *.md set ft=markdown
-autocmd BufRead,BufNewFile *.quicktask setf quicktask
 
 " disable netrw --------------
 let g:loaded_netrw = 1

@@ -25,7 +25,6 @@ Bundle 'jgdavey/vim-turbux'
 Bundle 'elzr/vim-json'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/SmartCase'
-Bundle 'aaronbieber/quicktask'
 " ----------------------------
 
 " post vundler cleanup -------
