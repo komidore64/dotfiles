@@ -20,16 +20,16 @@ filetype plugin indent on
 let mapleader = " "
 
 " undo text highlighting
-map <C-h> :nohl<CR>
+nnoremap <C-h> :nohl<CR>
 
 " toggle pastemode
-map <Leader>pt :set invpaste<CR>
+nnoremap <Leader>pt :set invpaste<CR>
 " toggle line-numbers
-map <Leader>ln :set invnumber<CR>
+nnoremap <Leader>ln :set invnumber<CR>
 " toggle relative line-numbers
-map <Leader>rn :set invrelativenumber<CR>
+nnoremap <Leader>rn :set invrelativenumber<CR>
 " easy way to toggle spell checking
-map <Leader>sp :set invspell<CR>
+nnoremap <Leader>sp :set invspell<CR>
 
 " i always accidentally hit this somehow, so let's disable it
 map K <Nop>
@@ -119,9 +119,9 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " vimux ----------------------
-    map <Leader>vc :VimuxPromptCommand<CR>
-    map <Leader>vl :VimuxRunLastCommand<CR>
-    map <Leader>vq :VimuxCloseRunner<CR>
+    nnoremap <Leader>vc :VimuxPromptCommand<CR>
+    nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+    nnoremap <Leader>vq :VimuxCloseRunner<CR>
     " ----------------------------
 
     " vim-json -------------------
@@ -132,20 +132,20 @@ if filereadable(expand("~/.vundle"))
     let g:syntastic_ruby_checkers = ['mri', 'rubocop']
     let g:syntastic_quiet_messages = {'level': []}
     let g:syntastic_check_on_wq = 0
-    map <Leader>sc :SyntasticCheck<CR>
-    map <Leader>sr :SyntasticReset<CR>
-    map <Leader>se :Errors<CR>:ll<CR>
+    nnoremap <Leader>sc :SyntasticCheck<CR>
+    nnoremap <Leader>sr :SyntasticReset<CR>
+    nnoremap <Leader>se :Errors<CR>:ll<CR>
 
     " quickfix window
     "
     " go to current highlighted location (nmemonic: qf => quickfix)
-    map <Leader>qfl :ll<CR>
+    nnoremap <Leader>qfl :ll<CR>
     " location-list next
-    map <Leader>qfn :lnext<CR>
+    nnoremap <Leader>qfn :lnext<CR>
     " location-list previous
-    map <Leader>qfp :lprevious<CR>
+    nnoremap <Leader>qfp :lprevious<CR>
     " close the quickfix window
-    map <Leader>qfq :lclose<CR>
+    nnoremap <Leader>qfq :lclose<CR>
     " ----------------------------
 
 endif
