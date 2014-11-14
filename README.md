@@ -6,7 +6,7 @@ Copy them into your home directory, or clone the repository and run the installe
 
 ## installation
 
-```sh
+```bash
 mkdir -p ~/.rvm/gemsets && ln -s /<dotfiles>/rvm/gemsets/global.gems ~/.rvm/gemsets/
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
 ruby installer/derpfiles.rb --help # to see how to use the installer
