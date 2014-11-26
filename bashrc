@@ -136,7 +136,7 @@ function __bashrc_prompt () {
     if [[ $exitstatus -ne 0 ]]; then
         prompt+=$COLOR_RED$'\xe2\x9c\x98'$COLOR_RESET # U+2718 "heavy ballot x"
     else
-        prompt+=$COLOR_LIGHT_GREEN'$'$COLOR_RESET # U+2714 "heavy check mark"
+        prompt+=$COLOR_LIGHT_GREEN'$'$COLOR_RESET
     fi
 
     PS1=$prompt' '
