@@ -3,6 +3,8 @@
 #
 # DISCLAIMER: i am a bash noob
 
+[ ! -t 0 ] && return # bail if this isn't a login shell
+
 function __bashrc_home_bin_path () {
     # if there is a $HOME/bin folder, then add it to PATH
     [[ ! $PATH =~ "$HOME/bin" ]] && [[ -d "$HOME/bin" ]] && PATH="$PATH:$HOME/bin"
