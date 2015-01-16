@@ -31,9 +31,6 @@ nnoremap <Leader>rn :set invrelativenumber<CR>
 " easy way to toggle spell checking
 nnoremap <Leader>sp :set invspell<CR>
 
-set showcmd
-set showmode
-set modelines=5
 
 " OPEN ALL THE TABS
 set tabpagemax=9001
@@ -50,16 +47,25 @@ set smartcase
 set ruler
 
 " how to represent invisible characters
-set listchars=tab:/*,extends:»,precedes:«,trail:+
+set listchars=tab:▮▸,extends:⇉,precedes:⇇,trail:◂
 set list
+highlight SpecialKey ctermfg=yellow
 
 " have some sensible defaults
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
+set smartindent
+set showcmd
+set showmode
+set modelines=5
+set showmatch
+set matchtime=5
+set scrolloff=3
 
 " vim command-line tab-completion
+set wildmenu
 set wildmode=list:longest
 
 " remove trailing whitespace
@@ -73,7 +79,7 @@ let g:loaded_netrwPlugin = 1
 " ----------------------------
 
 " vimdiff --------------------
-highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
+highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=black
 highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
 highlight DiffText term=reverse cterm=bold ctermbg=grey ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
@@ -104,10 +110,8 @@ if filereadable(expand("~/.vundle"))
     let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
 
     " remap <cr> to open file in a new tab
-    let g:ctrlp_prompt_mappings = {
-        \ 'AcceptSelection("e")': ['<c-t>'],
-        \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+    let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'],
+                                  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'] }
     " ----------------------------
 
     " vimux ----------------------
@@ -121,10 +125,15 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " syntastic ------------------
+    let g:syntastic_mode_map = { 'mode': 'active',
+                               \ 'active_filetypes': [],
+                               \ 'passive_filetypes': [] }
+
     let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-    let g:syntastic_quiet_messages = {'level': []}
+    let g:syntastic_quiet_messages = { 'level': [] }
     let g:syntastic_check_on_wq = 0
-    nnoremap <Leader>sc :SyntasticCheck<CR>
+
+    nnoremap <Leader>sy :SyntasticCheck<CR>
     nnoremap <Leader>sr :SyntasticReset<CR>
     nnoremap <Leader>se :Errors<CR>:ll<CR>
 
@@ -141,3 +150,21 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
 endif
+
+" functions ------------------
+" ----------------------------
+"
+" create parent directories on save
+" http://stackoverflow.com/a/4294176/336520
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
