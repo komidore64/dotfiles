@@ -25,7 +25,3 @@ windows:
     - cd ~/foreman/
   - katello:
     - cd ~/katello/
-  - bastion:
-    - cd ~/katello/engines/bastion/
-  - candlepin:
-    - cd ~/candlepin/
