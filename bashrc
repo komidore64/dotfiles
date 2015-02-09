@@ -152,6 +152,12 @@ export HISTSIZE=9001
 export HISTFILESIZE=9001
 export PROMPT_COMMAND='__bashrc_prompt'
 
-if ( which vagrant > /dev/null 2>&1 && which libvirtd > /dev/null 2>&1 ); then
+if ( which vagrant &> /dev/null && which libvirtd &> /dev/null ); then
     export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+    # vagrant aliases
+    alias vstatus="vagrant status"
+    alias vup="vagrant up"
+    alias vdestroy="vagrant destroy"
+    alias vssh="vagrant ssh"
 fi
