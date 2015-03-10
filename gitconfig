@@ -1,5 +1,4 @@
 # ~/.gitconfig
-# vim:ft=cfg
 
 [color]
     branch = auto
@@ -17,7 +16,6 @@
     bm = branch --merged
     bum = branch --no-merged
     fa = fetch --all --prune
-    rage = reset --hard HEAD
     ctags = !.git/hooks/ctags
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
