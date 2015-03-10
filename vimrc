@@ -45,6 +45,7 @@ set ignorecase
 set smartcase
 
 set ruler
+set nofoldenable
 
 " how to represent invisible characters
 set listchars=tab:▮▸,extends:⇉,precedes:⇇,trail:◂
