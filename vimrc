@@ -100,12 +100,6 @@ highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " load plugin settings if ~/.vundle is found
 if filereadable(expand("~/.vundle"))
 
-    " powerline ------------------
-    set noshowmode
-    set laststatus=2
-    let g:Powerline_symbols = 'compatible'
-    " ----------------------------
-
     " ctrlp ----------------------
     let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
     let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
@@ -115,46 +109,15 @@ if filereadable(expand("~/.vundle"))
                                   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'] }
     " ----------------------------
 
-    " vimux ----------------------
-    nnoremap <Leader>vc :VimuxPromptCommand<CR>
-    nnoremap <Leader>vl :VimuxRunLastCommand<CR>
-    nnoremap <Leader>vq :VimuxCloseRunner<CR>
-    " ----------------------------
-
     " vim-json -------------------
     let g:vim_json_syntax_conceal = 0
-    " ----------------------------
-
-    " syntastic ------------------
-    let g:syntastic_mode_map = { 'mode': 'active',
-                               \ 'active_filetypes': [],
-                               \ 'passive_filetypes': [] }
-
-    let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-    let g:syntastic_quiet_messages = { 'level': [] }
-    let g:syntastic_check_on_wq = 0
-
-    nnoremap <Leader>sy :SyntasticCheck<CR>
-    nnoremap <Leader>sr :SyntasticReset<CR>
-    nnoremap <Leader>se :Errors<CR>:ll<CR>
-
-    " quickfix window
-    "
-    " go to current highlighted location (nmemonic: qf => quickfix)
-    nnoremap <Leader>qfl :ll<CR>
-    " location-list next
-    nnoremap <Leader>qfn :lnext<CR>
-    " location-list previous
-    nnoremap <Leader>qfp :lprevious<CR>
-    " close the quickfix window
-    nnoremap <Leader>qfq :lclose<CR>
     " ----------------------------
 
 endif
 
 " functions ------------------
 " ----------------------------
-"
+
 " create parent directories on save
 " http://stackoverflow.com/a/4294176/336520
 function s:MkNonExDir(file, buf)
