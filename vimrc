@@ -100,6 +100,12 @@ highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " load plugin settings if ~/.vundle is found
 if filereadable(expand("~/.vundle"))
 
+    " vim-airline
+    set noshowmode
+    set laststatus=2
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
+
     " ctrlp ----------------------
     let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
     let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
