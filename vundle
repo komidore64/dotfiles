@@ -19,9 +19,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
-"Bundle 'benmills/vimux'
 Bundle 'elzr/vim-json'
 Bundle 'vim-scripts/SmartCase'
+Bundle 'airblade/vim-gitgutter'
 " ----------------------------
 
 " post vundler cleanup -------

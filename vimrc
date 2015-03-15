@@ -119,6 +119,9 @@ if filereadable(expand("~/.vundle"))
     let g:vim_json_syntax_conceal = 0
     " ----------------------------
 
+    " vim-gitgutter --------------
+    highligh clear SignColumn
+    " ----------------------------
 endif
 
 " functions ------------------
