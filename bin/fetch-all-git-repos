@@ -37,8 +37,11 @@ function git_fetch_all_prune () {
     for g in $DIRECTORIES; do
         pushd $g > /dev/null 2>&1
         echo $g
+        git remote -v | column -t
+        echo
         git fetch --all --prune
         popd > /dev/null 2>&1
+        echo
         echo
     done
 }
