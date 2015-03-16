@@ -3,6 +3,7 @@
 " fancy vim
 set nocompatible
 set encoding=utf-8
+set updatetime=1000
 colorscheme default
 
 " one place for vim swap files
@@ -50,7 +51,6 @@ set nofoldenable
 " how to represent invisible characters
 set listchars=tab:▮▸,extends:⇉,precedes:⇇,trail:◂
 set list
-highlight SpecialKey ctermfg=yellow
 
 " have some sensible defaults
 set tabstop=4
@@ -95,6 +95,15 @@ highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
 " pop-up menu ----------------
 highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
 highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
+" ----------------------------
+
+" line numbers ---------------
+highlight clear LineNr
+highlight LineNr ctermfg=lightgrey
+" ----------------------------
+
+" list characters ------------
+highlight SpecialKey ctermfg=yellow
 " ----------------------------
 
 " load plugin settings if ~/.vundle is found
