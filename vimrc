@@ -21,7 +21,7 @@ filetype plugin indent on
 let mapleader = " "
 
 " undo text highlighting
-nnoremap <C-h> :nohl<CR>
+nnoremap <Leader><Space> :nohl<CR>
 
 " toggle pastemode
 nnoremap <Leader>pt :set invpaste<CR>
@@ -49,7 +49,7 @@ set ruler
 set nofoldenable
 
 " how to represent invisible characters
-set listchars=tab:▮▸,extends:⇉,precedes:⇇,trail:◂
+set listchars=tab:/-,extends:>,precedes:<,trail:◂
 set list
 
 " have some sensible defaults

@@ -24,10 +24,10 @@
     wip = !git add --all && git commit -m "wip"
     unwip = "!if [[ $(git log -1 --format=format:%s) == 'wip' ]]; then git reset HEAD~1; else echo 'nope'; fi"
 [user]
-	name = Adam Price
-	email = komidore64@gmail.com
+    name = Adam Price
+    email = komidore64@gmail.com
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [apply]

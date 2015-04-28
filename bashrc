@@ -2,6 +2,8 @@
 # vim:ft=sh
 #
 # DISCLAIMER: i am a bash noob
+# NOTE: prefer single brackets for comparisons because that's more portable
+# than double
 
 [ ! -t 0 ] && return # bail if this isn't a login shell
 
@@ -65,7 +67,10 @@ if [[ $(whoami) == "action" ]]; then
 fi
 
 # include RVM, if RVM is installed
-[[ -d "$HOME/.rvm" ]] && PATH=$PATH:$HOME/.rvm/bin
+if [[ -d "$HOME/.rvm" ]]; then
+    PATH=$PATH:$HOME/.rvm/bin
+    export rvmsudo_secure_path=0
+fi
 
 function __bashrc_tmux_setup () {
     # if tmux is installed
@@ -99,20 +104,23 @@ alias vim='vim -p'
 alias lol='lolcat'
 
 # git aliases
-if which git &>/dev/null && [[ "$(git --version | grep git | cut -d' ' -f3)" > 1.7 ]]; then
+if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
     alias g='git status --short --branch'
 else
     alias g='git status'
 fi
 alias gd='git diff'
+alias gds='git diff --staged'
+alias gdw='git diff --word-diff'
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
-alias gdw='git diff --word-diff'
 alias girt='git'
 alias gti='git'
 
 alias git='hub' # hook into hub
+
+alias fuck='sudo $(history -p \!\!)'
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
@@ -127,7 +135,7 @@ function __bashrc_prompt () {
     local exitstatus=$?
     local prompt=''
 
-    # TODO show a user if he/she isn't the one who created the shell
+    # TODO show the username if he/she isn't the one who created the shell
 
     # working directory
     if [[ $PWD != $HOME ]]; then
