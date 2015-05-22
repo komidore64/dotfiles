@@ -18,8 +18,8 @@ weechat/weechat_fifo*
 weechat/sec.conf
 
 # ignore installed vim plugins
-!vim/bundle/vundle/*
 vim/bundle/*
+!vim/bundle/vundle
 
 # rvm
 .rvmrc
