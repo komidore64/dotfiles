@@ -1,10 +1,17 @@
 " ~/.vimrc
+"
+" The ordering for a lot of these settings doesn't make a lot of sense, but
+" I've discovered that if I start moving stuff around things can get out of
+" whack.
 
 " fancy vim
 set nocompatible
-set encoding=utf-8
 set updatetime=1000
+
+" color-y displayish settings
 colorscheme default
+set t_Co=256
+set background=light
 
 " one place for vim swap files
 set directory=~/.vim/
@@ -53,6 +60,7 @@ set listchars=tab:/-,extends:>,precedes:<,trail:◂
 set list
 
 " have some sensible defaults
+set encoding=utf-8
 set tabstop=4
 set shiftwidth=4
 set expandtab
