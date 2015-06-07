@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-du --max-depth 1 --total --human-readable ~/ | grep "total" | awk '{ print $1 }'

@@ -1,17 +1,18 @@
 # dotfiles
 
-Configured for Linux (including boxes on [Nitrous.IO](https://www.nitrous.io/join/Ne4RmyEvhD8)), and Mac OS X.
+Configured for linux and OS X.
 
 Copy them into your home directory, or clone the repository and run the installer.
 
 ## installation
 
-```bash
-mkdir -p ~/.rvm/gemsets && ln -s /<dotfiles>/rvm/gemsets/global.gems ~/.rvm/gemsets/
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
-ruby installer/derpfiles.rb --help # to see how to use the installer
-vundle-update # to install vim plugins after running derpfiles.rb
-```
+1. clone repo
+2. copy over global.gemset for desired versions
+3. install RVM
+4. install a ruby
+5. run the installer
+6. install vundle plugins
+
 ### mac os x (additional steps)
 
 ```bash

@@ -5,5 +5,3 @@ if [[ -e ~/todo.quicktask ]]; then
 else
     echo "~/todo.quicktask doesn't exist, bro"
 fi
-
-

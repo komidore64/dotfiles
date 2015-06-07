@@ -56,16 +56,6 @@ if [[ -f "/boot/config.txt" ]]; then
 
 fi
 
-# if this is a nitrous.io box
-if [[ $(whoami) == "action" ]]; then
-
-    __bashrc_home_bin_path
-    alias which='which -a'
-
-    [[ -f "$HOME/.timezone" ]] && source $HOME/.timezone
-
-fi
-
 # include RVM, if RVM is installed
 if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin

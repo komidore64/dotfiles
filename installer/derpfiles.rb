@@ -61,10 +61,6 @@ module Derpfiles
       # "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",
       # "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
       "bash_profile" => ".bash_profile"
-    },
-    :nitrous => {
-      "bin/nitrous-disk-usage" => "bin/nitrous-disk-usage",
-      "timezone" => ".timezone"
     }
   }
 
@@ -131,12 +127,6 @@ if __FILE__ == $0
       options[:flags] << :linux
     end
 
-    opts.on("--nitrous", "install dotfiles on a nitrous.io box") do
-      options[:sets] << :nitrous
-      options[:sets].delete(:linux)
-      options[:flags] << :nitrous
-    end
-
     opts.on("--nogui", "install dotfiles excluding those related to a graphical interface") do
       options[:sets].delete(:linux)
       options[:flags] << :nogui
@@ -151,7 +141,7 @@ if __FILE__ == $0
 
   begin
     optparse.parse!
-    raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nitrous, --nogui, --osx ]" if options[:flags].size > 1
+    raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui, --osx ]" if options[:flags].size > 1
     Derpfiles.install_dotfiles(options[:sets])
   rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
