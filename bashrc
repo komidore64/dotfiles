@@ -96,12 +96,12 @@ alias lol='lolcat'
 # git aliases
 if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
     alias g='git status --short --branch'
+    alias gdw='git diff --word-diff'
 else
     alias g='git status'
 fi
 alias gd='git diff'
 alias gds='git diff --staged'
-alias gdw='git diff --word-diff'
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
@@ -140,8 +140,8 @@ function __bashrc_prompt () {
     fi
 
     PS1=$prompt' '
-    PS2="-> "
 }
+PS2="-> "
 
 
 shopt -s histappend
