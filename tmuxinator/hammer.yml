@@ -25,7 +25,3 @@ windows:
     - cd  ~/hammer-cli-foreman/
   - hammer-cli-katello:
     - cd ~/hammer-cli-katello/
-  - hammer-cli-sam:
-    - cd ~/hammer-cli-sam/
-  - apipie-bindings:
-    - cd ~/apipie-bindings/
