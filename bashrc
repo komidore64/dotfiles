@@ -103,6 +103,7 @@ alias lol='lolcat'
 # git aliases
 if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
     alias g='git status --short --branch'
+    alias gg='git status'
     alias gdw='git diff --word-diff'
 else
     alias g='git status'
@@ -114,6 +115,7 @@ alias gap='git add --patch'
 alias gc='git commit'
 alias girt='git'
 alias gti='git'
+alias gut='git'
 
 alias git='hub' # hook into hub
 
