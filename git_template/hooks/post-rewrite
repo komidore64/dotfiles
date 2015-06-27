@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-.git/hooks/ctags
+$(git rev-parse --show-toplevel)/.git/hooks/ctags
