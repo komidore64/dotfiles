@@ -69,14 +69,14 @@ function __bashrc_tmux_setup () {
     if which tmux > /dev/null 2>&1; then
         local cache_file="~/.cache/dotfiles/tmux-completion"
         local tmux_completion=''
-        if [ -f $cache_file ] && [ -f $(cat $cache_file) ]; then
-            tmux_completion=$(cat $cache_file)
+        if [ -f "$cache_file" ] && [ -f "$(cat $cache_file)" ]; then
+            tmux_completion="$(cat $cache_file)"
         else
-            tmux_completion=$(find /usr/ -name bash_completion_tmux.sh 2> /dev/null | head -n1)
+            tmux_completion="$(find /usr/ -name bash_completion_tmux.sh 2> /dev/null | head -n1)"
             mkdir -p $(dirname $cache_file)
             echo "$tmux_completion" > $cache_file
         fi
-        [ -f $tmux_completion ] && source $tmux_completion
+        [ -f "$tmux_completion" ] && source $tmux_completion
     fi
 }
 __bashrc_tmux_setup
