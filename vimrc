@@ -139,6 +139,10 @@ if filereadable(expand("~/.vundle"))
     " vim-gitgutter --------------
     highligh clear SignColumn
     " ----------------------------
+
+    " AutoComplPop ---------------
+    let g:acp_completeoptPreview = 0
+    " ----------------------------
 endif
 
 " functions ------------------
