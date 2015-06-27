@@ -9,6 +9,10 @@ class LinuxInstallTest < MiniTest::Unit::TestCase
     FileUtils.mkdir(@fake_home) unless File.exists?(@fake_home)
   end
 
+  def teardown
+    FileUtils.rm_r(@fake_home) unless ENV['noclean']
+  end
+
   def test_linux_install
     installation_sets = [:common, :linux]
     Derpfiles.install_dotfiles(installation_sets, :root_dest => @fake_home)
