@@ -67,7 +67,7 @@ fi
 function __bashrc_tmux_setup () {
     # if tmux is installed
     if which tmux > /dev/null 2>&1; then
-        local cache_file="~/.cache/dotfiles/tmux-completion"
+        local cache_file=$HOME"/.cache/dotfiles/tmux-completion"
         local tmux_completion=''
         if [ -f "$cache_file" ] && [ -f "$(cat $cache_file)" ]; then
             tmux_completion="$(cat $cache_file)"
