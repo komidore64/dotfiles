@@ -1,29 +1,30 @@
 " ~/.vundle
 " vim:ft=vim
 
-" pre vundler setup ----------
+" pre vundle setup -----------
 set nocompatible
 filetype off
 
 set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 " ----------------------------
 
-" plugins (via vundler) ------
-Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/AutoComplPop'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'elzr/vim-json'
-Bundle 'vim-scripts/SmartCase'
-Bundle 'airblade/vim-gitgutter'
+" plugins --------------------
+Plugin 'gmarik/vundle'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'elzr/vim-json'
+Plugin 'vim-scripts/SmartCase'
+Plugin 'airblade/vim-gitgutter'
 " ----------------------------
 
-" post vundler cleanup -------
+" cleanup --------------------
+call vundle#end()
 filetype plugin indent on
 " ----------------------------
