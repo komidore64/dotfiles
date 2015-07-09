@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-which ctags > /dev/null 2>&1
+which ctags &> /dev/null
 CTAGS=$?
 if [[ $CTAGS == 0 ]]; then # do we have ctags installed?
 
-    ctags --version 2> /dev/null | grep -i exuberant > /dev/null 2>&1
+    ctags --version 2> /dev/null | grep -i exuberant &> /dev/null
     EXUBERANT=$?
     if [[ $EXUBERANT == 0 ]]; then # is it Exuberant Ctags?
 

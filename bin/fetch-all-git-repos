@@ -14,7 +14,7 @@ declare -A repos
 repos[foreman]='develop'
 
 function check_for_kerberos_ticket () {
-    if (which kinit klist > /dev/null 2>&1) && (! klist -s); then
+    if (which kinit klist &> /dev/null) && (! klist -s); then
         echo "no kerberos cache found"
         echo "running: kinit"
         while ! kinit; do echo "try again: kinit"; done
@@ -35,13 +35,13 @@ function git_fetch_all_prune () {
     local g
 
     for g in $DIRECTORIES; do
-        pushd $g > /dev/null 2>&1
+        pushd $g &> /dev/null
         echo $g
         git init
         git remote -v | column -t
         echo
         git fetch --all --prune
-        popd > /dev/null 2>&1
+        popd &> /dev/null
         echo
         echo
     done
@@ -55,13 +55,13 @@ function status_of_repos () {
     echo
     for g in $DIRECTORIES; do
         local upstream=${UPSTREAM:-origin}
-        pushd $g > /dev/null 2>&1
+        pushd $g &> /dev/null
         local reponame=$(echo $g | awk -F/ '{print $NF}')
         local branch=${repos[$reponame]:-master}
         if [[ -n $(git remote | grep $upstream) ]] && [[ $(git rev-parse $branch) != $(git rev-parse $upstream/$branch) ]]; then
             echo "$reponame is not sync'd with $upstream/$branch"
         fi
-        popd > /dev/null 2>&1
+        popd &> /dev/null
     done
 }
 

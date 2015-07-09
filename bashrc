@@ -31,7 +31,7 @@ fi
 stty -ixon
 
 # if this is not OS X
-if ! which sw_vers > /dev/null 2>&1; then
+if ! which sw_vers &> /dev/null; then
 
     # load /etc/bashrc
     [[ -f "/etc/bashrc" ]] && source /etc/bashrc
@@ -39,7 +39,7 @@ if ! which sw_vers > /dev/null 2>&1; then
 fi
 
 # if this is OS X
-if which sw_vers > /dev/null 2>&1; then
+if which sw_vers &> /dev/null; then
 
     __bashrc_home_bin_path
 
@@ -66,7 +66,7 @@ fi
 # wait forever to find it every time we open a new shell.
 function __bashrc_tmux_setup () {
     # if tmux is installed
-    if which tmux > /dev/null 2>&1; then
+    if which tmux &> /dev/null; then
         local cache_file=$HOME"/.cache/dotfiles/tmux-completion"
         local tmux_completion=''
         if [ -f "$cache_file" ] && [ -f "$(cat $cache_file)" ]; then

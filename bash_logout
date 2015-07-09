@@ -18,7 +18,7 @@ END
 # let's speed things up if we're in tmux (or screen)
 [[ "$TERM" =~ "screen" ]] && exit
 
-if which lolcat > /dev/null 2>&1; then
+if which lolcat &> /dev/null; then
     echo "$LOGOUTMESSAGE" | lolcat
 else
     echo "$LOGOUTMESSAGE"
