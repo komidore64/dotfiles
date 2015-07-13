@@ -8,4 +8,4 @@ add Lock = Caps_Lock
 add Control = Control_L
 
 ! setting the menu key to the compose key
-keycode 135 = Multi_key
+keycode 108 = Multi_key
