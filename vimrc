@@ -24,6 +24,7 @@ endif
 syntax enable
 filetype plugin indent on
 
+
 " remap <Leader> to spacebar
 let mapleader = " "
 
@@ -32,10 +33,13 @@ nnoremap <Leader><Space> :nohl<CR>
 
 " toggle pastemode
 nnoremap <Leader>pt :set invpaste<CR>
+
 " toggle line-numbers
 nnoremap <Leader>ln :set invnumber<CR>
+
 " toggle relative line-numbers
 nnoremap <Leader>rn :set invrelativenumber<CR>
+
 " easy way to toggle spell checking
 nnoremap <Leader>sp :set invspell<CR>
 
@@ -56,7 +60,7 @@ set ruler
 set nofoldenable
 
 " how to represent invisible characters
-set listchars=tab:/-,extends:>,precedes:<,trail:◂
+set listchars=tab:/-,extends:→,precedes:←,trail:●
 set list
 
 " have some sensible defaults
