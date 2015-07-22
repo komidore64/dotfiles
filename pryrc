@@ -23,7 +23,7 @@ rescue LoadError
   puts ' not found'
 end
 
-%w(pry-debugger pry-stack_explorer pry-rescue).each do |lib|
+%w(pry-debugger pry-byebug pry-stack_explorer pry-rescue).each do |lib|
   begin
     print lib
     require lib
@@ -33,7 +33,7 @@ end
   end
 end
 
-if defined?(PryDebugger)
+if defined?(PryDebugger) || defined?(PryByebug)
   Pry.commands.alias_command('c', 'continue')
   Pry.commands.alias_command('f', 'finish')
   Pry.commands.alias_command('s', 'step')
