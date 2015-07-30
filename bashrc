@@ -159,12 +159,17 @@ export HISTSIZE=9001
 export HISTFILESIZE=9001
 export PROMPT_COMMAND='__bashrc_prompt'
 
-if ( which vagrant &> /dev/null && which libvirtd &> /dev/null ); then
-    export VAGRANT_DEFAULT_PROVIDER=libvirt
+if which libvirtd &> /dev/null; then
 
-    # vagrant aliases
-    alias vstatus="vagrant status"
-    alias vup="vagrant up"
-    alias vdestroy="vagrant destroy"
-    alias vssh="vagrant ssh"
+    export LIBVIRT_DEFAULT_URI=qemu:///system
+
+    if which vagrant &> /dev/null; then
+        export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+        # vagrant aliases
+        alias vstatus="vagrant status"
+        alias vup="vagrant up"
+        alias vdestroy="vagrant destroy"
+        alias vssh="vagrant ssh"
+    fi
 fi
