@@ -111,7 +111,7 @@ highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 
 " line numbers ---------------
 highlight clear LineNr
-highlight LineNr ctermfg=lightgrey
+highlight LineNr ctermfg=cyan
 " ----------------------------
 
 " list characters ------------
