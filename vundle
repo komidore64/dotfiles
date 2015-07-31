@@ -22,6 +22,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'elzr/vim-json'
 Plugin 'vim-scripts/SmartCase'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
 " ----------------------------
 
 " cleanup --------------------
