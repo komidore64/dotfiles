@@ -60,7 +60,7 @@ set ruler
 set nofoldenable
 
 " how to represent invisible characters
-set listchars=tab:/-,extends:→,precedes:←,trail:●
+set listchars=tab:→\ ,extends:→,precedes:←,trail:·,eol:¬
 set list
 
 " have some sensible defaults
