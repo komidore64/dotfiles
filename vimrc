@@ -27,6 +27,7 @@ filetype plugin indent on
 
 " remap <Leader> to spacebar
 let mapleader = " "
+set timeout timeoutlen=500
 
 " undo text highlighting
 nnoremap <Leader><Space> :nohl<CR>
@@ -41,7 +42,10 @@ nnoremap <Leader>ln :set invnumber<CR>
 nnoremap <Leader>rn :set invrelativenumber<CR>
 
 " easy way to toggle spell checking
-nnoremap <Leader>sp :set invspell<CR>
+nnoremap <Leader>s :set invspell<CR>
+
+" toggle list characters
+nnoremap <Leader>l :set invlist<CR>
 
 
 " OPEN ALL THE TABS
