@@ -5,6 +5,10 @@
 
 Pry.config.editor = "#{ENV['EDITOR']}"
 
+# so that i can debug our tests
+# https://github.com/ci-reporter/ci_reporter/issues/154
+ENV['CI_CAPTURE'] = 'off'
+
 begin
   print 'awesome_print'
   require 'awesome_print'
