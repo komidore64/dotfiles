@@ -41,6 +41,7 @@ function git_fetch_all_prune () {
         git remote -v | column -t
         echo
         git fetch --all --prune
+        echo "CURRENT BRANCH: $(git branch | sed -n '/^*/s/^\*\s//p')"
         popd &> /dev/null
         echo
         echo
