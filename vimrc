@@ -146,6 +146,7 @@ if filereadable(expand("~/.vundle"))
 
     " AutoComplPop ---------------
     let g:acp_completeoptPreview = 0
+    let g:acp_autoselectFirstCompletion = 0
     " ----------------------------
 endif
 
