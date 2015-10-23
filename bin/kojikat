@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+koji -c ~/.koji/katello-config $@
