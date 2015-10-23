@@ -36,6 +36,7 @@ module Derpfiles
       "bin/kojikat" => "bin/kojikat",
       "bin/ktest" => "bin/ktest",
       "bin/pulp-bounce" => "bin/pulp-bounce",
+      "bin/pulp-clear" => "bin/pulp-clear",
       "bin/quicksrv" => "bin/quicksrv",
       "bin/todo" => "bin/todo",
       "bin/vundle-update" => "bin/vundle-update",
