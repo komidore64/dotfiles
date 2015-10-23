@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+sudo service qpidd restart && \
+sudo service pulp_celerybeat restart && \
+sudo service pulp_resource_manager restart && \
+sudo service pulp_workers restart && \
+sudo service httpd restart
