@@ -34,6 +34,7 @@ module Derpfiles
       "bin/git-vim" => "bin/git-vim",
       "bin/hub" => "bin/hub",
       "bin/kojikat" => "bin/kojikat",
+      "bin/ktest" => "bin/ktest",
       "bin/quicksrv" => "bin/quicksrv",
       "bin/todo" => "bin/todo",
       "bin/vundle-update" => "bin/vundle-update",
