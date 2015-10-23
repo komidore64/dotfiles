@@ -108,6 +108,7 @@ if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "
 else
     alias g='git status'
 fi
+alias b='git branch'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias ga='git add'

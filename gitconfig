@@ -10,7 +10,6 @@
 [alias]
     dt = difftool
     mt = mergetool
-    dw = diff --word-diff
     co = checkout
     b = branch
     bm = branch --merged
