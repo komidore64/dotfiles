@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function help () {
+    cat <<EOHELP
+Find the oldest common ancestor between two refspecs (i.e. - where two branches diverged)
+
+USAGE:
+    git oldest-ancestor <branch> <branch>
+
+EOHELP
+}
+
+# show help and exit if we aren't handed two branches
+if [ -z "$1" ] && [ -z "$2" ]; then
+    help && exit 1
+fi
+
+diff -u <(git rev-list --first-parent $1) <(git rev-list --first-parent $2) | sed -ne 's/^ //p' | head -1

@@ -31,6 +31,7 @@ module Derpfiles
       "bin/asdf" => "bin/asdf",
       "bin/hub" => "bin/hub",
       "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
+      "bin/git-oldest-ancestor" => "bin/git-oldest-ancestor",
       "bin/git-vim" => "bin/git-vim",
       "bin/quicksrv" => "bin/quicksrv",
       "bin/todo" => "bin/todo",
