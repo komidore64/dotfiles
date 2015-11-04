@@ -23,8 +23,3 @@ weechat/urlserver_list.txt
 # ignore installed vim plugins
 vim/bundle/*
 !vim/bundle/vundle
-
-# rvm
-.rvmrc
-.ruby-version
-.ruby-gemset
