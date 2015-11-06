@@ -1,6 +1,6 @@
 #! /usr/bin/env ruby
 
-# derpfiles - install your dotfiles
+# dotfiles_installer - install your dotfiles
 # Copyright (C) 2013 M. Adam Price
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 require 'fileutils'
 require 'optparse'
 
-module Derpfiles
+module DotfilesInstaller
 
   VERSION = "0.0.2"
 
@@ -73,7 +73,7 @@ module Derpfiles
   def self.install_dotfiles(sets, options = {})
     options = {
       :root_dest => ENV['HOME'],
-      :root_src => File.expand_path("#{File.dirname(__FILE__)}/../") # root of the github repo
+      :root_src => File.expand_path(`git rev-parse --show-toplevel`.strip)
     }.merge(options)
 
     sets.each { |s| install_set(s, options[:root_src], options[:root_dest]) }
@@ -127,7 +127,7 @@ if __FILE__ == $0
     options[:flags] = []
 
     opts.banner = "USAGE: ruby #{__FILE__} [OPTIONS]"
-    opts.version = "#{__FILE__} #{Derpfiles::VERSION} Copyright (C) 2013 M. Adam Price"
+    opts.version = "#{__FILE__} #{DotfilesInstaller::VERSION} Copyright (C) 2013 M. Adam Price"
 
     opts.on("--linux", "install dotfiles for a linux system (default)") do
       options[:flags] << :linux
@@ -148,7 +148,7 @@ if __FILE__ == $0
   begin
     optparse.parse!
     raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui, --osx ]" if options[:flags].size > 1
-    Derpfiles.install_dotfiles(options[:sets])
+    DotfilesInstaller.install_dotfiles(options[:sets])
   rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
     exit 1

@@ -15,10 +15,9 @@ module DotfilesAssertionsHelper
 
 end
 
-require 'minitest'
 require 'minitest/autorun'
 
-require File.expand_path(File.join([File.dirname(__FILE__), "..", "derpfiles"]))
+require File.expand_path(File.join([File.dirname(__FILE__), "..", "dotfiles_installer"]))
 
 Dir["./test/*_install_test.rb"].each do |f|
   require f

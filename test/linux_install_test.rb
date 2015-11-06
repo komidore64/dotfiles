@@ -15,9 +15,9 @@ class LinuxInstallTest < MiniTest::Unit::TestCase
 
   def test_linux_install
     installation_sets = [:common, :linux]
-    Derpfiles.install_dotfiles(installation_sets, :root_dest => @fake_home)
+    DotfilesInstaller.install_dotfiles(installation_sets, :root_dest => @fake_home)
     installation_sets.each do |set|
-      assert_set_installed(Derpfiles::FILES[set])
+      assert_set_installed(DotfilesInstaller::FILES[set])
     end
   end
 
