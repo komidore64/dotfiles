@@ -15,6 +15,11 @@ module DotfilesAssertionsHelper
 
 end
 
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/test/'
+end
+
 require 'minitest/autorun'
 
 require File.expand_path(File.join([File.dirname(__FILE__), "..", "dotfiles_installer"]))

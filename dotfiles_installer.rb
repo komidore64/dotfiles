@@ -19,99 +19,156 @@
 require 'fileutils'
 require 'optparse'
 
-module DotfilesInstaller
+module Dotfiles
 
-  VERSION = "0.0.2"
+  class Installer
 
-  FILES = {
-    :common => {
-      "bash_colors" => ".bash_colors",
-      "bashrc" => ".bashrc",
-      "bash_logout" => ".bash_logout",
-      "bin/asdf" => "bin/asdf",
-      "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
-      "bin/git-oldest-ancestor" => "bin/git-oldest-ancestor",
-      "bin/git-vim" => "bin/git-vim",
-      "bin/hub" => "bin/hub",
-      "bin/kojikat" => "bin/kojikat",
-      "bin/ktest" => "bin/ktest",
-      "bin/pulp-bounce" => "bin/pulp-bounce",
-      "bin/pulp-clear" => "bin/pulp-clear",
-      "bin/quicksrv" => "bin/quicksrv",
-      "bin/todo" => "bin/todo",
-      "bin/vundle-update" => "bin/vundle-update",
-      "completion" => ".completion",
-      "curlrc" => ".curlrc",
-      "gitconfig" => ".gitconfig",
-      "git_template" => ".git_template",
-      "pryrc" => ".pryrc",
-      "rvm/gemsets/ruby/1.9.3/global.gems" => ".rvm/gemsets/ruby/1.9.3/global.gems",
-      "rvm/gemsets/ruby/2.1.2/global.gems" => ".rvm/gemsets/ruby/2.1.2/global.gems",
-      "rvmrc" => ".rvmrc",
-      "titorc" => ".titorc",
-      "tmux.conf" => ".tmux.conf",
-      "tmuxinator" => ".tmuxinator",
-      "vim" => ".vim",
-      "vimrc" => ".vimrc",
-      "vundle" => ".vundle",
-      "weechat" => ".weechat"
-    },
-    :linux => {
-      "bin/subl" => "bin/subl",
-      "fonts" => ".fonts",
-      "config/sublime-text-2" => ".config/sublime-text-2",
-      "Xdefaults" => ".Xdefaults",
-      "Xmodmap" => ".Xmodmap"
-    },
-    :osx => { # saving osx for later. just want to get this finished for now
-      # "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",
-      # "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
-      "bash_profile" => ".bash_profile"
+    VERSION = "0.0.3"
+
+    FILES = {
+      :common => {
+        "bash_colors" => ".bash_colors",
+        "bashrc" => ".bashrc",
+        "bash_logout" => ".bash_logout",
+        "bin/asdf" => "bin/asdf",
+        "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
+        "bin/git-oldest-ancestor" => "bin/git-oldest-ancestor",
+        "bin/git-vim" => "bin/git-vim",
+        "bin/hub" => "bin/hub",
+        "bin/kojikat" => "bin/kojikat",
+        "bin/ktest" => "bin/ktest",
+        "bin/pulp-bounce" => "bin/pulp-bounce",
+        "bin/pulp-clear" => "bin/pulp-clear",
+        "bin/quicksrv" => "bin/quicksrv",
+        "bin/todo" => "bin/todo",
+        "bin/vundle-update" => "bin/vundle-update",
+        "completion" => ".completion",
+        "curlrc" => ".curlrc",
+        "gitconfig" => ".gitconfig",
+        "git_template" => ".git_template",
+        "pryrc" => ".pryrc",
+        "rvm/gemsets/ruby/1.9.3/global.gems" => ".rvm/gemsets/ruby/1.9.3/global.gems",
+        "rvm/gemsets/ruby/2.1.2/global.gems" => ".rvm/gemsets/ruby/2.1.2/global.gems",
+        "rvmrc" => ".rvmrc",
+        "titorc" => ".titorc",
+        "tmux.conf" => ".tmux.conf",
+        "tmuxinator" => ".tmuxinator",
+        "vim" => ".vim",
+        "vimrc" => ".vimrc",
+        "vundle" => ".vundle",
+        "weechat" => ".weechat"
+      },
+      :linux => {
+        "bin/subl" => "bin/subl",
+        "fonts" => ".fonts",
+        "config/sublime-text-2" => ".config/sublime-text-2",
+        "Xdefaults" => ".Xdefaults",
+        "Xmodmap" => ".Xmodmap"
+      },
+      :osx => { # saving osx for later. just want to get this finished for now
+        # "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",
+        # "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
+        "bash_profile" => ".bash_profile"
+      }
     }
-  }
 
-  def self.install_dotfiles(sets, options = {})
-    options = {
-      :root_dest => ENV['HOME'],
-      :root_src => File.expand_path(`git rev-parse --show-toplevel`.strip)
-    }.merge(options)
+    attr_reader :write_action, :destination, :source
 
-    sets.each { |s| install_set(s, options[:root_src], options[:root_dest]) }
-  end
+    def initialize(options = {})
+      options = {
+        :write_action => "prompt",
+        :destination => ENV['HOME'],
+        :source => File.expand_path(`git rev-parse --show-toplevel`.strip)
+      }.merge(options)
 
-  def self.prompt(message, default = nil)
-    print("%s " % message)
-    result = gets.chomp
-    result.empty? ? default : result
-  end
-
-  def self.symlink(source, destination, exists = false)
-    File.delete(destination) if exists
-    File.symlink(source, destination)
-  end
-
-  def self.install_single(src, dest)
-    dirs = dest.scan(/\A(.*)(\/.*)\z/)[0][0]
-    overwrite = true
-    if exists = File.exists?(dest)
-      overwrite = case prompt("Overwrite #{dest} [y,N,q]?", "N")
-                  when "Q", "q"
-                    exit 0
-                  when "Y", "y"
-                    true
-                  else
-                    false
-                  end
+      self.write_action = options[:write_action]
+      self.source = options[:source]
+      self.destination = options[:destination]
     end
-    if overwrite
-      FileUtils.makedirs(dirs) unless exists
-      symlink(src, dest, exists)
-    end
-  end
 
-  def self.install_set(set, root_src, root_dest)
-    FILES[set].each do |k, v|
-      install_single(File.join([root_src, k]), File.join([root_dest, v]))
+    def write_action=(action)
+      unless action.match(/\A(overwrite|no[_-]overwrite|prompt)\z/)
+        fail RuntimeError,  "write action must be one of [ overwrite, no_overwrite, prompt ]"
+      end
+
+      @write_action = action.tr('-', '_')
+    end
+
+    def source=(src)
+      unless File.exist?(src) && File.directory?(src)
+        fail RuntimeError, "not a valid source directory [ #{src} ]"
+      end
+
+      @source = src
+    end
+
+    def destination=(dest)
+      unless File.exist?(dest) && File.directory?(dest)
+        fail RuntimeError, "not a valid destination directory [ #{dest} ]"
+      end
+
+      @destination = dest
+    end
+
+    def install_dotfiles(sets)
+      sets.each { |s| install_set(s, @source, @destination) }
+    end
+
+    private
+
+    def prompt(message, default = nil)
+      print("%s " % message)
+      result = gets.chomp
+      result.empty? ? default : result
+    end
+
+    def symlink(src, dest, options = {})
+      options = {:delete => false}.merge(options)
+
+      File.delete(dest) if options[:delete]
+      File.symlink(src, dest)
+    end
+
+    def overwrite_prompt(src, dest)
+      case prompt("Overwrite #{dest} [y,N,q]?", "N")
+      when "Q", "q"
+        exit 0
+      when "Y", "y"
+        symlink(src, dest, :delete => true)
+      else
+        return # do nothing
+      end
+    end
+
+    def install_single_with_prexisting_file(src, dest)
+      case @write_action
+      when 'no_overwrite'
+        return
+      when 'prompt'
+        overwrite_prompt(src, dest)
+      when 'overwrite'
+        symlink(src, dest, :delete => true)
+      end
+    end
+
+    def install_single_newfile(src, dest)
+        dir = dest.scan(/\A(.*)(\/.*)\z/)[0][0]
+        FileUtils.makedirs(dir)
+        symlink(src, dest)
+    end
+
+    def install_single(src, dest)
+      if File.exist?(dest)
+        install_single_with_prexisting_file(src, dest)
+      else
+        install_single_newfile(src, dest)
+      end
+    end
+
+    def install_set(set, root_src, root_dest)
+      FILES[set].each do |k, v|
+        install_single(File.join([root_src, k]), File.join([root_dest, v]))
+      end
     end
   end
 
@@ -123,32 +180,38 @@ if __FILE__ == $0
   optparse = OptionParser.new do |opts|
 
     # defaults
-    options[:sets] = [:common, :linux]
-    options[:flags] = []
+    options[:sets] = []
+    options[:select1] = 0
+    options[:select2] = 0
 
     opts.banner = "USAGE: ruby #{__FILE__} [OPTIONS]"
-    opts.version = "#{__FILE__} #{DotfilesInstaller::VERSION} Copyright (C) 2013 M. Adam Price"
+    opts.version = "#{__FILE__} #{Dotfiles::Installer::VERSION} Copyright (C) 2016 M. Adam Price"
 
     opts.on("--linux", "install dotfiles for a linux system (default)") do
-      options[:flags] << :linux
+      options[:sets] = [:common, :linux]
+      options[:select1] += 1
     end
 
     opts.on("--nogui", "install dotfiles excluding those related to a graphical interface") do
-      options[:sets].delete(:linux)
-      options[:flags] << :nogui
+      options[:sets] = [:common]
+      options[:select1] += 1
     end
 
     opts.on("--osx", "install dotfiles for mac os x") do
-      options[:sets].delete(:linux)
-      options[:flags] << :osx
+      options[:sets] = [:common, :osx]
+      options[:select1] += 1
+    end
+
+    opts.on("--write-action ACTION", "use [ overwrite, no-overwrite, prompt ] to specify write-action when an existing dotfile is discovered") do |action|
+      options[:write_action] = action
     end
 
   end
 
   begin
     optparse.parse!
-    raise OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui, --osx ]" if options[:flags].size > 1
-    DotfilesInstaller.install_dotfiles(options[:sets])
+    fail OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui, --osx ]" if options[:select1] > 1
+    Dotfiles::Installer.new(options).install_dotfiles(options[:sets])
   rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
     exit 1

@@ -1,6 +1,4 @@
-require 'fileutils'
-
-class LinuxInstallTest < MiniTest::Unit::TestCase
+class LinuxInstallTest < MiniTest::Test
   include DotfilesAssertionsHelper
 
   def setup
@@ -15,9 +13,9 @@ class LinuxInstallTest < MiniTest::Unit::TestCase
 
   def test_linux_install
     installation_sets = [:common, :linux]
-    DotfilesInstaller.install_dotfiles(installation_sets, :root_dest => @fake_home)
+    Dotfiles::Installer.new(:destination => @fake_home).install_dotfiles(installation_sets)
     installation_sets.each do |set|
-      assert_set_installed(DotfilesInstaller::FILES[set])
+      assert_set_installed(Dotfiles::Installer::FILES[set])
     end
   end
 
