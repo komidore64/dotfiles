@@ -146,6 +146,7 @@ if filereadable(expand("~/.vundle"))
 
     " vim-gitgutter --------------
     highligh clear SignColumn
+    nnoremap <Leader>gg :GitGutterToggle<CR>
     " ----------------------------
 
     " AutoComplPop ---------------
