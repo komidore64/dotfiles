@@ -67,7 +67,7 @@ function status_of_repos () {
 }
 
 function main () {
-    check_for_kerberos_ticket
+    # check_for_kerberos_ticket
     chance_to_exit
     git_fetch_all_prune
     status_of_repos
