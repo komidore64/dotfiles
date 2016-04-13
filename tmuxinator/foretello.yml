@@ -25,9 +25,3 @@ windows:
     - cd ~/foreman/
   - katello:
     - cd ~/katello/
-  - bastion:
-    - cd ~/bastion/
-  - foreman-docker:
-    - cd ~/foreman-docker/
-  - foreman-tasks:
-    - cd ~/foreman-tasks/
