@@ -13,7 +13,7 @@ if [[ $CTAGS == 0 ]]; then # do we have ctags installed?
         PATH="/usr/local/bin:$PATH"
         trap "rm -f .git/tags.$$" EXIT
 
-        ctags --tag-relative -R -f .git/tags.$$ --exclude=.git --languages=-sql,javascript
+        ctags --tag-relative -R -f .git/tags.$$ --exclude=.git --languages=-sql,javascript 2> /dev/null
         mv .git/tags.$$ .git/tags
         echo "DONE"
 

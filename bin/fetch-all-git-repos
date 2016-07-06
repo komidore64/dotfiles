@@ -37,6 +37,7 @@ function git_fetch_all_prune () {
     for g in $DIRECTORIES; do
         pushd $g &> /dev/null
         echo $g
+        rm .git/hooks/*
         git init
         git remote -v | column -t
         echo
