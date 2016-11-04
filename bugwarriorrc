@@ -1,0 +1,72 @@
+# vim: set ft=ini
+#
+[general]
+annotation_comments = false
+merge_annotations = false
+targets = bz.untriaged,bz.needinfo,bz.assigned,redmine,github
+
+[bz.untriaged]
+service = bugzilla
+bugzilla.base_uri = bugzilla.redhat.com
+bugzilla.username = adprice@redhat.com
+bugzilla.password = @oracle:eval:cat ~/.bugw.d/bugzilla.password
+# query: OPEN product:"Red Hat Satellite 6" component:"Infrastructure","Orchestration","Subscription Asset Manager (SAM)" -flag:devel_triaged+ -flag:needinfo?
+bugzilla.query_url = https://bugzilla.redhat.com/buglist.cgi?quicksearch=OPEN%20product%3A%22Red%20Hat%20Satellite%206%22%20component%3A%22Infrastructure%22%2C%22Orchestration%22%2C%22Subscription%20Asset%20Manager%20(SAM)%22%20-flag%3Adevel_triaged%2B%20-flag%3Aneedinfo%3F
+add_tags = untriaged
+description_template = {{ bugzillasummary }} {{ bugzillaurl }}
+project_template = bz
+
+[bz.needinfo]
+service = bugzilla
+bugzilla.base_uri = bugzilla.redhat.com
+bugzilla.username = adprice@redhat.com
+bugzilla.password = @oracle:eval:cat ~/.bugw.d/bugzilla.password
+# query: OPEN needinfo?adprice@redhat.com
+bugzilla.query_url = https://bugzilla.redhat.com/buglist.cgi?quicksearch=OPEN%20needinfo%3Fadprice%40redhat.com
+add_tags = needinfo
+description_template = {{ bugzillasummary }} {{ bugzillaurl }}
+project_template = bz
+
+[bz.assigned]
+service = bugzilla
+bugzilla.base_uri = bugzilla.redhat.com
+bugzilla.username = adprice@redhat.com
+bugzilla.password = @oracle:eval:cat ~/.bugw.d/bugzilla.password
+# query: status:new,assigned assignee:adprice@redhat.com
+bugzilla.query_url = https://bugzilla.redhat.com/buglist.cgi?quicksearch=status%3Anew%2Cassigned%20assignee%3Aadprice%40redhat.com
+add_tags = assigned
+description_template = {{ bugzillasummary }} {{ bugzillaurl }}
+project_template = bz
+
+[redmine]
+service = redmine
+redmine.url = http://projects.theforeman.org
+redmine.key = @oracle:eval:cat ~/.bugw.d/redmine.api.key
+redmine.user_id = 4233
+redmine.project_name = katello
+add_tags = assigned
+description_template = {{ redminesubject }} {{ redmineurl }}
+project_template = redmine
+
+[github]
+service = github
+github.username = komidore64
+github.login = komidore64
+github.token = @oracle:eval:cat ~/.bugw.d/github.token
+github.project_name = github
+github.import_labels_as_tags = false
+github.involved_issues = true
+github.filter_pull_requests = true
+github.include_user_issues = false
+add_tags = {{ githubrepo }}
+description_template = {{ githubtitle }} {{ githuburl }}
+project_template = github
+
+[trello]
+service = trello
+trello.api_key = @oracle:eval:cat ~/.bugw.d/trello.api.key
+trello.token = @oracle:eval:cat ~/.bugw.d/trello.token
+trello.only_if_assigned = komidore64
+trello.import_labels_as_tags = false
+description_template = {{ trellocard }} {{ trelloshorturl }}
+project_template = trello
