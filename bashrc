@@ -21,6 +21,7 @@ function __bashrc_basic_common_aliases () {
 __bashrc_basic_common_aliases
 
 shopt -s cdspell
+shopt -s checkwinsize
 if [[ $BASH_VERSION > 4 ]]; then
     shopt -s dirspell
     shopt -s checkjobs
@@ -153,7 +154,6 @@ function __bashrc_prompt () {
 }
 PS2="-> "
 
-
 shopt -s histappend
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=9001
@@ -168,9 +168,18 @@ if which libvirtd &> /dev/null; then
         export VAGRANT_DEFAULT_PROVIDER=libvirt
 
         # vagrant aliases
+        alias v="vagrant"
         alias vstatus="vagrant status"
         alias vup="vagrant up"
         alias vdestroy="vagrant destroy"
         alias vssh="vagrant ssh"
     fi
+fi
+
+if which task &> /dev/null; then
+    alias t="task"
+fi
+
+if which lpass &> /dev/null; then
+    export LPASS_DISABLE_PINENTRY=1
 fi
