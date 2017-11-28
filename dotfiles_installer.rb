@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
 # dotfiles_installer - install your dotfiles
-# Copyright (C) 2013 M. Adam Price
+# Copyright (C) 2017 M. Adam Price
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ module Dotfiles
 
     def write_action=(action)
       unless action.match(/\A(overwrite|no[_-]overwrite|prompt)\z/)
-        fail RuntimeError,  "write action must be one of [ overwrite, no_overwrite, prompt ]"
+        fail RuntimeError,  "write action must be one of [ overwrite, no-overwrite, prompt ]"
       end
 
       @write_action = action.tr('-', '_')
@@ -183,12 +183,12 @@ if __FILE__ == $0
   optparse = OptionParser.new do |opts|
 
     # defaults
-    options[:sets] = []
+    options[:sets] = [:common, :linux]
     options[:select1] = 0
     options[:select2] = 0
 
     opts.banner = "USAGE: ruby #{__FILE__} [OPTIONS]"
-    opts.version = "#{__FILE__} #{Dotfiles::Installer::VERSION} Copyright (C) 2016 M. Adam Price"
+    opts.version = "#{__FILE__} #{Dotfiles::Installer::VERSION} Copyright (C) #{Time.new.year} M. Adam Price"
 
     opts.on("--linux", "install dotfiles for a linux system (default)") do
       options[:sets] = [:common, :linux]
