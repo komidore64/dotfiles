@@ -14,11 +14,13 @@
     b = branch
     bm = branch --merged
     bum = branch --no-merged
-    fa = fetch --all --prune
+    fa = fetch --all --prune --tags
+    rekt = reset --hard
     ctags = !.git/hooks/ctags
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
     cp = cherry-pick
+    cpx = cherry-pick -x
     pr = pull-request # hub
     wip = !git add --all && git commit -m "wip"
     unwip = "!if [[ $(git log -1 --format=format:%s) == 'wip' ]]; then git reset HEAD~1; else echo 'nope'; fi"
@@ -43,5 +45,3 @@
     autocorrect = 25 # no idea why, but this is in tenths of a second, so that's 2.5 seconds
 [init]
     templatedir = ~/.git_template
-[push]
-    default = nothing # incase i accidentally 'git push <repo-name>', don't do anything
