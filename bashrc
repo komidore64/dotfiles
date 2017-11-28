@@ -20,8 +20,10 @@ function __bashrc_basic_common_aliases () {
 }
 __bashrc_basic_common_aliases
 
+# shell options yall
 shopt -s cdspell
 shopt -s checkwinsize
+shopt -s histappend
 if [[ $BASH_VERSION > 4 ]]; then
     shopt -s dirspell
     shopt -s checkjobs
@@ -96,10 +98,11 @@ alias cp='cp -i'
 alias mkdir='mkdir -p'
 alias grepr='grep --color=always'
 alias lessr='less --RAW-CONTROL-CHARS'
-alias tiga='tig --all'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias lol='lolcat'
+alias fuck='sudo $(history -p \!\!)'
+alias koji='koji -c ~/.koji/katello-config'
 
 # git aliases
 if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
@@ -115,13 +118,11 @@ alias gds='git diff --staged'
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
-alias girt='git'
-alias gti='git'
-alias gut='git'
+alias girt='curl https://icanhazdadjoke.com'
+alias gti='curl https://icanhazdadjoke.com'
+alias gut='curl https://icanhazdadjoke.com'
 
 alias git='hub' # hook into hub
-
-alias fuck='sudo $(history -p \!\!)'
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
@@ -152,9 +153,10 @@ function __bashrc_prompt () {
 
     PS1=$prompt' '
 }
-PS2="-> "
+PS2="$COLOR_BOLD_PURPLE>$COLOR_RESET"
+PS4="-> "
 
-shopt -s histappend
+# bash history setup
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=9001
 export HISTFILESIZE=9001
@@ -176,10 +178,6 @@ if which libvirtd &> /dev/null; then
     fi
 fi
 
-if which task &> /dev/null; then
-    alias t="task"
-fi
-
-if which lpass &> /dev/null; then
-    export LPASS_DISABLE_PINENTRY=1
+if which ansible-playbook &> /dev/null; then
+    alias ap='ansible-playbook'
 fi

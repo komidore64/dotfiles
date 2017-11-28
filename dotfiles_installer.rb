@@ -40,6 +40,7 @@ module Dotfiles
         "bin/pulp-bounce" => "bin/pulp-bounce",
         "bin/pulp-clear" => "bin/pulp-clear",
         "bin/quicksrv" => "bin/quicksrv",
+        "bin/tiga" => "bin/tiga",
         "bin/todo" => "bin/todo",
         "bin/vundle-update" => "bin/vundle-update",
         "bugwarriorrc" => ".bugwarriorrc",
