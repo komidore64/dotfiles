@@ -23,6 +23,8 @@ Plugin 'vim-scripts/SmartCase'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-markdown'
 Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'pearofducks/ansible-vim'
+Plugin 'dhruvasagar/vim-table-mode'
 " ----------------------------
 
 " cleanup --------------------

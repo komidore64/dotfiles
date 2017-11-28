@@ -47,7 +47,6 @@ nnoremap <Leader>s :set invspell<CR>
 " toggle list characters
 nnoremap <Leader>l :set invlist<CR>
 
-
 " OPEN ALL THE TABS
 set tabpagemax=9001
 
@@ -59,9 +58,6 @@ set incsearch
 " unless you use a capital letter, then don't ignore case
 set ignorecase
 set smartcase
-
-set ruler
-set nofoldenable
 
 " how to represent invisible characters
 set listchars=tab:→\ ,extends:→,precedes:←,trail:·,eol:¬
@@ -80,6 +76,8 @@ set modelines=5
 set showmatch
 set matchtime=5
 set scrolloff=3
+set ruler
+set nofoldenable
 
 " vim command-line tab-completion
 set wildmenu
@@ -88,6 +86,7 @@ set wildmode=list:longest
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" set filetypes
 autocmd BufRead,BufNewFile *.md set ft=markdown
 
 " disable netrw --------------
@@ -125,19 +124,19 @@ highlight SpecialKey ctermfg=yellow
 " load plugin settings if ~/.vundle is found
 if filereadable(expand("~/.vundle"))
 
-    " vim-airline
+    " vim-airline ----------------
     set noshowmode
     set laststatus=2
     let g:airline_left_sep=''
     let g:airline_right_sep=''
+    " ----------------------------
 
     " ctrlp ----------------------
     let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
     let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
 
-    " remap <cr> to open file in a new tab
     let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'],
-                                  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'] }
+                                  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'] } " remap <cr> to open file in a new tab
     " ----------------------------
 
     " vim-json -------------------
@@ -149,9 +148,8 @@ if filereadable(expand("~/.vundle"))
     nnoremap <Leader>gg :GitGutterToggle<CR>
     " ----------------------------
 
-    " AutoComplPop ---------------
-    let g:acp_completeoptPreview = 0
-    let g:acp_autoselectFirstCompletion = 0
+    " vim-table-mode -------------
+    let g:table_mode_corner = '|'
     " ----------------------------
 endif
 
