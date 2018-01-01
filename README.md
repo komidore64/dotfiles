@@ -1,4 +1,4 @@
-# Dotfiles [![Build Status](https://snap-ci.com/komidore64/dotfiles/branch/master/build_image)](https://snap-ci.com/komidore64/dotfiles/branch/master)
+# Dotfiles
 
 Works with linux and OS X.
 
