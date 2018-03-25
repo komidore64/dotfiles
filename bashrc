@@ -86,6 +86,7 @@ __bashrc_tmux_setup
 
 export EDITOR='vim'
 export PAGER='less'
+export FZF_COMPLETION_TRIGGER=',,'
 
 alias l='ls'        # catch
 alias s='ls'        # all

@@ -52,6 +52,7 @@ module Dotfiles
         "rvm/gemsets/ruby/1.9.3/global.gems" => ".rvm/gemsets/ruby/1.9.3/global.gems",
         "rvm/gemsets/ruby/2.1.2/global.gems" => ".rvm/gemsets/ruby/2.1.2/global.gems",
         "rvmrc" => ".rvmrc",
+        "tigrc" => ".tigrc",
         "titorc" => ".titorc",
         "taskrc" => ".taskrc",
         "tmux.conf" => ".tmux.conf",
