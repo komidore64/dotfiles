@@ -33,11 +33,11 @@ module.exports = {
     cursorBlink: false,
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: '#ededed',
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: '#000',
+    backgroundColor: '#101010',
 
     // terminal selection color
     selectionColor: 'rgba(248,28,229,0.3)',
@@ -67,22 +67,22 @@ module.exports = {
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: '#000000',
-      red: '#C51E14',
-      green: '#1DC121',
-      yellow: '#C7C329',
-      blue: '#0A2FC4',
-      magenta: '#C839C5',
-      cyan: '#20C5C6',
-      white: '#C7C7C7',
-      lightBlack: '#686868',
-      lightRed: '#FD6F6B',
-      lightGreen: '#67F86F',
-      lightYellow: '#FFFA72',
-      lightBlue: '#6A76FB',
-      lightMagenta: '#FD7CFC',
-      lightCyan: '#68FDFE',
-      lightWhite: '#FFFFFF',
+      black: '#2E3436',
+      red: '#993C3C',
+      green: '#3C993C',
+      yellow: '#99993C',
+      blue: '#3C6199',
+      magenta: '#993C99',
+      cyan: '#3C9999',
+      white: '#D3D7CF',
+      lightBlack: '#555753',
+      lightRed: '#BF4141',
+      lightGreen: '#41BF41',
+      lightYellow: '#BFBF41',
+      lightBlue: '#4174FB',
+      lightMagenta: '#BF41BF',
+      lightCyan: '#41BFBF',
+      lightWhite: '#E3E3E3',
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
