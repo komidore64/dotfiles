@@ -131,14 +131,6 @@ if filereadable(expand("~/.vundle"))
     let g:airline_right_sep=''
     " ----------------------------
 
-    " ctrlp ----------------------
-    let g:ctrlp_open_multiple_files = 'tj' " open multiple files in additional tabs
-    let g:ctrlp_show_hidden = 1 " include dotfiles and dotdirs in ctrlp indexing
-
-    let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'],
-                                  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'] } " remap <cr> to open file in a new tab
-    " ----------------------------
-
     " vim-json -------------------
     let g:vim_json_syntax_conceal = 0
     " ----------------------------
@@ -150,6 +142,15 @@ if filereadable(expand("~/.vundle"))
 
     " vim-table-mode -------------
     let g:table_mode_corner = '|'
+    " ----------------------------
+
+    " fzf ------------------------
+    nnoremap <C-P> :FZF<CR>
+    let g:fzf_action = {
+        \ 'enter': 'tab split',
+        \ 'ctrl-t': 'tab split',
+        \ 'ctrl-x': 'split',
+        \ 'ctrl-v': 'vsplit' }
     " ----------------------------
 endif
 
