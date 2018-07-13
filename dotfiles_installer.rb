@@ -66,7 +66,8 @@ module Dotfiles
         "fonts" => ".fonts",
         "config/sublime-text-2" => ".config/sublime-text-2",
         "Xdefaults" => ".Xdefaults",
-        "Xmodmap" => ".Xmodmap"
+        "Xmodmap" => ".Xmodmap",
+        "hyper.js" => ".hyper.js"
       },
       :osx => { # saving osx for later. just want to get this finished for now
         # "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",

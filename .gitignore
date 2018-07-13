@@ -26,3 +26,6 @@ vim/bundle/*
 
 # installer
 coverage
+
+# hyper.js
+fonts/**/.uuid
