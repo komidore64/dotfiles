@@ -103,7 +103,6 @@ alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias lol='lolcat'
 alias fuck='sudo $(history -p \!\!)'
-alias koji='koji -c ~/.koji/katello-config'
 
 # git aliases
 if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
