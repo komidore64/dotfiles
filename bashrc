@@ -134,21 +134,19 @@ __bashrc_completion_files
 
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
-    local exitstatus=$?
+    local pipestatus=${PIPESTATUS[@]}
     local prompt=''
 
     # TODO show the username if he/she isn't the one who created the shell
 
-    # working directory
-    if [[ $PWD != $HOME ]]; then
-        prompt+=$COLOR_YELLOW$(pwd | awk -F/ '{print $NF}')$COLOR_RESET' '
-    fi
+    # pwd basename
+    prompt+=$COLOR_YELLOW"\W"$COLOR_RESET' '
 
     # exit status
-    if [[ $exitstatus -ne 0 ]]; then
-        prompt+=$COLOR_RED$'\xe2\x9c\x98'$COLOR_RESET # U+2718 "heavy ballot x"
+    if [[ $(( $(sed 's/ / + /g' <(echo $pipestatus)) )) -gt 0 ]]; then
+        prompt+=$COLOR_RED'['$pipestatus']'$COLOR_RESET
     else
-        prompt+=$COLOR_LIGHT_GREEN'$'$COLOR_RESET
+        prompt+=$COLOR_GREEN'$'$COLOR_RESET
     fi
 
     PS1=$prompt' '
