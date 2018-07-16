@@ -11,20 +11,23 @@ call vundle#begin()
 
 " plugins --------------------
 Plugin 'gmarik/vundle'
+
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'junegunn/fzf'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/SmartCase'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'dhruvasagar/vim-table-mode'
+
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'elzr/vim-json'
-Plugin 'vim-scripts/SmartCase'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-markdown'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'pearofducks/ansible-vim'
-Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'pangloss/vim-javascript'
 " ----------------------------
 
 " cleanup --------------------
