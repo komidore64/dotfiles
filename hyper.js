@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 12,
 
     // font family with optional fallbacks
     fontFamily: '"Source Code Pro", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -43,7 +43,7 @@ module.exports = {
     selectionColor: 'rgba(248,28,229,0.3)',
 
     // border color (window, tabs)
-    borderColor: '#4174FB',
+    borderColor: '#000',
 
     // custom CSS to embed in the main window
     css: '',
@@ -139,7 +139,53 @@ module.exports = {
   localPlugins: [],
 
   keymaps: {
-    // Example
-    // 'window:devtools': 'cmd+alt+o',
+    "window:devtools": "ctrl+shift+i",
+    "window:reload": "ctrl+shift+r",
+    "window:reloadFull": "ctrl+shift+f5",
+    "window:preferences": "",
+    "zoom:reset": "ctrl+0",
+    "zoom:in": "ctrl+shift+=",
+    "zoom:out": "ctrl+-",
+    "window:new": "",
+    "window:minimize": "",
+    "window:zoom": "",
+    "window:toggleFullScreen": "",
+    "window:close": "",
+    "tab:new": "",
+    "tab:next": [
+      "ctrl+shift+]",
+      "ctrl+shift+right",
+      "ctrl+alt+right",
+      "ctrl+tab"
+    ],
+    "tab:prev": [
+      "ctrl+shift+[",
+      "ctrl+shift+left",
+      "ctrl+alt+left",
+      "ctrl+shift+tab"
+    ],
+    "tab:jump:prefix": "ctrl",
+    "pane:next": "",
+    "pane:prev": "",
+    "pane:splitVertical": "",
+    "pane:splitHorizontal": "",
+    "pane:close": "",
+    "editor:undo": "",
+    "editor:redo": "",
+    "editor:cut": "",
+    "editor:copy": "",
+    "editor:paste": "",
+    "editor:selectAll": "",
+    "editor:movePreviousWord": "",
+    "editor:moveNextWord": "",
+    "editor:moveBeginningLine": "",
+    "editor:moveEndLine": "",
+    "editor:deletePreviousWord": "",
+    "editor:deleteNextWord": "",
+    "editor:deleteBeginningLine": "",
+    "editor:deleteEndLine": "",
+    "editor:clearBuffer": "",
+    "editor:break": "",
+    "plugins:update": ""
   },
 };
