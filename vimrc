@@ -35,9 +35,6 @@ nnoremap <Leader><Space> :nohl<CR>
 " toggle pastemode
 nnoremap <Leader>pt :set invpaste<CR>
 
-" toggle line-numbers
-nnoremap <Leader>ln :set invnumber<CR>
-
 " toggle relative line-numbers
 nnoremap <Leader>rn :set invrelativenumber<CR>
 
@@ -79,9 +76,19 @@ set scrolloff=3
 set ruler
 set nofoldenable
 
+
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail. -- Gary Bernhardt
+set winwidth=150
+set winheight=10
+set winminheight=10
+set winheight=999
+
 " vim command-line tab-completion
 set wildmenu
 set wildmode=list:longest
+set completeopt=longest,menuone
 
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -137,15 +144,10 @@ if filereadable(expand("~/.vundle"))
 
     " vim-gitgutter --------------
     highligh clear SignColumn
-    nnoremap <Leader>gg :GitGutterToggle<CR>
-    " ----------------------------
-
-    " vim-table-mode -------------
-    let g:table_mode_corner = '|'
     " ----------------------------
 
     " fzf ------------------------
-    nnoremap <C-P> :FZF<CR>
+    nnoremap <Leader>f :FZF<CR>
     let g:fzf_action = {
         \ 'enter': 'tab split',
         \ 'ctrl-t': 'tab split',
