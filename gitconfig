@@ -42,7 +42,7 @@
 [tig]
     tab-size = 4
 [help]
-    autocorrect = 25 # no idea why, but this is in tenths of a second, so that's 2.5 seconds
+    autocorrect = 20 # no idea why, but this is in tenths of a second, so that's 2 seconds
 [init]
     templatedir = ~/.git_template
 [push]
