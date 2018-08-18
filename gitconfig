@@ -16,7 +16,6 @@
     bum = branch --no-merged
     fa = fetch --all --prune --tags
     rekt = reset --hard
-    ctags = !.git/hooks/ctags
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
     cp = cherry-pick
@@ -43,7 +42,5 @@
     tab-size = 4
 [help]
     autocorrect = 20 # no idea why, but this is in tenths of a second, so that's 2 seconds
-[init]
-    templatedir = ~/.git_template
 [push]
 	default = matching

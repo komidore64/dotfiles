@@ -46,7 +46,6 @@ module Dotfiles
         "bugwarriorrc" => ".bugwarriorrc",
         "completion" => ".completion",
         "gitconfig" => ".gitconfig",
-        "git_template" => ".git_template",
         "pryrc" => ".pryrc",
         "rvm/gemsets/ruby/1.9.3/global.gems" => ".rvm/gemsets/ruby/1.9.3/global.gems",
         "rvm/gemsets/ruby/2.1.2/global.gems" => ".rvm/gemsets/ruby/2.1.2/global.gems",
