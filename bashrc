@@ -50,7 +50,11 @@ __bashrc_tmux_setup
 
 export EDITOR='vim'
 export PAGER='less'
-export FZF_COMPLETION_TRIGGER=',,'
+
+alias ls='ls --color=auto --group-directories-first'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
 
 alias l='ls'        # catch
 alias s='ls'        # all
@@ -91,6 +95,12 @@ alias gti='curl https://icanhazdadjoke.com'
 alias gut='curl https://icanhazdadjoke.com'
 
 alias git='hub' # hook into hub
+
+# FZF
+export FZF_COMPLETION_TRIGGER=',,'
+complete -o bashdefault -o default -o nospace -F _fzf_path_completion gd
+complete -o bashdefault -o default -o nospace -F _fzf_path_completion gds
+complete -o bashdefault -o default -o nospace -F _fzf_path_completion ga
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
