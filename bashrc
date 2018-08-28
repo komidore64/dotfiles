@@ -97,8 +97,6 @@ alias girt='curl https://icanhazdadjoke.com'
 alias gti='curl https://icanhazdadjoke.com'
 alias gut='curl https://icanhazdadjoke.com'
 
-alias git='hub' # hook into hub
-
 # FZF
 export FZF_COMPLETION_TRIGGER=',,'
 complete -o bashdefault -o default -o nospace -F _fzf_path_completion gd
