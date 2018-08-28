@@ -1,24 +1,15 @@
 # ~/.bashrc
-# vim:ft=sh
+# vim:ft=sh ts=4
 #
-# DISCLAIMER: i am a bash noob
 # NOTE: prefer single brackets for comparisons because that's more portable
 # than double
 
 [ ! -t 0 ] && return # bail if this isn't a login shell
 
-function __bashrc_home_bin_path () {
-    # if there is a $HOME/bin folder, then add it to PATH
-    [[ ! $PATH =~ "$HOME/bin" ]] && [[ -d "$HOME/bin" ]] && PATH="$PATH:$HOME/bin"
-}
+[ -f "/etc/bashrc" ] && source /etc/bashrc
 
-function __bashrc_basic_common_aliases () {
-    alias ls='ls --color=auto --group-directories-first'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias grep='grep --color=auto'
-}
-__bashrc_basic_common_aliases
+# if there is a $HOME/bin folder, then add it to PATH
+[[ ! $PATH =~ "$HOME/bin" ]] && [[ -d "$HOME/bin" ]] && PATH="$PATH:$HOME/bin"
 
 # shell options yall
 shopt -s cdspell
@@ -33,36 +24,9 @@ fi
 # this enables XON/XOFF flow control (`man stty` for more info)
 stty -ixon
 
-# if this is not OS X
-if ! which sw_vers &> /dev/null; then
-
-    # load /etc/bashrc
-    [[ -f "/etc/bashrc" ]] && source /etc/bashrc
-
-fi
-
-# if this is OS X
-if which sw_vers &> /dev/null; then
-
-    __bashrc_home_bin_path
-
-    alias ls='ls -G' # ls with colors
-    alias which='which -a'
-
-fi
-
 # if this is a raspberry pi
-if [[ -f "/boot/config.txt" ]]; then
-
-    __bashrc_home_bin_path
+if [ -f "/boot/config.txt" ]; then
     alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
-
-fi
-
-# include RVM, if RVM is installed
-if [[ -d "$HOME/.rvm" ]]; then
-    PATH=$PATH:$HOME/.rvm/bin
-    export rvmsudo_secure_path=0
 fi
 
 # Let's cache the location of tmux's bash completion file so we don't have to
@@ -105,7 +69,7 @@ alias lol='lolcat'
 alias fuck='sudo $(history -p \!\!)'
 
 if [ -d $HOME/workspace/obal ]; then
-  alias obal-source="ANSIBLE_FORCE_COLOR=true PYTHONPATH=$HOME/workspace/obal python3 -m obal"
+    alias obal-source="ANSIBLE_FORCE_COLOR=true PYTHONPATH=$HOME/workspace/obal python3 -m obal"
 fi
 
 # git aliases
@@ -165,7 +129,6 @@ export HISTFILESIZE=9001
 export PROMPT_COMMAND='__bashrc_prompt'
 
 if which libvirtd &> /dev/null; then
-
     export LIBVIRT_DEFAULT_URI=qemu:///system
 
     if which vagrant &> /dev/null; then
@@ -184,9 +147,15 @@ if which ansible-playbook &> /dev/null; then
     alias ap='ansible-playbook'
 fi
 
+# include RVM, if RVM is installed
+if [[ -d "$HOME/.rvm" ]]; then
+    PATH=$PATH:$HOME/.rvm/bin
+    export rvmsudo_secure_path=0
+fi
+
 # include NVM, if NVM is installed
 if [[ -d "$HOME/.nvm" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
