@@ -163,6 +163,7 @@ fi
 if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin
     export rvmsudo_secure_path=0
+    source $HOME/.rvm/scripts/rvm
 fi
 
 # include NVM, if NVM is installed
