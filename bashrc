@@ -71,6 +71,7 @@ alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias lol='lolcat'
 alias fuck='sudo $(history -p \!\!)'
+alias dadjoke='curl https://icanhazdadjoke.com -w "\n" --silent'
 
 if [ -d $HOME/workspace/obal ]; then
     alias obal-source="ANSIBLE_FORCE_COLOR=true PYTHONPATH=$HOME/workspace/obal python3 -m obal"
@@ -93,9 +94,9 @@ alias gds='git diff --staged'
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
-alias girt='curl https://icanhazdadjoke.com'
-alias gti='curl https://icanhazdadjoke.com'
-alias gut='curl https://icanhazdadjoke.com'
+alias girt='dadjoke'
+alias gti='dadjoke'
+alias gut='dadjoke'
 
 # FZF
 export FZF_COMPLETION_TRIGGER=',,'
