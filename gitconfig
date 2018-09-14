@@ -16,6 +16,7 @@
     bum = branch --no-merged
     fa = fetch --all --prune --tags
     rekt = reset --hard
+    pwned = blame
     wc = whatchanged -p
     vac = gc --aggressive --prune=now
     cp = cherry-pick
