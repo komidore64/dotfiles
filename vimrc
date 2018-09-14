@@ -147,7 +147,18 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " fzf ------------------------
-    nnoremap <Leader>f :FZF<CR>
+
+    " search from the git root if we're in a git repo
+    function FZFProjectRoot()
+      let project_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+      if strlen(project_root) > 0
+        call fzf#run({'dir': project_root})
+      else
+        call fzf#run()
+      endif
+    endfunction
+
+    nnoremap <Leader>f :call FZFProjectRoot()<CR>
     let g:fzf_action = {
         \ 'enter': 'tab split',
         \ 'ctrl-t': 'tab split',
