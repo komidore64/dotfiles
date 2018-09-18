@@ -1,4 +1,5 @@
 " ~/.vimrc
+" vim:ts=4
 "
 " The ordering for a lot of these settings doesn't make a lot of sense, but
 " I've discovered that if I start moving stuff around things can get out of
@@ -18,7 +19,7 @@ set directory=~/.vim/
 
 " load up plugins via vundle
 if filereadable(expand("~/.vundle"))
-  source ~/.vundle
+    source ~/.vundle
 endif
 
 syntax enable
@@ -38,7 +39,7 @@ nnoremap <Leader>pt :set invpaste<CR>
 " toggle relative line-numbers
 nnoremap <Leader>rn :set invrelativenumber<CR>
 
-" easy way to toggle spell checking
+" toggle spell checking
 nnoremap <Leader>s :set invspell<CR>
 
 " toggle list characters
@@ -96,6 +97,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 " set filetypes
 autocmd BufRead,BufNewFile *.md set ft=markdown
 
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
 " disable netrw --------------
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
@@ -147,17 +153,6 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " fzf ------------------------
-
-    " search from the git root if we're in a git repo
-    function FZFProjectRoot()
-      let project_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-      if strlen(project_root) > 0
-        call fzf#run({'dir': project_root})
-      else
-        call fzf#run()
-      endif
-    endfunction
-
     nnoremap <Leader>f :call FZFProjectRoot()<CR>
     let g:fzf_action = {
         \ 'enter': 'tab split',
@@ -180,7 +175,13 @@ function s:MkNonExDir(file, buf)
         endif
     endif
 endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
+
+" search from the git root if we're in a git repo
+function FZFProjectRoot()
+    let project_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+    if strlen(project_root) > 0
+        call fzf#run({'dir': project_root})
+    else
+        call fzf#run()
+    endif
+endfunction
