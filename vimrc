@@ -153,12 +153,13 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " fzf ------------------------
-    nnoremap <Leader>f :call FZFProjectRoot()<CR>
     let g:fzf_action = {
         \ 'enter': 'tab split',
         \ 'ctrl-t': 'tab split',
         \ 'ctrl-x': 'split',
         \ 'ctrl-v': 'vsplit' }
+    let g:fzf_layout = { 'down': '~25%' }
+    nnoremap <Leader>f :call FZFProjectRoot()<CR>
     " ----------------------------
 endif
 
@@ -180,8 +181,8 @@ endfunction
 function FZFProjectRoot()
     let project_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
     if strlen(project_root) > 0
-        call fzf#run({'dir': project_root})
+        call fzf#run(fzf#wrap('FZFProjectRoot', {'dir': project_root}))
     else
-        call fzf#run()
+        call fzf#run(fzf#wrap('FZFProjectRoot'))
     endif
 endfunction
