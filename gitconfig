@@ -21,9 +21,8 @@
     vac = gc --aggressive --prune=now
     cp = cherry-pick
     cpx = cherry-pick -x
-    pr = pull-request # hub
     wip = !git add --all && git commit -m "wip"
-    unwip = "!if [[ $(git log -1 --format=format:%s) == 'wip' ]]; then git reset HEAD~1; else echo 'nope'; fi"
+    root = rev-parse --show-toplevel
 [user]
     name = Adam Price
     email = komidore64@gmail.com
