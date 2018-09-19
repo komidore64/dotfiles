@@ -18,6 +18,7 @@ Plugin 'junegunn/fzf'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'reedes/vim-pencil'
+Plugin 'lambdalisue/vim-gista'
 
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
