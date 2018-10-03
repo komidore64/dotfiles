@@ -79,7 +79,7 @@ set foldcolumn=1 " TODO: hide this if there are no folds in the current buffer
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail. -- Gary Bernhardt
-set winwidth=150
+set winwidth=120
 set winheight=10
 set winminheight=10
 set winheight=999
