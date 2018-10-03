@@ -25,7 +25,6 @@ endif
 syntax enable
 filetype plugin indent on
 
-
 " remap <Leader> to spacebar
 let mapleader = " "
 set timeout timeoutlen=500
@@ -75,8 +74,7 @@ set showmatch
 set matchtime=5
 set scrolloff=3
 set ruler
-set nofoldenable
-
+set foldcolumn=1 " TODO: hide this if there are no folds in the current buffer
 
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -132,6 +130,11 @@ highlight LineNr ctermfg=cyan
 
 " list characters ------------
 highlight SpecialKey ctermfg=yellow
+" ----------------------------
+
+" folding --------------------
+highlight clear FoldColumn
+highlight FoldColumn ctermfg=darkgrey
 " ----------------------------
 
 " load plugin settings if ~/.vundle is found
