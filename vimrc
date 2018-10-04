@@ -82,10 +82,16 @@ set wildmode=list:longest
 set completeopt=longest,menuone
 
 " remove trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
+augroup whitespace
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+augroup END
 
 " set filetypes
-autocmd BufRead,BufNewFile *.md set ft=markdown
+augroup markdown_filetype
+    autocmd!
+    autocmd BufRead,BufNewFile *.md set ft=markdown
+augroup END
 
 " mkdir on parent directory[s] if they don't exist when saving a file
 augroup BWCCreateDir
@@ -119,6 +125,7 @@ highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " cursorline -----------------
 set cursorline
 highlight clear CursorLine
+highlight CursorLineNr ctermfg=white
 " ----------------------------
 
 " line numbers ---------------
@@ -135,10 +142,16 @@ highlight SpecialKey ctermfg=yellow
 " ----------------------------
 
 " folding --------------------
-set foldcolumn=2 " TODO: hide this if there are no folds in the current buffer
+set nofoldenable
+set foldcolumn=0
 
 highlight clear FoldColumn
 highlight FoldColumn ctermfg=darkblue
+
+augroup folding
+    autocmd!
+    autocmd CursorHold * :call SetFoldColumn()
+augroup END
 " ----------------------------
 
 " load plugin settings if ~/.vundle is found
@@ -185,11 +198,21 @@ function s:MkNonExDir(file, buf)
 endfunction
 
 " search from the git root if we're in a git repo
-function FZFProjectRoot()
+function! FZFProjectRoot()
     let project_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
     if strlen(project_root) > 0
         call fzf#run(fzf#wrap('FZFProjectRoot', {'dir': project_root}))
     else
         call fzf#run(fzf#wrap('FZFProjectRoot'))
+    endif
+endfunction
+
+" FIXME: we're so close! this almost works except that foldenable is still
+" set after deleting all folds in a file, so foldcolumn doesn't go away :/
+function! SetFoldColumn()
+    if &foldenable == 1
+        set foldcolumn=2
+    else
+        set foldcolumn=0
     endif
 endfunction
