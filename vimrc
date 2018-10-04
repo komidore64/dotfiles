@@ -1,5 +1,4 @@
 " ~/.vimrc
-" vim:ts=4
 "
 " The ordering for a lot of these settings doesn't make a lot of sense, but
 " I've discovered that if I start moving stuff around things can get out of
@@ -33,10 +32,7 @@ set timeout timeoutlen=500
 nnoremap <Leader><Space> :nohl<CR>
 
 " toggle pastemode
-nnoremap <Leader>pt :set invpaste<CR>
-
-" toggle relative line-numbers
-nnoremap <Leader>rn :set invrelativenumber<CR>
+nnoremap <Leader>p :set invpaste<CR>
 
 " toggle spell checking
 nnoremap <Leader>s :set invspell<CR>
@@ -44,10 +40,10 @@ nnoremap <Leader>s :set invspell<CR>
 " toggle list characters
 nnoremap <Leader>l :set invlist<CR>
 
-" OPEN ALL THE TABS
-set tabpagemax=9001
+" toggle line numbers
+nnoremap <Leader>n :set invnumber<CR>
 
-" highlight search real-time search
+" highlight search and real-time search
 set hlsearch
 set incsearch
 
@@ -55,10 +51,6 @@ set incsearch
 " unless you use a capital letter, then don't ignore case
 set ignorecase
 set smartcase
-
-" how to represent invisible characters
-set listchars=tab:→\ ,extends:→,precedes:←,trail:·,eol:¬
-set list
 
 " have some sensible defaults
 set encoding=utf-8
@@ -74,7 +66,7 @@ set showmatch
 set matchtime=5
 set scrolloff=3
 set ruler
-set foldcolumn=1 " TODO: hide this if there are no folds in the current buffer
+set tabpagemax=9999
 
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -95,6 +87,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " set filetypes
 autocmd BufRead,BufNewFile *.md set ft=markdown
 
+" mkdir on parent directory[s] if they don't exist when saving a file
 augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
@@ -123,18 +116,29 @@ highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
 highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " ----------------------------
 
+" cursorline -----------------
+set cursorline
+highlight clear CursorLine
+" ----------------------------
+
 " line numbers ---------------
+set number
 highlight clear LineNr
-highlight LineNr ctermfg=cyan
+highlight LineNr ctermfg=darkgrey
 " ----------------------------
 
 " list characters ------------
+set listchars=tab:→\ ,extends:→,precedes:←,trail:·,eol:¬
+set list
+
 highlight SpecialKey ctermfg=yellow
 " ----------------------------
 
 " folding --------------------
+set foldcolumn=2 " TODO: hide this if there are no folds in the current buffer
+
 highlight clear FoldColumn
-highlight FoldColumn ctermfg=darkgrey
+highlight FoldColumn ctermfg=darkblue
 " ----------------------------
 
 " load plugin settings if ~/.vundle is found
@@ -152,7 +156,7 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " vim-gitgutter --------------
-    highligh clear SignColumn
+    highlight clear SignColumn
     " ----------------------------
 
     " fzf ------------------------
