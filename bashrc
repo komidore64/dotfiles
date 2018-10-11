@@ -85,9 +85,6 @@ if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "
 else
     alias g='git status'
 fi
-if which git-lfs &>/dev/null; then
-    alias gls='git lfs status'
-fi
 alias b='git branch'
 alias gd='git diff'
 alias gds='git diff --staged'
