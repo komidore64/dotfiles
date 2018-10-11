@@ -115,12 +115,18 @@ __bashrc_completion_files
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
     local pipestatus=${PIPESTATUS[@]}
+    local branch=$(git symbolic-ref HEAD 2> /dev/null)
     local prompt=''
 
     # TODO show the username if he/she isn't the one who created the shell
 
     # pwd basename
     prompt+=$COLOR_YELLOW"\W"$COLOR_RESET' '
+
+    # show current git branch
+    if [ -n "${branch}" ]; then
+        prompt+='['$COLOR_PURPLE${branch:11}$COLOR_RESET'] '
+    fi
 
     # exit status
     if [[ $(( $(sed 's/ / + /g' <(echo $pipestatus)) )) -gt 0 ]]; then
