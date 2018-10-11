@@ -93,6 +93,11 @@ augroup markdown_filetype
     autocmd BufRead,BufNewFile *.md set ft=markdown
 augroup END
 
+augroup yaml_ansible_filetype
+    autocmd!
+    autocmd BufRead,BufNewFile */playbooks/**/*.y*ml,*/roles/**/*.y*ml set ft=yaml.ansible
+augroup END
+
 " mkdir on parent directory[s] if they don't exist when saving a file
 augroup BWCCreateDir
     autocmd!
@@ -170,6 +175,7 @@ if filereadable(expand("~/.vundle"))
 
     " vim-gitgutter --------------
     highlight clear SignColumn
+    nnoremap <Leader>gg :GitGutterToggle<CR>
     " ----------------------------
 
     " fzf ------------------------
