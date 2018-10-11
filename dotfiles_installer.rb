@@ -43,7 +43,6 @@ module Dotfiles
         "bin/tiga" => "bin/tiga",
         "bin/todo" => "bin/todo",
         "bin/vundle-update" => "bin/vundle-update",
-        "bugwarriorrc" => ".bugwarriorrc",
         "completion" => ".completion",
         "gitconfig" => ".gitconfig",
         "pryrc" => ".pryrc",
@@ -63,7 +62,6 @@ module Dotfiles
         "bin/subl" => "bin/subl",
         "fonts" => ".fonts",
         "config/sublime-text-2" => ".config/sublime-text-2",
-        "Xdefaults" => ".Xdefaults",
         "Xmodmap" => ".Xmodmap",
         "hyper.js" => ".hyper.js"
       },
