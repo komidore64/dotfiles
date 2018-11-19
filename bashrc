@@ -86,11 +86,13 @@ else
     alias g='git status'
 fi
 alias b='git branch'
-alias gd='git diff'
-alias gds='git diff --staged'
 alias ga='git add'
 alias gap='git add --patch'
 alias gc='git commit'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gr='cd $(git root)'
+# typos
 alias girt='dadjoke'
 alias gti='dadjoke'
 alias gut='dadjoke'
