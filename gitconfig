@@ -8,21 +8,22 @@
     status = auto
     ui = auto
 [alias]
-    dt = difftool
-    mt = mergetool
-    co = checkout
     b = branch
     bm = branch --merged
     bum = branch --no-merged
-    fa = fetch --all --prune --tags
-    rekt = reset --hard
-    pwned = blame
-    wc = whatchanged -p
-    vac = gc --aggressive --prune=now
+    co = checkout
     cp = cherry-pick
     cpx = cherry-pick -x
-    wip = !git add --all && git commit -m "wip"
+    dt = difftool
+    fa = fetch --all --prune --tags
+    mt = mergetool
+    pwned = blame
+    re = rebase
+    rekt = reset --hard
     root = rev-parse --show-toplevel
+    vac = gc --aggressive --prune=now
+    wc = whatchanged -p
+    wip = !git add --all && git commit -m "wip"
 [user]
     name = Adam Price
     email = komidore64@gmail.com
