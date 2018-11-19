@@ -42,6 +42,7 @@ module Dotfiles
         "bin/tiga" => "bin/tiga",
         "bin/todo" => "bin/todo",
         "bin/vundle-update" => "bin/vundle-update",
+        "bugwarriorrc" => ".config/bugwarrior/bugwarriorrc",
         "completion" => ".completion",
         "gitconfig" => ".gitconfig",
         "pryrc" => ".pryrc",

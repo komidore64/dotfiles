@@ -1,0 +1,46 @@
+# vim: ft=cfg
+
+[general]
+shorten = true
+annotation_links = true
+annotation_comments = false
+targets = foreman-packaging,foreman-infra,obal
+
+[foreman-packaging]
+service = github
+github.project_template = foreman-packaging
+github.add_tags = pr
+github.login = komidore64
+github.token = @oracle:eval:cat ~/.config/bugwarrior/github.token
+github.username = theforeman
+github.import_labels_as_tags = false
+github.include_user_repos = false
+github.include_user_issues = false
+github.query = repo:theforeman/foreman-packaging is:pr is:open
+github.description_template = PR.{{ githubnumber }}
+
+[foreman-infra]
+service = github
+github.project_template = foreman-infra
+github.add_tags = pr
+github.login = komidore64
+github.token = @oracle:eval:cat ~/.config/bugwarrior/github.token
+github.username = theforeman
+github.import_labels_as_tags = false
+github.include_user_repos = false
+github.include_user_issues = false
+github.query = repo:theforeman/foreman-infra is:pr is:open
+github.description_template = PR.{{ githubnumber }}
+
+[obal]
+service = github
+github.project_template = obal
+github.add_tags = pr
+github.login = komidore64
+github.token = @oracle:eval:cat ~/.config/bugwarrior/github.token
+github.username = theforeman
+github.import_labels_as_tags = false
+github.include_user_repos = false
+github.include_user_issues = false
+github.query = repo:theforeman/obal is:pr is:open
+github.description_template = PR.{{ githubnumber }}
