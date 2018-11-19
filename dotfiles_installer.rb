@@ -34,7 +34,6 @@ module Dotfiles
         "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
         "bin/git-oldest-ancestor" => "bin/git-oldest-ancestor",
         "bin/git-vim" => "bin/git-vim",
-        "bin/hub" => "bin/hub",
         "bin/kojikat" => "bin/kojikat",
         "bin/ktest" => "bin/ktest",
         "bin/pulp-bounce" => "bin/pulp-bounce",
