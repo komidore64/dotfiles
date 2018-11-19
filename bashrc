@@ -120,9 +120,14 @@ function __bashrc_prompt () {
     # pwd basename
     prompt+=$COLOR_YELLOW"\W"$COLOR_RESET' '
 
-    # show current git branch
+    # show current git branch and any stashes
     if [ -n "${branch}" ]; then
-        prompt+='['$COLOR_PURPLE${branch:11}$COLOR_RESET'] '
+        local stash_count=$(git stash list | wc -l)
+        prompt+='git('$COLOR_PURPLE${branch:11}$COLOR_RESET
+        if [ ${stash_count} -gt 0 ]; then
+            prompt+=' '$COLOR_DARK_GRAY'st'$COLOR_RESET
+        fi
+        prompt+=') '
     fi
 
     # exit status
