@@ -102,6 +102,7 @@ export FZF_COMPLETION_TRIGGER=',,'
 complete -o bashdefault -o default -o nospace -F _fzf_path_completion gd
 complete -o bashdefault -o default -o nospace -F _fzf_path_completion gds
 complete -o bashdefault -o default -o nospace -F _fzf_path_completion ga
+complete -o bashdefault -o default -o nospace -F _fzf_path_completion vimdiff
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
