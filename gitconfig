@@ -51,4 +51,6 @@
     process = git-lfs filter-process
     required = true
 [github]
-  user = komidore64
+    user = komidore64
+[annex "security"]
+    allowed-http-addresses = all
