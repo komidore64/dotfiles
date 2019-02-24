@@ -19,6 +19,8 @@
     mt = mergetool
     pwned = blame
     re = rebase
+    reco = rebase --continue
+    resk = rebase --skip
     rekt = reset --hard
     root = rev-parse --show-toplevel
     vac = gc --aggressive --prune=now
