@@ -112,6 +112,44 @@ function __bashrc_completion_files () {
 }
 __bashrc_completion_files
 
+if which libvirtd &> /dev/null; then
+    export LIBVIRT_DEFAULT_URI=qemu:///system
+
+    if which vagrant &> /dev/null; then
+        export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+        # vagrant aliases
+        alias v="vagrant"
+        alias vstatus="vagrant status"
+        alias vup="vagrant up"
+        alias vdestroy="vagrant destroy"
+        alias vssh="vagrant ssh"
+    fi
+fi
+
+if which ansible-playbook &> /dev/null; then
+    alias ap='ansible-playbook'
+fi
+
+# include RVM, if RVM is installed
+if [[ -d "$HOME/.rvm" ]]; then
+    PATH=$PATH:$HOME/.rvm/bin
+    export rvmsudo_secure_path=0
+    source $HOME/.rvm/scripts/rvm
+fi
+
+# include NVM, if NVM is installed
+if [[ -d "$HOME/.nvm" ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+if which task &> /dev/null; then
+    alias t='task'
+    alias ts='task sync'
+fi
+
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
     local pipestatus=${PIPESTATUS[@]}
@@ -150,41 +188,3 @@ export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=9001
 export HISTFILESIZE=9001
 export PROMPT_COMMAND='__bashrc_prompt'
-
-if which libvirtd &> /dev/null; then
-    export LIBVIRT_DEFAULT_URI=qemu:///system
-
-    if which vagrant &> /dev/null; then
-        export VAGRANT_DEFAULT_PROVIDER=libvirt
-
-        # vagrant aliases
-        alias v="vagrant"
-        alias vstatus="vagrant status"
-        alias vup="vagrant up"
-        alias vdestroy="vagrant destroy"
-        alias vssh="vagrant ssh"
-    fi
-fi
-
-if which ansible-playbook &> /dev/null; then
-    alias ap='ansible-playbook'
-fi
-
-# include RVM, if RVM is installed
-if [[ -d "$HOME/.rvm" ]]; then
-    PATH=$PATH:$HOME/.rvm/bin
-    export rvmsudo_secure_path=0
-    source $HOME/.rvm/scripts/rvm
-fi
-
-# include NVM, if NVM is installed
-if [[ -d "$HOME/.nvm" ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
-if which task &> /dev/null; then
-    alias t='task'
-    alias ts='task sync'
-fi
