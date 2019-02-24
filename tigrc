@@ -1,3 +1,4 @@
 set vertical-split = false
 
-bind main C ?git cherry-pick -x %(commit)
+bind main <Ctrl-C> ?git cherry-pick -x %(commit)
+bind main C ?git cherry-pick %(commit)
