@@ -74,7 +74,7 @@ alias fuck='sudo $(history -p \!\!)'
 alias dadjoke='curl https://icanhazdadjoke.com -w "\n" --silent'
 
 if [ -d $HOME/workspace/obal ]; then
-    alias obal-source="ANSIBLE_FORCE_COLOR=true PYTHONPATH=$HOME/workspace/obal python3 -m obal"
+    alias obl="ANSIBLE_FORCE_COLOR=true PYTHONPATH=$HOME/workspace/obal python3 -m obal"
 fi
 
 # git aliases
