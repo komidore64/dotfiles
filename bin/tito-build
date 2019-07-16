@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-target="epel-6-x86_64-katello"
-
-tito build --test --builder mock --builder-arg mock=$target --rpm

@@ -1,8 +1,0 @@
-#!/bin/bash -x
-
-pushd /var/lib/pulp
-for i in $(ls | grep -v celery); do
-    sudo rm -rf $i
-done
-popd
-sudo yum reinstall *pulp* -y
