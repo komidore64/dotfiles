@@ -48,7 +48,7 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias lol='lolcat'
-alias fuck='sudo $(history -p \!\!)'
+alias fuck='cmd="sudo $(history -p \!\!)"; echo ${cmd}; ${cmd}'
 alias dadjoke='curl https://icanhazdadjoke.com -w "\n" --silent'
 
 if [ -d $HOME/workspace/obal ]; then
@@ -87,12 +87,6 @@ if which fzf &> /dev/null; then
 fi
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
-
-function __bashrc_completion_files () {
-    local f
-    for f in ~/.completion/**; do source $f; done
-}
-__bashrc_completion_files
 
 if which libvirtd &> /dev/null; then
     export LIBVIRT_DEFAULT_URI=qemu:///system
@@ -161,7 +155,7 @@ function __bashrc_prompt () {
 
     PS1=$prompt' '
 }
-PS2="$COLOR_BOLD_PURPLE>$COLOR_RESET"
+PS2="$COLOR_BOLD_PURPLE>$COLOR_RESET "
 PS4="-> "
 
 # bash history setup

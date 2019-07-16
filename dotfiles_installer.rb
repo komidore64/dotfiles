@@ -41,7 +41,6 @@ module Dotfiles
         "bin/quicksrv" => "bin/quicksrv",
         "bin/tiga" => "bin/tiga",
         "bin/vundle-update" => "bin/vundle-update",
-        "completion" => ".completion",
         "gitconfig" => ".gitconfig",
         "pryrc" => ".pryrc",
         "pythonrc" => ".pythonrc",
