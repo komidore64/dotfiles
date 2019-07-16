@@ -36,6 +36,7 @@ nnoremap <Leader>p :set invpaste<CR>
 
 " toggle spell checking
 nnoremap <Leader>s :set invspell<CR>
+set spelllang=en_us
 
 " toggle list characters
 nnoremap <Leader>l :set invlist<CR>
@@ -55,7 +56,7 @@ set smartcase
 " have some sensible defaults
 set encoding=utf-8
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=0
 set expandtab
 set smarttab
 set smartindent
@@ -140,7 +141,7 @@ highlight LineNr ctermfg=darkgrey
 " ----------------------------
 
 " list characters ------------
-set listchars=tab:→\ ,extends:→,precedes:←,trail:·,eol:¬
+set listchars=tab:→\ ,extends:→,precedes:←,trail:·
 set list
 
 highlight SpecialKey ctermfg=yellow
