@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# script to restore the original backed up file in case something bad happens
-
-sudo cp /IOAHCIBlockStorage.original /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
-
-echo
-echo "PLEASE REBOOT"
