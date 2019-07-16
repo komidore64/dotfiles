@@ -27,6 +27,8 @@ stty -ixon
 export EDITOR='vim'
 export PAGER='less'
 
+export PYTHONSTARTUP=${HOME}/.pythonrc
+
 alias ls='ls --color=auto --group-directories-first'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -144,6 +146,10 @@ function __bashrc_prompt () {
             prompt+=' '$COLOR_DARK_GRAY'st'$COLOR_RESET
         fi
         prompt+=') '
+    fi
+
+    if [ -n "${VIRTUAL_ENV}" ]; then
+        prompt+=$COLOR_CYAN'venv'$COLOR_RESET' '
     fi
 
     # exit status

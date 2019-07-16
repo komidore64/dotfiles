@@ -26,3 +26,5 @@ setlocal formatoptions+=q
 " 'textwidth' when the insert command started, Vim does not
 " automatically format it.
 setlocal formatoptions+=l
+
+setlocal tabstop=4

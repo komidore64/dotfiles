@@ -1,0 +1,22 @@
+import os
+import readline
+import rlcompleter
+import atexit
+
+history_file = os.path.join(os.environ['HOME'], '.pyhistory')
+try:
+    readline.read_history_file(history_file)
+    print("~/.pythonrc :: command history loaded")
+except IOError:
+    pass
+readline.parse_and_bind("tab: complete")
+print("~/.pythonrc :: tab-completion enabled")
+readline.set_history_length(1024)
+atexit.register(readline.write_history_file, history_file)
+
+del atexit, rlcompleter, readline, history_file
+
+# nice-to-haves
+import re
+from collections import *
+from itertools import *

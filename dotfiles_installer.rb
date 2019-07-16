@@ -44,6 +44,7 @@ module Dotfiles
         "completion" => ".completion",
         "gitconfig" => ".gitconfig",
         "pryrc" => ".pryrc",
+        "pythonrc" => ".pythonrc",
         "rvm/gemsets/ruby/2.1.2/global.gems" => ".rvm/gemsets/ruby/2.1.2/global.gems",
         "rvmrc" => ".rvmrc",
         "tigrc" => ".tigrc",
