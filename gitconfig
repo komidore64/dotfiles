@@ -15,12 +15,11 @@
     cp = cherry-pick
     cpx = cherry-pick -x
     dt = difftool
-    fa = fetch --all --prune --tags
+    fa = fetch --all --prune
     mt = mergetool
     pwned = blame
     re = rebase
-    reco = rebase --continue
-    resk = rebase --skip
+    rebco = rebase --continue
     rekt = reset --hard
     root = rev-parse --show-toplevel
     vac = gc --aggressive --prune=now
@@ -46,7 +45,7 @@
 [help]
     autocorrect = 20 # no idea why, but this is in tenths of a second, so that's 2 seconds
 [push]
-    default = matching
+    default = current
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
