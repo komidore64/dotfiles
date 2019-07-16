@@ -73,12 +73,16 @@ alias girt='dadjoke'
 alias gti='dadjoke'
 alias gut='dadjoke'
 
-# FZF
-export FZF_COMPLETION_TRIGGER=',,'
-complete -o bashdefault -o default -o nospace -F _fzf_path_completion gd
-complete -o bashdefault -o default -o nospace -F _fzf_path_completion gds
-complete -o bashdefault -o default -o nospace -F _fzf_path_completion ga
-complete -o bashdefault -o default -o nospace -F _fzf_path_completion vimdiff
+if which fzf &> /dev/null; then
+    source /usr/share/bash-completion/completions/fzf
+    export FZF_COMPLETION_TRIGGER=',,'
+    complete -o bashdefault -o default -o nospace -F _fzf_path_completion gd
+    complete -o bashdefault -o default -o nospace -F _fzf_path_completion gds
+    complete -o bashdefault -o default -o nospace -F _fzf_path_completion ga
+    complete -o bashdefault -o default -o nospace -F _fzf_path_completion vimdiff
+    complete -o bashdefault -o default -o nospace -F _fzf_path_completion tig
+    # TODO: figure out path _and_ git-branch completion for tig
+fi
 
 [[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
