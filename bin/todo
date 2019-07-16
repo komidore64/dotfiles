@@ -1,7 +1,0 @@
-# vim:ft=sh
-
-if [[ -e ~/todo.quicktask ]]; then
-    vim ~/todo.quicktask
-else
-    echo "~/todo.quicktask doesn't exist, bro"
-fi

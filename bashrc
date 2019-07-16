@@ -125,11 +125,6 @@ if [[ -d "$HOME/.nvm" ]]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-if which task &> /dev/null; then
-    alias t='task'
-    alias ts='task sync'
-fi
-
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
     local pipestatus=${PIPESTATUS[@]}
