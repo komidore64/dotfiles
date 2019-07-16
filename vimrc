@@ -188,6 +188,10 @@ if filereadable(expand("~/.vundle"))
     let g:fzf_layout = { 'down': '~25%' }
     nnoremap <Leader>f :call FZFProjectRoot()<CR>
     " ----------------------------
+
+    " indentLine -----------------
+    let g:indentLine_color_term = 237
+    " ----------------------------
 endif
 
 " functions ------------------
