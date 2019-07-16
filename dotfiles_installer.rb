@@ -54,7 +54,6 @@ module Dotfiles
         "weechat" => ".weechat"
       },
       :linux => {
-        "bin/subl" => "bin/subl",
         "fonts" => ".fonts",
         "config/sublime-text-2" => ".config/sublime-text-2",
         "Xmodmap" => ".Xmodmap",
