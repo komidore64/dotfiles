@@ -52,12 +52,8 @@ alias lessr='less --RAW-CONTROL-CHARS'
 alias tigl='tig $(git branch | sed -e "s/[\*\ ]//g")' # local branches
 alias vim='vim -p'
 alias lol='lolcat'
-alias fuck='cmd="sudo $(history -p \!\!)"; echo ${cmd}; ${cmd}'
+alias fuck='(cmd="sudo $(history -p \!\!)"; echo ${cmd}; ${cmd})'
 alias dadjoke='curl https://icanhazdadjoke.com -w "\n" --silent'
-
-if [ -d $HOME/workspace/obal ]; then
-    alias obl="ANSIBLE_FORCE_COLOR=true PYTHONPATH=$HOME/workspace/obal python3 -m obal"
-fi
 
 # git aliases
 if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
@@ -89,8 +85,6 @@ if which fzf &> /dev/null; then
     complete -o bashdefault -o default -o nospace -F _fzf_path_completion tig
     # TODO: figure out path _and_ git-branch completion for tig
 fi
-
-[[ -f ~/.bash_colors ]] && source ~/.bash_colors
 
 if which libvirtd &> /dev/null; then
     export LIBVIRT_DEFAULT_URI=qemu:///system
@@ -124,6 +118,8 @@ if [[ -d "$HOME/.nvm" ]]; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
+
+[[ -f "$HOME/.bash_colors" ]] && source ~/.bash_colors
 
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
