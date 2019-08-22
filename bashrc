@@ -27,7 +27,11 @@ stty -ixon
 export EDITOR='vim'
 export PAGER='less'
 
-export PYTHONSTARTUP=${HOME}/.pythonrc
+# virtualenvwrapper
+if [ -f "$HOME/.local/bin/virtualenvwrapper.sh" ]; then
+    export WORKON_HOME=~/virtualenvs
+    source $HOME/.local/bin/virtualenvwrapper.sh
+fi
 
 alias ls='ls --color=auto --group-directories-first'
 alias egrep='egrep --color=auto'
