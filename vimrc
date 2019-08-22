@@ -174,6 +174,10 @@ if filereadable(expand("~/.vundle"))
     let g:vim_json_syntax_conceal = 0
     " ----------------------------
 
+    " vim-markdown----------------
+    let g:markdown_syntax_conceal = 0
+    " ----------------------------
+
     " vim-gitgutter --------------
     highlight clear SignColumn
     nnoremap <Leader>gg :GitGutterToggle<CR>
