@@ -4,7 +4,8 @@
 # NOTE: prefer single brackets for comparisons because that's more portable
 # than double
 
-[ ! -t 0 ] && return # bail if this isn't a login shell
+# bail if this isn't a login shell
+[ ! -t 0 ] && return
 
 [ -f "/etc/bashrc" ] && source /etc/bashrc
 
@@ -105,6 +106,10 @@ if which ansible-playbook &> /dev/null; then
     alias ap='ansible-playbook'
 fi
 
+if [ -f "$HOME/.ssh/interop" ]; then
+    alias sshinterop="ssh -i $HOME/.ssh/interop"
+fi
+
 # include RVM, if RVM is installed
 if [[ -d "$HOME/.rvm" ]]; then
     PATH=$PATH:$HOME/.rvm/bin
@@ -124,38 +129,45 @@ fi
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
     local pipestatus=${PIPESTATUS[@]}
-    local branch=$(git symbolic-ref HEAD 2> /dev/null)
+    local branch=$(git symbolic-ref HEAD 2> /dev/null | awk -v len=10 -F'/' '{ if (length($NF) > len) print substr($NF, 1, len-1)"…"; else print $NF}')
+    local virtual_env=$(echo ${VIRTUAL_ENV} | awk -v len=10 -F'/' '{ if (length($NF) > len) print substr($NF, 1, len-1)"…"; else print $NF}')
     local prompt=''
+
+    # FIXME: the above two awk calls seem to make prompt generation noticeably
+    # slower. try lazing string manipulation instead. only do the git branch if
+    # it's actually changed since last time. only do virtual_env if the global
+    # variable is defined and it's changed since last time.
 
     # TODO show the username if he/she isn't the one who created the shell
 
     # pwd basename
-    prompt+=$COLOR_YELLOW"\W"$COLOR_RESET' '
+    prompt+="\[${COLOR_YELLOW}\]\W\[${COLOR_RESET}\] "
 
     # show current git branch and any stashes
     if [ -n "${branch}" ]; then
         local stash_count=$(git stash list | wc -l)
-        prompt+='git('$COLOR_PURPLE${branch:11}$COLOR_RESET
+        prompt+="git(\[${COLOR_PURPLE}\]${branch}\[${COLOR_RESET}\]"
         if [ ${stash_count} -gt 0 ]; then
-            prompt+=' '$COLOR_DARK_GRAY'st'$COLOR_RESET
+            prompt+=" \[${COLOR_DARK_GRAY}\]st\[${COLOR_RESET}\]"
         fi
-        prompt+=') '
+        prompt+=") "
     fi
 
+    # virtualenv
     if [ -n "${VIRTUAL_ENV}" ]; then
-        prompt+=$COLOR_CYAN'venv'$COLOR_RESET' '
+        prompt+="py(\[${COLOR_CYAN}\]${virtual_env}\[${COLOR_RESET}\]) "
     fi
 
     # exit status
-    if [[ $(( $(sed 's/ / + /g' <(echo $pipestatus)) )) -gt 0 ]]; then
-        prompt+=$COLOR_RED'['$pipestatus']'$COLOR_RESET
+    if [[ $(( $(sed 's/ / + /g' <(echo ${pipestatus})) )) -gt 0 ]]; then
+        prompt+="\[${COLOR_RED}\][${pipestatus}]\[${COLOR_RESET}\]"
     else
-        prompt+=$COLOR_GREEN'$'$COLOR_RESET
+        prompt+="\[${COLOR_GREEN}\]$\[${COLOR_RESET}\]"
     fi
 
-    PS1=$prompt' '
+    PS1=${prompt}' '
 }
-PS2="$COLOR_BOLD_PURPLE>$COLOR_RESET "
+PS2="\[${COLOR_BOLD_PURPLE}\]>\[${COLOR_RESET}\] "
 PS4="-> "
 
 # bash history setup
