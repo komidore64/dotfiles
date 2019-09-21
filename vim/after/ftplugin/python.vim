@@ -28,3 +28,6 @@ setlocal formatoptions+=q
 setlocal formatoptions+=l
 
 setlocal tabstop=4
+
+let g:pyindent_open_paren = shiftwidth()
+let g:pyindent_continue = shiftwidth()

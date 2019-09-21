@@ -22,7 +22,8 @@ if filereadable(expand("~/.vundle"))
 endif
 
 syntax enable
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 
 " remap <Leader> to spacebar
 let mapleader = " "
