@@ -106,6 +106,10 @@ if which ansible-playbook &> /dev/null; then
     alias ap='ansible-playbook'
 fi
 
+if which xdg-open &> /dev/null; then
+    alias xopen='xdg-open'
+fi
+
 if [ -f "$HOME/.ssh/interop" ]; then
     alias sshinterop="ssh -i $HOME/.ssh/interop"
 fi
