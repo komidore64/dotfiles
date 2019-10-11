@@ -13,7 +13,7 @@ colorscheme default
 set t_Co=256
 set background=light
 
-" one place for vim swap files
+" one place for swap files
 set directory=~/.vim/
 
 " load up plugins via vundle
@@ -35,7 +35,7 @@ nnoremap <Leader><Space> :nohl<CR>
 " toggle pastemode
 nnoremap <Leader>p :set invpaste<CR>
 
-" toggle spell checking
+" spell checking
 nnoremap <Leader>s :set invspell<CR>
 set spelllang=en_us
 
@@ -54,7 +54,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-" have some sensible defaults
+" sensible defaults ----------
 set encoding=utf-8
 set tabstop=4
 set shiftwidth=0
@@ -69,6 +69,7 @@ set matchtime=5
 set scrolloff=3
 set ruler
 set tabpagemax=9999
+" ----------------------------
 
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -83,13 +84,14 @@ set wildmenu
 set wildmode=list:longest
 set completeopt=longest,menuone
 
-" remove trailing whitespace
+" remove trailing whitespace -
 augroup whitespace
     autocmd!
     autocmd BufWritePre * :%s/\s\+$//e
 augroup END
+" ----------------------------
 
-" set filetypes
+" set filetypes --------------
 augroup markdown_filetype
     autocmd!
     autocmd BufRead,BufNewFile *.md set ft=markdown
@@ -99,12 +101,14 @@ augroup yaml_ansible_filetype
     autocmd!
     autocmd BufRead,BufNewFile */playbooks/**/*.y*ml,*/roles/**/*.y*ml set ft=yaml.ansible
 augroup END
+" ----------------------------
 
 " mkdir on parent directory[s] if they don't exist when saving a file
 augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+" ----------------------------
 
 " disable netrw --------------
 let g:loaded_netrw = 1
