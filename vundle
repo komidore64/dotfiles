@@ -21,8 +21,6 @@ Plugin 'reedes/vim-pencil'
 Plugin 'lambdalisue/vim-gista'
 Plugin 'Yggdroot/indentLine'
 
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-markdown'
 Plugin 'jtratner/vim-flavored-markdown'

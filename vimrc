@@ -133,16 +133,16 @@ highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
 highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
 " ----------------------------
 
-" cursorline -----------------
-set cursorline
-highlight clear CursorLine
-highlight CursorLineNr ctermfg=white
-" ----------------------------
-
 " line numbers ---------------
 set number
 highlight clear LineNr
 highlight LineNr ctermfg=darkgrey
+" ----------------------------
+
+" cursorline -----------------
+set cursorline
+highlight clear CursorLine
+highlight CursorLineNr ctermfg=black ctermbg=darkgrey
 " ----------------------------
 
 " list characters ------------
