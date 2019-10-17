@@ -142,7 +142,7 @@ highlight LineNr ctermfg=darkgrey
 " cursorline -----------------
 set cursorline
 highlight clear CursorLine
-highlight CursorLineNr ctermfg=black ctermbg=darkgrey
+highlight CursorLineNr ctermfg=black ctermbg=darkgrey cterm=none
 " ----------------------------
 
 " list characters ------------
