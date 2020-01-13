@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
 # dotfiles_installer - install your dotfiles
-# Copyright (C) 2017 M. Adam Price
+# Copyright (C) 2020 M. Adam Price
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ module Dotfiles
 
   class Installer
 
-    VERSION = "0.0.3"
+    VERSION = "0.0.4"
 
     FILES = {
       :common => {
@@ -57,11 +57,6 @@ module Dotfiles
         "fonts" => ".fonts",
         "config/sublime-text-2" => ".config/sublime-text-2",
         "Xmodmap" => ".Xmodmap",
-      },
-      :osx => { # saving osx for later. just want to get this finished for now
-        # "config/sublime-text-2" => "Library/Application\ Support/Sublime\ Text\ 2",
-        # "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" => "bin/subl"
-        "bash_profile" => ".bash_profile"
       }
     }
 
@@ -190,11 +185,6 @@ if __FILE__ == $0
       options[:select1] += 1
     end
 
-    opts.on("--osx", "install dotfiles for mac os x") do
-      options[:sets] = [:common, :osx]
-      options[:select1] += 1
-    end
-
     opts.on("--write-action ACTION", "use [ overwrite, no-overwrite, prompt ] to specify write-action when an existing dotfile is discovered") do |action|
       options[:write_action] = action
     end
@@ -203,7 +193,7 @@ if __FILE__ == $0
 
   begin
     optparse.parse!
-    fail OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui, --osx ]" if options[:select1] > 1
+    fail OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui ]" if options[:select1] > 1
     Dotfiles::Installer.new(options).install_dotfiles(options[:sets])
   rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
