@@ -78,7 +78,6 @@ alias gti='git'
 alias gut='git'
 
 if which fzf &> /dev/null; then
-    source /usr/share/bash-completion/completions/fzf
     export FZF_COMPLETION_TRIGGER=',,'
     # export FZF_DEFAULT_COMMAND='fd --type f'
 
