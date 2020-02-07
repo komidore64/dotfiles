@@ -1,14 +1,11 @@
 " ~/.vimrc
-"
-" The ordering for a lot of these settings doesn't make a lot of sense, but
-" I've discovered that if I start moving stuff around things can get out of
-" whack.
+
 
 " fancy vim
 set nocompatible
 set updatetime=1000
 
-" color-y displayish settings
+" color and display
 colorscheme default
 set t_Co=256
 set background=light
@@ -35,7 +32,7 @@ nnoremap <Leader><Space> :nohl<CR>
 " toggle pastemode
 nnoremap <Leader>p :set invpaste<CR>
 
-" spell checking
+" toggle spell checking
 nnoremap <Leader>s :set invspell<CR>
 set spelllang=en_us
 
@@ -43,15 +40,22 @@ set spelllang=en_us
 nnoremap <Leader>l :set invlist<CR>
 
 " toggle line numbers
-nnoremap <Leader>n :set invnumber<CR>
+nnoremap <Leader>n :set norelativenumber invnumber<CR>
+
+" toggle relative line numbers
+nnoremap <Leader>r :set nonumber invrelativenumber<CR>
+
+" i never use "Ex" mode
+nnoremap Q <Nop>
 
 " highlight search and real-time search
 set hlsearch
 set incsearch
 
-" ignore case when searching
-" unless you use a capital letter, then don't ignore case
+" ignore case when searching,
 set ignorecase
+
+" (cont'd) unless you use a capital letter then don't ignore case
 set smartcase
 
 " sensible defaults ----------
@@ -97,16 +101,16 @@ augroup markdown_filetype
     autocmd BufRead,BufNewFile *.md set ft=markdown
 augroup END
 
-augroup yaml_ansible_filetype
+augroup ansible_filetype
     autocmd!
     autocmd BufRead,BufNewFile */playbooks/**/*.y*ml,*/roles/**/*.y*ml set ft=yaml.ansible
 augroup END
 " ----------------------------
 
-" mkdir on parent directory[s] if they don't exist when saving a file
-augroup BWCCreateDir
+" mkdir on parent directory(s) if they don't exist when saving a file
+augroup create_parent_dirs
     autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+    autocmd BufWritePre * call s:CreateParentDirs(expand('<afile>'), +expand('<abuf>'))
 augroup END
 " ----------------------------
 
@@ -116,10 +120,10 @@ let g:loaded_netrwPlugin = 1
 " ----------------------------
 
 " vimdiff --------------------
-highlight DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=black
-highlight DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
-highlight DiffText term=reverse cterm=bold ctermbg=grey ctermfg=black
-highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
+highlight DiffAdd cterm=bold ctermbg=green ctermfg=black
+highlight DiffChange cterm=bold ctermbg=cyan ctermfg=black
+highlight DiffText cterm=bold ctermbg=grey ctermfg=black
+highlight DiffDelete cterm=bold ctermbg=red ctermfg=black
 " ----------------------------
 
 " spell-checking -------------
@@ -129,12 +133,12 @@ highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
 " ----------------------------
 
 " pop-up menu ----------------
-highlight Pmenu term=reverse ctermbg=darkgrey ctermfg=white
-highlight PmenuSel cterm=bold term=reverse ctermbg=lightgrey ctermfg=black
+highlight Pmenu ctermbg=darkgrey ctermfg=white
+highlight PmenuSel cterm=bold ctermbg=lightgrey ctermfg=black
 " ----------------------------
 
 " line numbers ---------------
-set number
+set relativenumber
 highlight clear LineNr
 highlight LineNr ctermfg=darkgrey
 " ----------------------------
@@ -161,7 +165,7 @@ highlight FoldColumn ctermfg=darkblue
 
 augroup folding
     autocmd!
-    autocmd CursorHold * :call SetFoldColumn()
+    autocmd CursorHold * call SetFoldColumn()
 augroup END
 " ----------------------------
 
@@ -184,8 +188,11 @@ if filereadable(expand("~/.vundle"))
     " ----------------------------
 
     " vim-gitgutter --------------
-    highlight clear SignColumn
     nnoremap <Leader>gg :GitGutterToggle<CR>
+    highlight GitGutterAdd ctermfg=green
+    highlight GitGutterChange ctermfg=cyan
+    highlight GitGutterDelete ctermfg=red
+    highlight GitGutterChangeDelete ctermfg=red
     " ----------------------------
 
     " fzf ------------------------
@@ -193,7 +200,7 @@ if filereadable(expand("~/.vundle"))
         \ 'enter': 'tab split',
         \ 'ctrl-t': 'tab split',
         \ 'ctrl-x': 'split',
-        \ 'ctrl-v': 'vsplit' }
+        \ 'ctrl-v': 'vsplit', }
     let g:fzf_layout = { 'down': '~25%' }
     nnoremap <Leader>f :call FZFProjectRoot()<CR>
     " ----------------------------
@@ -208,7 +215,7 @@ endif
 
 " create parent directories on save
 " http://stackoverflow.com/a/4294176/336520
-function s:MkNonExDir(file, buf)
+function! s:CreateParentDirs(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
