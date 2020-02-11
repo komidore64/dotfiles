@@ -9,7 +9,7 @@ set runtimepath+=~/.vim/bundle/vundle
 call vundle#begin()
 " ----------------------------
 
-" plugins --------------------
+" functional plugins ---------
 Plugin 'gmarik/vundle'
 
 Plugin 'bling/vim-airline'
@@ -21,11 +21,13 @@ Plugin 'reedes/vim-pencil'
 Plugin 'lambdalisue/vim-gista'
 Plugin 'Yggdroot/indentLine'
 
+" syntax plugins -------------
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-markdown'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'pearofducks/ansible-vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'chikamichi/mediawiki.vim'
 " ----------------------------
 
 " cleanup --------------------
