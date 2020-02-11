@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+from datetime import datetime, timedelta
+
+class BeatTime():
+
+    def __init__(self):
+        # Swatch Internet Time uses the time scale of Biel Meantime (BMT),
+        # which is equivalent to UTC+1.
+        bmt_now = datetime.utcnow() + timedelta(hours=1)
+
+        # Swatch Internet Time is calculated by dividing the number of seconds
+        # past midnight by the number of seconds contained within one .beat.
+        self.beat_time = (bmt_now.second + (bmt_now.minute * 60) + (bmt_now.hour * 3600)) / 86.4
+
+    def __str__(self):
+        return "@{:.1f}".format(self.beat_time)
+
+print(BeatTime())

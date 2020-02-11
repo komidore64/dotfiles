@@ -31,6 +31,7 @@ module Dotfiles
         "bashrc" => ".bashrc",
         "bash_logout" => ".bash_logout",
         "bin/asdf" => "bin/asdf",
+        "bin/beat-time" => "bin/beat-time",
         "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
         "bin/git-oldest-ancestor" => "bin/git-oldest-ancestor",
         "bin/git-vim" => "bin/git-vim",
