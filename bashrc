@@ -71,7 +71,7 @@ alias gap='git add --patch'
 alias gc='git commit'
 alias gd='git diff'
 alias gds='git diff --staged'
-alias gr='cd $(git root)'
+alias gr='cd $(git root)' #TODO: we don't want to cd if `git root` errors
 # typos
 alias girt='git'
 alias gti='git'
