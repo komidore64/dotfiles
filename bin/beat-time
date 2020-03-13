@@ -14,6 +14,6 @@ class BeatTime():
         self.beat_time = (bmt_now.second + (bmt_now.minute * 60) + (bmt_now.hour * 3600)) / 86.4
 
     def __str__(self):
-        return "@{:.1f}".format(self.beat_time)
+        return "@{:05.1f}".format(self.beat_time)
 
 print(BeatTime())
