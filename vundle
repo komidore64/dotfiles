@@ -5,12 +5,12 @@
 set nocompatible
 filetype off
 
-set runtimepath+=~/.vim/bundle/vundle
+set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " ----------------------------
 
 " functional plugins ---------
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-surround'
