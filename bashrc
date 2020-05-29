@@ -56,6 +56,7 @@ alias vim='vim -p'
 alias lol='lolcat'
 alias fuck='(cmd="sudo $(history -p \!\!)"; echo ${cmd}; ${cmd})'
 alias dadjoke='curl -H "Accept: text/plain" https://icanhazdadjoke.com -w "\n" --silent'
+alias back='cd ../'
 
 # git aliases
 if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
@@ -113,8 +114,8 @@ fi
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
     local pipestatus=${PIPESTATUS[@]}
-    local branch=$(git symbolic-ref HEAD 2> /dev/null | awk -v len=10 -F'/' '{ if (length($NF) > len) print substr($NF, 1, len-1)"…"; else print $NF}')
-    local virtual_env=$(echo ${VIRTUAL_ENV} | awk -v len=10 -F'/' '{ if (length($NF) > len) print substr($NF, 1, len-1)"…"; else print $NF}')
+    local branch=$(git symbolic-ref HEAD 2> /dev/null | sed -e 's/refs\/heads\///' | awk -v len=15 '{ if (length($NF) > len) print substr($NF, 1, len-1)"…"; else print $NF}')
+    local virtual_env=$(echo ${VIRTUAL_ENV} | awk -v len=15 -F'/' '{ if (length($NF) > len) print substr($NF, 1, len-1)"…"; else print $NF}')
     local prompt=''
 
     # FIXME: the above two awk calls seem to make prompt generation noticeably
