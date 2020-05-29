@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-tig $(git branch | grep -v git-annex | grep -v HEAD | sed 's/^..//') $(git branch --remotes | sed -e 's/^\s*//' | cut -d' ' -f1)
+tig \
+    $(git branch | grep -v git-annex | grep -v HEAD | sed 's/^..//') \
+    $(git branch --remotes | sed -e 's/^\s*//' | cut -d' ' -f1)
