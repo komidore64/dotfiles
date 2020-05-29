@@ -3,7 +3,7 @@ module DotfilesAssertionsHelper
   class FakeHomeNotDefinedException < Exception; end
 
   def assert_file_install(file)
-    assert(File.exists?(file))
+    assert(File.exist?(file))
   end
 
   def assert_set_installed(set)
@@ -13,11 +13,6 @@ module DotfilesAssertionsHelper
     end
   end
 
-end
-
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/test/'
 end
 
 require 'minitest/autorun'

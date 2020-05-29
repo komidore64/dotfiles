@@ -23,7 +23,7 @@ module Dotfiles
 
   class Installer
 
-    VERSION = "0.0.4"
+    VERSION = "0.0.5"
 
     FILES = {
       :common => {
@@ -32,13 +32,7 @@ module Dotfiles
         "bash_logout" => ".bash_logout",
         "bin/asdf" => "bin/asdf",
         "bin/beat-time" => "bin/beat-time",
-        "bin/fetch-all-git-repos" => "bin/fetch-all-git-repos",
         "bin/git-oldest-ancestor" => "bin/git-oldest-ancestor",
-        "bin/git-vim" => "bin/git-vim",
-        "bin/kojikat" => "bin/kojikat",
-        "bin/ktest" => "bin/ktest",
-        "bin/pulp-bounce" => "bin/pulp-bounce",
-        "bin/pulp-clear" => "bin/pulp-clear",
         "bin/quicksrv" => "bin/quicksrv",
         "bin/tiga" => "bin/tiga",
         "bin/vundle-update" => "bin/vundle-update",
@@ -52,7 +46,7 @@ module Dotfiles
         "vim" => ".vim",
         "vimrc" => ".vimrc",
         "vundle" => ".vundle",
-        "weechat" => ".weechat"
+        "weechat" => ".weechat",
       },
       :linux => {
         "fonts" => ".fonts",
@@ -62,18 +56,18 @@ module Dotfiles
       }
     }
 
-    attr_reader :write_action, :destination, :source
+    attr_reader :write_action, :destination_dir, :source_dir
 
     def initialize(options = {})
       options = {
         :write_action => "prompt",
-        :destination => ENV['HOME'],
-        :source => File.expand_path(`git rev-parse --show-toplevel`.strip)
+        :destination_dir => ENV['HOME'],
+        :source_dir => File.expand_path(%x{git rev-parse --show-toplevel}.strip)
       }.merge(options)
 
       self.write_action = options[:write_action]
-      self.source = options[:source]
-      self.destination = options[:destination]
+      self.source_dir = options[:source_dir]
+      self.destination_dir = options[:destination_dir]
     end
 
     def write_action=(action)
@@ -84,24 +78,24 @@ module Dotfiles
       @write_action = action.tr('-', '_')
     end
 
-    def source=(src)
-      unless File.exist?(src) && File.directory?(src)
-        fail RuntimeError, "not a valid source directory [ #{src} ]"
+    def source_dir=(src_dir)
+      unless File.exist?(src_dir) && File.directory?(src_dir)
+        fail RuntimeError, "not a valid source directory [ #{src_dir} ]"
       end
 
-      @source = src
+      @source_dir = src_dir
     end
 
-    def destination=(dest)
-      unless File.exist?(dest) && File.directory?(dest)
-        fail RuntimeError, "not a valid destination directory [ #{dest} ]"
+    def destination_dir=(dest_dir)
+      unless File.exist?(dest_dir) && File.directory?(dest_dir)
+        fail RuntimeError, "not a valid destination directory [ #{dest_dir} ]"
       end
 
-      @destination = dest
+      @destination_dir = dest_dir
     end
 
     def install_dotfiles(sets)
-      sets.each { |s| install_set(s, @source, @destination) }
+      sets.each { |s| install_set(s, @source_dir, @destination_dir) }
     end
 
     private
@@ -148,6 +142,10 @@ module Dotfiles
     end
 
     def install_single(src, dest)
+      unless File.exist?(src)
+        fail RuntimeError, "source file does not exist [ #{src} ]"
+      end
+
       if File.exist?(dest)
         install_single_with_prexisting_file(src, dest)
       else
@@ -155,9 +153,9 @@ module Dotfiles
       end
     end
 
-    def install_set(set, root_src, root_dest)
-      FILES[set].each do |k, v|
-        install_single(File.join([root_src, k]), File.join([root_dest, v]))
+    def install_set(set, src_dir, dest_dir)
+      FILES[set].each do |repo_path, install_path|
+        install_single(File.join([src_dir, repo_path]), File.join([dest_dir, install_path]))
       end
     end
   end
@@ -197,6 +195,9 @@ if __FILE__ == $0
     optparse.parse!
     fail OptionParser::AmbiguousArgument, "can only supply one of [ --linux, --nogui ]" if options[:select1] > 1
     Dotfiles::Installer.new(options).install_dotfiles(options[:sets])
+  rescue RuntimeError => e
+    puts e.message
+    exit 1
   rescue OptionParser::AmbiguousArgument => e
     puts "#{e.message}\n\n#{optparse.help}"
     exit 1
