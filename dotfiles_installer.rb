@@ -56,6 +56,7 @@ module Dotfiles
       },
       :linux => {
         "fonts" => ".fonts",
+        "config/kitty" => ".config/kitty",
         "config/sublime-text-2" => ".config/sublime-text-2",
         "Xmodmap" => ".Xmodmap",
       }
