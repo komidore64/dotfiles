@@ -1,9 +1,15 @@
-require 'rake/testtask'
 require 'fileutils'
+require 'rake/testtask'
+require 'rubocop/rake_task'
 
 Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = [ "test/helper.rb" ]
+  t.options = '--verbose' if ENV['GITHUB_RUN_ID']
+end
+
+RuboCop::RakeTask.new(:lint) do |t|
+  t.patterns = ['Rakefile', '*.rb', 'test/**/*.rb']
 end
 
 desc "clean the test fake_dirs"
