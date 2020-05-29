@@ -20,6 +20,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'reedes/vim-pencil'
 Plugin 'lambdalisue/vim-gista'
 Plugin 'Yggdroot/indentLine'
+Plugin 'komidore64/wikitywack'
+" Plugin 'file:///home/adprice/workspace/wikitywack'
 
 " syntax plugins -------------
 Plugin 'elzr/vim-json'

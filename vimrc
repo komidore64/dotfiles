@@ -45,7 +45,7 @@ nnoremap <Leader>n :set norelativenumber invnumber<CR>
 " toggle relative line numbers
 nnoremap <Leader>r :set nonumber invrelativenumber<CR>
 
-" i never use "Ex" mode
+" i never use ex-mode
 nnoremap Q <Nop>
 
 " highlight search and real-time search
@@ -83,6 +83,8 @@ set winheight=10
 set winminheight=10
 set winheight=999
 
+set splitright
+
 " vim command-line tab-completion
 set wildmenu
 set wildmode=list:longest
@@ -91,7 +93,8 @@ set completeopt=longest,menuone
 " remove trailing whitespace -
 augroup whitespace
     autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
+    " autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * :RemoveTrailingWhitespace
 augroup END
 " ----------------------------
 
@@ -114,10 +117,11 @@ augroup create_parent_dirs
 augroup END
 " ----------------------------
 
-" disable netrw --------------
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+" netrw ----------------------
+let g:netrw_home = '~/.vim/'
 " ----------------------------
+
+highlight SignColumn ctermbg=none
 
 " vimdiff --------------------
 highlight DiffAdd cterm=bold ctermbg=green ctermfg=black
@@ -208,6 +212,14 @@ if filereadable(expand("~/.vundle"))
     " indentLine -----------------
     let g:indentLine_color_term = 237
     " ----------------------------
+
+    " wikitywack -----------------
+    let g:wikitywack = {
+        \ 'host': 'dustloop.com',
+        \ 'path': '/wiki/',
+        \ 'username': 'komidore64', }
+    " ----------------------------
+
 endif
 
 " functions ------------------
@@ -243,3 +255,5 @@ function! SetFoldColumn()
         set foldcolumn=0
     endif
 endfunction
+
+command! RemoveTrailingWhitespace :%s/\s\+$//e
