@@ -1,6 +1,7 @@
-module DotfilesAssertionsHelper
+# frozen_string_literal: true
 
-  class FakeHomeNotDefinedException < Exception; end
+module DotfilesAssertionsHelper
+  class FakeHomeNotDefinedException < RuntimeError; end
 
   def assert_file_install(file)
     assert(File.exist?(file))
@@ -8,17 +9,16 @@ module DotfilesAssertionsHelper
 
   def assert_set_installed(set)
     raise FakeHomeNotDefinedException unless defined?(@fake_home)
+
     set.each_value do |file|
       assert_file_install(File.join([@fake_home, file]))
     end
   end
-
 end
 
 require 'minitest/autorun'
 
-require File.expand_path(File.join([File.dirname(__FILE__), "..", "dotfiles_installer"]))
+require_relative '../dotfiles_installer'
 
-Dir["./test/*_install_test.rb"].each do |f|
-  require f
-end
+require 'linux_install_test'
+require 'nogui_install_test'

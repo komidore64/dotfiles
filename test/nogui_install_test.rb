@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class NoguiInstallTest < MiniTest::Test
   include DotfilesAssertionsHelper
 
   def setup
-    @fake_home = File.join([File.expand_path(File.dirname(__FILE__)), "nogui_fake_home"])
+    @fake_home = File.join(__dir__, 'nogui_fake_home')
     FileUtils.mkdir(@fake_home) unless File.exist?(@fake_home)
   end
 
@@ -11,11 +13,10 @@ class NoguiInstallTest < MiniTest::Test
   end
 
   def test_linux_install
-    installation_sets = [:common]
-    Dotfiles::Installer.new(:destination_dir => @fake_home).install_dotfiles(installation_sets)
+    installation_sets = %i[common]
+    Dotfiles::Installer.new(destination_dir: @fake_home).install_dotfiles(installation_sets)
     installation_sets.each do |set|
       assert_set_installed(Dotfiles::Installer::FILES[set])
     end
   end
-
 end
