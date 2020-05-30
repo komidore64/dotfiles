@@ -28,7 +28,7 @@ PLATFORMS
 DEPENDENCIES
   minitest
   rake
-  rubocop
+  rubocop (~> 0.84.0)
 
 RUBY VERSION
    ruby 2.6.5p114
