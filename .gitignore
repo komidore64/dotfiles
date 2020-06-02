@@ -23,3 +23,6 @@ weechat/urlserver_list.txt
 # ignore installed vim plugins
 vim/bundle/*
 !vim/bundle/Vundle.vim
+
+# fonts
+fonts/**/.uuid
