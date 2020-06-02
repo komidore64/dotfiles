@@ -1,39 +1,28 @@
 # -*- coding: utf-8 -*-
 #
 # ~/.pryrc
-# vim:ft=ruby
 
 Pry.config.editor = "#{ENV['EDITOR']}"
 
-# so that i can debug our tests
-# https://github.com/ci-reporter/ci_reporter/issues/154
-ENV['CI_CAPTURE'] = 'off'
-
 begin
-  print 'awesome_print'
-  require 'awesome_print'
-  AwesomePrint.pry!
-  puts ' loaded'
+  require 'amazing_print'
+  AmazingPrint.pry!
+  puts 'amazing_print loaded'
 rescue LoadError
-  puts ' not found'
 end
 
 begin
-  print 'hirb'
   require 'hirb'
   Hirb.enable
-  puts ' loaded'
+  puts 'hirb loaded'
 rescue LoadError
-  puts ' not found'
 end
 
 %w(pry-debugger pry-byebug pry-stack_explorer pry-rescue).each do |lib|
   begin
-    print lib
     require lib
-    puts ' loaded'
+    puts "#{lib} loaded"
   rescue LoadError
-    puts ' not found'
   end
 end
 
@@ -44,3 +33,5 @@ if defined?(PryDebugger) || defined?(PryByebug)
   Pry.commands.alias_command('n', 'next')
   Pry.commands.alias_command('l', 'whereami')
 end
+
+# vim:ft=ruby
