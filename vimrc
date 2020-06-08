@@ -87,7 +87,6 @@ set splitright
 " vim command-line tab-completion
 set wildmenu
 set wildmode=list:longest
-set completeopt=longest,menuone
 
 " remove trailing whitespace -
 augroup whitespace
@@ -188,6 +187,11 @@ if filereadable(expand("~/.vundle"))
 
     " vim-markdown----------------
     let g:markdown_syntax_conceal = 0
+    " ----------------------------
+
+    " autocomplpop ---------------
+    let g:acp_completeoptPreview = 0
+    let g:acp_autoselectFirstCompletion = 0
     " ----------------------------
 
     " vim-gitgutter --------------
