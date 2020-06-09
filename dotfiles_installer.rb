@@ -32,7 +32,6 @@ module Dotfiles
         'bin/asdf' => 'bin/asdf',
         'bin/beat-time' => 'bin/beat-time',
         'bin/git-oldest-ancestor' => 'bin/git-oldest-ancestor',
-        'bin/quicksrv' => 'bin/quicksrv',
         'bin/tiga' => 'bin/tiga',
         'bin/vundle-update' => 'bin/vundle-update',
         'gitconfig' => '.gitconfig',
