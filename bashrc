@@ -129,12 +129,12 @@ function __bashrc_prompt () {
     # TODO show the username if he/she isn't the one who created the shell
 
     # pwd basename
-    prompt+="${COLOR_YELLOW}\W${COLOR_RESET} "
+    prompt+="${COLOR_PURPLE}\W${COLOR_RESET} "
 
     # show current git branch and any stashes
     if [ -n "${branch}" ]; then
         local stash_count=$(git stash list | wc -l)
-        prompt+="git(${COLOR_PURPLE}${branch}${COLOR_RESET}"
+        prompt+="git(${COLOR_GREEN}${branch}${COLOR_RESET}"
         if [ ${stash_count} -gt 0 ]; then
             prompt+=" ${COLOR_DARK_GRAY}st${COLOR_RESET}"
         fi
@@ -143,14 +143,14 @@ function __bashrc_prompt () {
 
     # virtualenv
     if [ -n "${VIRTUAL_ENV}" ]; then
-        prompt+="py(${COLOR_CYAN}${virtual_env}${COLOR_RESET}) "
+        prompt+="py(${COLOR_YELLOW}${virtual_env}${COLOR_RESET}) "
     fi
 
     # exit status
     if [[ $(( $(sed 's/ / + /g' <(echo ${pipestatus})) )) -gt 0 ]]; then
         prompt+="${COLOR_RED}[${pipestatus}]${COLOR_RESET}"
     else
-        prompt+="${COLOR_GREEN}\$${COLOR_RESET}"
+        prompt+="${COLOR_CYAN}\$${COLOR_RESET}"
     fi
 
     PS1=${prompt}' '

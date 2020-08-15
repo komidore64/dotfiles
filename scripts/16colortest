@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 echo
-echo -e "Background \e[0;39m    \e[0m"
-echo
 echo -e "     Black \e[0;40m    \e[0m\e[0;100m    \e[0m Dark Grey"
 echo -e "       Red \e[0;41m    \e[0m\e[0;101m    \e[0m Light Red"
 echo -e "     Green \e[0;42m    \e[0m\e[0;102m    \e[0m Light Green"
