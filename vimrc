@@ -208,14 +208,6 @@ if filereadable(expand("~/.vundle"))
     " indentLine -----------------
     let g:indentLine_color_term = 237
     " ----------------------------
-
-    " wikitywack -----------------
-    let g:wikitywack = {
-        \ 'host': 'dustloop.com',
-        \ 'path': '/wiki/',
-        \ 'username': 'komidore64', }
-    " ----------------------------
-
 endif
 
 " functions ------------------
