@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Git-annex is great for storing/tracking binary files in git, but it totally
+# breaks `tig -all` which is why i created this script to strip out all
+# git-annex refs.
+
 tig \
-    $(git branch | grep -v git-annex | grep -v HEAD | sed 's/^..//') \
+    $(git branch | grep -v git-annex | sed 's/^..//') \
     $(git branch --remotes | sed -e 's/^\s*//' | cut -d' ' -f1)
