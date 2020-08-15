@@ -11,7 +11,9 @@
 [ -f "/etc/bashrc" ] && source /etc/bashrc
 
 # if there is a $HOME/bin folder, then add it to PATH
-[[ ! $PATH =~ "$HOME/bin" ]] && [[ -d "$HOME/bin" ]] && PATH="$PATH:$HOME/bin"
+if [[ -d "${HOME}/bin" ]] && [[ ! ${PATH} =~ .*"${HOME}/bin".* ]]; then
+    PATH="${PATH}:${HOME}/bin"
+fi
 
 # shell options
 shopt -s cdspell
@@ -30,10 +32,7 @@ export EDITOR='vim'
 export PAGER='less'
 
 # virtualenvwrapper
-if [ -f "$HOME/.local/bin/virtualenvwrapper.sh" ]; then
-    export WORKON_HOME=~/virtualenvs
-    source $HOME/.local/bin/virtualenvwrapper.sh
-fi
+export WORKON_HOME=${HOME}/virtualenvs
 
 alias ls='ls --color=auto --group-directories-first'
 alias egrep='egrep --color=auto'
@@ -102,6 +101,10 @@ if [ -f "$HOME/.ssh/interop" ]; then
     alias sshinterop="ssh -i $HOME/.ssh/interop"
 fi
 
+if [ -d "${HOME}/workspace/Git-Mediawiki" ]; then
+    alias mwgit="PERL5LIB=${PERL5LIB}${PERL5LIB:+':'}${HOME}/workspace/Git-Mediawiki git"
+fi
+
 # include NVM, if NVM is installed
 if [[ -d "$HOME/.nvm" ]]; then
     export NVM_DIR="$HOME/.nvm"
@@ -156,7 +159,7 @@ PS2="${COLOR_BOLD_PURPLE}>${COLOR_RESET} "
 PS4="-> "
 
 # bash history setup
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=9001
 export HISTFILESIZE=9001
 export PROMPT_COMMAND='__bashrc_prompt'
