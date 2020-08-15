@@ -11,6 +11,8 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'dracula/vim', {'name': 'dracula'}
+
 " functional plugins ---------
 Plugin 'Yggdroot/indentLine'
 Plugin 'airblade/vim-gitgutter'

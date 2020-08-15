@@ -1,14 +1,8 @@
 " ~/.vimrc
 
-
 " fancy vim
 set nocompatible
 set updatetime=1000
-
-" color and display
-colorscheme default
-set t_Co=256
-set background=light
 
 " one place for swap files
 set directory=~/.vim/
@@ -18,6 +12,11 @@ if filereadable(expand("~/.vundle"))
     source ~/.vundle
 endif
 
+" colorscheme
+colorscheme dracula
+set termguicolors
+
+" basics
 syntax enable
 filetype plugin on
 filetype indent on
@@ -119,43 +118,37 @@ augroup END
 let g:netrw_home = '~/.vim/'
 " ----------------------------
 
-highlight SignColumn ctermbg=none
-
-" vimdiff --------------------
-highlight DiffAdd cterm=bold ctermbg=green ctermfg=black
-highlight DiffChange cterm=bold ctermbg=cyan ctermfg=black
-highlight DiffText cterm=bold ctermbg=grey ctermfg=black
-highlight DiffDelete cterm=bold ctermbg=red ctermfg=black
-" ----------------------------
-
-" spell-checking -------------
-highlight SpellCap cterm=undercurl ctermbg=grey ctermfg=black
-highlight SpellBad cterm=undercurl ctermbg=red ctermfg=black
-highlight SpellRare cterm=undercurl ctermbg=cyan ctermfg=black
-" ----------------------------
-
-" pop-up menu ----------------
-highlight Pmenu ctermbg=darkgrey ctermfg=white
-highlight PmenuSel cterm=bold ctermbg=lightgrey ctermfg=black
+" " vimdiff --------------------
+highlight DiffAdd cterm=bold guibg=green guifg=black
+highlight DiffChange cterm=bold guibg=cyan guifg=black
+highlight DiffText cterm=bold guibg=grey guifg=black
+highlight DiffDelete cterm=bold guibg=red guifg=black
+" " ----------------------------
+"
+" " spell-checking -------------
+highlight SpellCap cterm=undercurl guibg=grey guifg=black
+highlight SpellBad cterm=undercurl guibg=red guifg=black
+highlight SpellRare cterm=undercurl guibg=cyan guifg=black
+" " ----------------------------
+"
+" " pop-up menu ----------------
+highlight Pmenu guibg=cyan guifg=black
+highlight PmenuSel cterm=bold guibg=#FF79C6 guifg=black
 " ----------------------------
 
 " line numbers ---------------
 set relativenumber
 highlight clear LineNr
-highlight LineNr ctermfg=darkgrey
+highlight LineNr guifg=darkgrey
 " ----------------------------
 
-" cursorline -----------------
 set cursorline
-highlight clear CursorLine
-highlight CursorLineNr ctermfg=black ctermbg=darkgrey cterm=none
-" ----------------------------
 
 " list characters ------------
 set listchars=tab:→\ ,extends:→,precedes:←,trail:·
 set list
 
-highlight SpecialKey ctermfg=yellow
+highlight SpecialKey guifg=yellow
 " ----------------------------
 
 " folding --------------------
@@ -163,7 +156,7 @@ set nofoldenable
 set foldcolumn=0
 
 highlight clear FoldColumn
-highlight FoldColumn ctermfg=darkblue
+highlight FoldColumn guifg=darkblue
 
 augroup folding
     autocmd!
@@ -196,10 +189,10 @@ if filereadable(expand("~/.vundle"))
 
     " vim-gitgutter --------------
     nnoremap <Leader>gg :GitGutterToggle<CR>
-    highlight GitGutterAdd ctermfg=green
-    highlight GitGutterChange ctermfg=cyan
-    highlight GitGutterDelete ctermfg=red
-    highlight GitGutterChangeDelete ctermfg=red
+    highlight GitGutterAdd guifg=green
+    highlight GitGutterChange guifg=cyan
+    highlight GitGutterDelete guifg=red
+    highlight GitGutterChangeDelete guifg=red
     " ----------------------------
 
     " fzf ------------------------
