@@ -38,7 +38,6 @@ module Dotfiles
         'rvm/gemsets/ruby/2.1.2/global.gems' => '.rvm/gemsets/ruby/2.1.2/global.gems',
         'rvmrc' => '.rvmrc',
         'tigrc' => '.tigrc',
-        'tmux.conf' => '.tmux.conf',
         'vim' => '.vim',
         'vimrc' => '.vimrc',
         'vundle' => '.vundle',
