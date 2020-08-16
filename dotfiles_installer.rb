@@ -29,7 +29,6 @@ module Dotfiles
         'bash_colors' => '.bash_colors',
         'bashrc' => '.bashrc',
         'bin/asdf' => 'bin/asdf',
-        'bin/beat-time' => 'bin/beat-time',
         'bin/git-oldest-ancestor' => 'bin/git-oldest-ancestor',
         'bin/tiga' => 'bin/tiga',
         'bin/vundle-update' => 'bin/vundle-update',
