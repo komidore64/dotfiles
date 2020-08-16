@@ -28,7 +28,6 @@ module Dotfiles
       common: {
         'bash_colors' => '.bash_colors',
         'bashrc' => '.bashrc',
-        'bash_logout' => '.bash_logout',
         'bin/asdf' => 'bin/asdf',
         'bin/beat-time' => 'bin/beat-time',
         'bin/git-oldest-ancestor' => 'bin/git-oldest-ancestor',
