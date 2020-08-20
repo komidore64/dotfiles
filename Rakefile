@@ -25,4 +25,4 @@ task :clean do
   end
 end
 
-task default: :test
+task default: %i[test lint]

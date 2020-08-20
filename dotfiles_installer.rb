@@ -21,7 +21,7 @@ require 'optparse'
 
 module Dotfiles
   # Contains all functions for installing dotfiles
-  class Installer # rubocop:disable Metrics/ClassLength
+  class Installer
     VERSION = '0.0.5'
 
     FILES = {
