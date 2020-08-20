@@ -1,9 +1,5 @@
 " ~/.vimrc
 
-" fancy vim
-set nocompatible
-set updatetime=1000
-
 " one place for swap files
 set directory=~/.vim/
 
@@ -20,6 +16,7 @@ set termguicolors
 syntax enable
 filetype plugin on
 filetype indent on
+set updatetime=1000
 
 " remap <Leader> to spacebar
 let mapleader = " "
@@ -90,7 +87,6 @@ set wildmode=list:longest
 " remove trailing whitespace -
 augroup whitespace
     autocmd!
-    " autocmd BufWritePre * :%s/\s\+$//e
     autocmd BufWritePre * :RemoveTrailingWhitespace
 augroup END
 " ----------------------------
@@ -124,13 +120,13 @@ highlight DiffChange cterm=bold guibg=cyan guifg=black
 highlight DiffText cterm=bold guibg=grey guifg=black
 highlight DiffDelete cterm=bold guibg=red guifg=black
 " " ----------------------------
-"
+
 " " spell-checking -------------
 highlight SpellCap cterm=undercurl guibg=grey guifg=black
 highlight SpellBad cterm=undercurl guibg=red guifg=black
 highlight SpellRare cterm=undercurl guibg=cyan guifg=black
 " " ----------------------------
-"
+
 " " pop-up menu ----------------
 highlight Pmenu guibg=cyan guifg=black
 highlight PmenuSel cterm=bold guibg=#FF79C6 guifg=black
@@ -207,6 +203,7 @@ if filereadable(expand("~/.vundle"))
 
     " indentLine -----------------
     let g:indentLine_color_term = 237
+    let g:indentLine_bufTypeExclude = ['help']
     " ----------------------------
 endif
 
