@@ -152,7 +152,7 @@ set nofoldenable
 set foldcolumn=0
 
 highlight clear FoldColumn
-highlight FoldColumn guifg=darkblue
+highlight FoldColumn guifg=#FF79C6
 
 augroup folding
     autocmd!
@@ -231,8 +231,6 @@ function! FZFProjectRoot()
     endif
 endfunction
 
-" FIXME: we're so close! this almost works except that foldenable is still
-" set after deleting all folds in a file, so foldcolumn doesn't go away :/
 function! SetFoldColumn()
     if &foldenable == 1
         set foldcolumn=2
