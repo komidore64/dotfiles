@@ -1,8 +1,7 @@
 # ~/.bashrc
 # vim:ft=sh ts=4
 #
-# NOTE: prefer single brackets for comparisons because that's more portable
-# than double
+# NOTE: prefer single brackets for tests where possible
 
 # bail if this isn't a login shell
 [ ! -t 0 ] && return
@@ -11,7 +10,7 @@
 [ -f "/etc/bashrc" ] && source /etc/bashrc
 
 # if there is a $HOME/bin folder, then add it to PATH
-if [[ -d "${HOME}/bin" ]] && [[ ! ${PATH} =~ .*"${HOME}/bin".* ]]; then
+if [ -d "${HOME}/bin" ] && [[ ! ${PATH} =~ .*"${HOME}/bin".* ]]; then
     PATH="${PATH}:${HOME}/bin"
 fi
 
@@ -19,7 +18,7 @@ fi
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
-if [[ $BASH_VERSION > 4 ]]; then
+if [ "${BASH_VERSION}" \> "4" ]; then
     shopt -s dirspell
     shopt -s checkjobs
 fi
@@ -97,22 +96,29 @@ if which ansible-playbook &> /dev/null; then
     alias ap='ansible-playbook'
 fi
 
-if [ -f "$HOME/.ssh/interop" ]; then
-    alias sshinterop="ssh -i $HOME/.ssh/interop"
+if [ -f "${HOME}/.ssh/interop" ]; then
+    alias sshinterop="ssh -i ${HOME}/.ssh/interop"
 fi
 
 if [ -d "${HOME}/workspace/Git-Mediawiki" ]; then
     alias mwgit="PERL5LIB=${PERL5LIB}${PERL5LIB:+':'}${HOME}/workspace/Git-Mediawiki git"
 fi
 
-# include NVM, if NVM is installed
-if [[ -d "$HOME/.nvm" ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# include RVM, if RVM is installed
+if [ -d "${HOME}/.rvm" ]; then
+    [[ ! ${PATH} =~ .*"${HOME}/.rvm/bin".* ]] && PATH="${PATH}:${HOME}/.rvm/bin"
+    export rvmsudo_secure_path=0
+    source ${HOME}/.rvm/scripts/rvm
 fi
 
-[[ -f "$HOME/.bash_colors" ]] && source ~/.bash_colors
+# include NVM, if NVM is installed
+if [ -d "${HOME}/.nvm" ]; then
+    export NVM_DIR="${HOME}/.nvm"
+    [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
+    [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
+fi
+
+[ -f "${HOME}/.bash_colors" ] && source ~/.bash_colors
 
 function __bashrc_prompt () {
     # good prompt article: http://www.askapache.com/linux/bash-power-prompt.html
@@ -147,7 +153,7 @@ function __bashrc_prompt () {
     fi
 
     # exit status
-    if [[ $(( $(sed 's/ / + /g' <(echo ${pipestatus})) )) -gt 0 ]]; then
+    if [ $(( $(sed 's/ / + /g' <(echo ${pipestatus})) )) -gt 0 ]; then
         prompt+="${COLOR_RED}[${pipestatus}]${COLOR_RESET}"
     else
         prompt+="${COLOR_CYAN}\$${COLOR_RESET}"
