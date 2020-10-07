@@ -3,12 +3,9 @@
 *.swp
 installer/test/*_fake_home
 
-# sublime-text 2
-*.cache
-*.pyc
-config/sublime-text-2/Settings
-config/sublime-text-2/Pristine\ Packages
-config/sublime-text-2/Backup*
+# sublime text 3
+config/sublime-text-3/Cache
+config/sublime-text-3/Local
 
 # weechat
 weechat/logs
