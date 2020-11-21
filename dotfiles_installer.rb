@@ -123,7 +123,7 @@ module Dotfiles
     end
 
     def install_single_newfile(src, dest)
-      dir = dest.scan(%r{\A(.*)(\/.*)\z})[0][0]
+      dir = dest.scan(%r{\A(.*)(/.*)\z})[0][0]
       FileUtils.makedirs(dir)
       symlink(src, dest)
     end
