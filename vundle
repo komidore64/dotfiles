@@ -1,17 +1,18 @@
 " ~/.vundle
 " vim:ft=vim
 
-" pre vundle setup -----------
+" setup ----------------------
 set nocompatible
 filetype off
 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 " ----------------------------
 
-Plugin 'VundleVim/Vundle.vim'
-
+" theme ----------------------
 Plugin 'dracula/vim', {'name': 'dracula'}
+" ----------------------------
 
 " functional plugins ---------
 Plugin 'Yggdroot/indentLine'
