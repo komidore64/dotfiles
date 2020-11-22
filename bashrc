@@ -1,7 +1,5 @@
 # ~/.bashrc
-# vim:ft=sh ts=4
-#
-# NOTE: prefer single brackets for tests where possible
+# vim: ft=sh ts=4
 
 # bail if this isn't a login shell
 [ ! -t 0 ] && return
@@ -9,7 +7,7 @@
 # start with some system-wide defaults
 [ -f "/etc/bashrc" ] && source /etc/bashrc
 
-# if there is a $HOME/bin folder, then add it to PATH
+# if there is a $HOME/bin folder, then add it to $PATH
 if [ -d "${HOME}/bin" ] && [[ ! ${PATH} =~ .*"${HOME}/bin".* ]]; then
     PATH="${PATH}:${HOME}/bin"
 fi
@@ -18,10 +16,8 @@ fi
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
-if [ "${BASH_VERSION}" \> "4" ]; then
-    shopt -s dirspell
-    shopt -s checkjobs
-fi
+shopt -s dirspell
+shopt -s checkjobs
 
 # stop the terminal from grabbing CTRL-s so i can forward- and reverse-search
 # this enables XON/XOFF flow control (`man stty` for more info)
@@ -57,13 +53,9 @@ alias dadjoke='curl -H "Accept: text/plain" https://icanhazdadjoke.com -w "\n" -
 alias back='cd ../'
 
 # git aliases
-if which git &>/dev/null && [ "$(git --version | grep git | cut -d' ' -f3)" \> "1.7.2" ]; then
-    alias g='git status --short --branch'
-    alias gg='git status'
-    alias gdw='git diff --word-diff'
-else
-    alias g='git status'
-fi
+alias g='git status --short --branch'
+alias gg='git status'
+alias gdw='git diff --word-diff'
 alias b='git branch'
 alias ga='git add'
 alias gap='git add --patch'
